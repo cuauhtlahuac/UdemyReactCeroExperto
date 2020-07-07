@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+
+    
+    <title>React App</title>
+</head>
+<style>
+  .container {
+    height: 1000px;
+    background-color: skyblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #link{
+    font-family: monospace;
+    font-size: 2rem;
+    text-decoration: none;
+  }
+</style>
+<body>
+  <div class="container">
+    <!-- le digo a React que se va a dibujar el componente en el root id -->
+    <div id="root"></div>
+    <a href="https://git-test-proyect.nn.r.appspot.com/" id="link">🔴 El link no está habilitado 🚧</a>
+  </div>
+        
+    <!-- Cargat React -->
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js" defer></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" defer></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js" defer></script>
+    <script defer type="text/babel"> // esta línea permite usar babel 
+      function mine()
+      {
+        let enableLink = false;
+        const name = "Goku 🥕"
+        const h1Tag = <h1>Hello 🌎 and {name}</h1>;
+        const myPreventDefaultLink = document.querySelector("#link");
+        const myRoot = document.querySelector("#root");
+        myPreventDefaultLink.addEventListener("click", 
+        (evt) => {
+            if(!enableLink){
+              evt.preventDefault();
+              setTimeout(()=>{
+                enableLink = true; 
+                myPreventDefaultLink.textContent = "🟢 Desbloqueaste el link 🚥"
+                }, 1000);
+            }
+          })
+        ReactDOM.render(h1Tag, myRoot);
+      }
+    mine();
+    </script>
+  </body>
+</html>
