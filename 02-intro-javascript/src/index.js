@@ -4,4 +4,4 @@ const persona = {
     edad: 45,
 };
 
-console.log( { persona } )
+console.table( persona )
