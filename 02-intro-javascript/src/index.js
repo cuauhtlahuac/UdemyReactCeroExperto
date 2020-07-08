@@ -4,7 +4,7 @@ const  arregloEmptySpaces = new Array( 100 ); // Arreglo sólo para crear espaci
 const arreglo = [1,2,3,4];
 arreglo.push(5);
 
-let arreglo2 = arreglo;
+let arreglo2 = [...arreglo];
 arreglo2.push(6)
 
 console.log( {arreglo} );
