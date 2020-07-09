@@ -1,20 +1,11 @@
 // Funciones en JS
-fuction saludar ( nombre ){
+
+const saludar = fuction ( nombre ){
     return `Hola, ${ nombre }`;
 };
 
-saludar = 30;
 
-// console.log( saludar('亀 Goku 🥕'));
+const saludar2 = nombre => `Hola, ${ nombre }`;
 
-console.log( saludar );
-
-// FunctionDeclaration
-function foo(){
-    // Some code goes here...
-  }
-   
-  // FunctionExpression
-  var foo = function(){
-    // Some code goes here...
-  }
+console.log( saludar('亀 Goku 🥕'));
+console.log( saludar('𖢞 Vegueta 🌳'));
