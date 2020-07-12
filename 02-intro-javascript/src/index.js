@@ -1,9 +1,12 @@
 const promesa = new Promise((res, rej) => {
-    setTimeout(() => {
-        console.log('2 seg después')
-    }, 2000);
-}) ;
+    console.log('La promesa inicia');
+    
+	setTimeout(() => {
+        
+		res('2'); // aquí le pasamos el argumento
+	}, 2000);
+});
 
-promesa.then(()=>{
-    console.log('Then la promesa')
-})
+promesa.then((response) => {
+	console.log(`Then la promesa ${response} segundos después`);
+});
