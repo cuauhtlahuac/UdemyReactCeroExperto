@@ -1,4 +1,4 @@
-import heroes, { owners } from './data/heroes';
+import heroes, { owners } from 'data/heroes';
 
 // find solo regresa un valor verdadero
 const getHeroById = (id) => heroes.find((heroe) => heroe['id'] === id);
@@ -27,3 +27,4 @@ const getHeroAndOwner = (hero) => heroes.reduce(getNameAndOwner, [ hero ]);
 console.log(getHeroById(2));
 console.log(getHeroByOwner(owners[1]));
 console.log(getHeroAndOwner(newHero));
+
