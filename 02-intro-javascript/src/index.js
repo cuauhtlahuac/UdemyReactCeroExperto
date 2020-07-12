@@ -1,4 +1,4 @@
-import { heroes } from './data/heroes';
+import heroes from './data/heroes';
 
 // find solo regresa un valor verdadero
 const getHeroById = (id) => heroes.find((heroe) => heroe['id'] === id);
@@ -13,14 +13,13 @@ function filterByCompany(heroe) {
 const getHeroByOwner = (owner) => heroes.filter(filterByCompany, { owner });
 
 // Tomar en cuenta que el accumulator es inmutable,
-// se pueden modificar los valores iniciales
+// se pueden usar valor inicial pero de preferencia debe tener la estructura correcta.
 function getNameAndOwner(acc, current) {
 	return [ ...acc, { [current.name]: current.owner } ];
 }
 
 const newHero = {
-	name: 'Cuauhtlahuac',
-	owner: 'Panini'
+	Cuauhman: 'Panini'
 };
 
 const getHeroAndOwner = (hero) => heroes.reduce(getNameAndOwner, [ hero ]);

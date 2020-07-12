@@ -1,4 +1,4 @@
-export const heroes = [
+export default [
     {
         id: 1,
         name: 'Batman',
