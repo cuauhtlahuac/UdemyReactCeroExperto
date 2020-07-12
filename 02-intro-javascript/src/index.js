@@ -2,16 +2,15 @@ import { getHeroById } from "js-bases/ModuleExport";
 
 const promesa = new Promise((res, rej) => {
     console.log('La promesa inicia');
-    
+    rej("Hubo un pedo"); // intencionalmente puse el reject antes para lanzar el waning
+    // así la promesa nunca se resuelve
 	setTimeout(() => {
-        // Tarea
-        // importar archivo heroes
         const heroe = getHeroById(2);
-        console.log(heroe);
-		res('2'); // aquí le pasamos el argumento
+		res(heroe);
 	}, 2000);
 });
 
 promesa.then((response) => {
-	console.log(`Then la promesa ${response} segundos después`);
-});
+	console.log(`Obtenemos un heroe que es: ${response.name}`);
+})
+.catch(error => console.warn(error));
