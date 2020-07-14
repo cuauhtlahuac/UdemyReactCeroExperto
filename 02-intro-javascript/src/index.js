@@ -5,5 +5,11 @@ const baseStikersURL = 'http://api.giphy.com/v1/stickers/random?api_key=';
 
 const peticion = fetch(`${baseGifsURL}${apiKey}`);
 
-peticion.then((resp) => console.log(resp)).catch((err) => console.warn(err));
- // Me regresa una promesa pero no puedo acceder a los datos
+peticion
+	.then((resp) => {
+        resp.json().then((data) => console.log(data));
+        // Con esta líne ya puedo acceder a la data, pero
+        // el metodo json me regresa otra promessa por lo que hacemos uso de otro then
+        // y se ve feo
+	})
+	.catch((err) => console.warn(err));
