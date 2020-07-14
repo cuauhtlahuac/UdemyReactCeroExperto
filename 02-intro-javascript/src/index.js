@@ -7,9 +7,7 @@ const peticion = fetch(`${baseGifsURL}${apiKey}`);
 
 peticion
 	.then((resp) => {
-        resp.json().then((data) => console.log(data));
-        // Con esta líne ya puedo acceder a la data, pero
-        // el metodo json me regresa otra promessa por lo que hacemos uso de otro then
-        // y se ve feo
+		return resp.json(); // Por surte las promesas pueden encadenarse 😀
 	})
+	.then((data) => console.log(data))
 	.catch((err) => console.warn(err));
