@@ -1,4 +1,4 @@
-import { getHeroById } from 'js-bases/ModuleExport';
+import { getHeroById } from 'js-bases/08-ModuleExport';
 
 const getHeroeByIdAsync = (id) => {
 	return new Promise((res, rej) => {
