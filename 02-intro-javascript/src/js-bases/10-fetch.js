@@ -5,14 +5,17 @@ const baseGifsURL = 'http://api.giphy.com/v1/gifs/random?api_key=';
 
 const peticion = fetch(`${baseGifsURL}${apiKey}`);
 
-peticion
-	.then((resp) => resp.json())
-	.then(({ data }) => {
-		const { url } = data.images.original;
+export const getRandomImage = () =>
+	peticion
+		.then((resp) => resp.json())
+		.then(({ data }) => {
+			const { url } = data.images.original;
 
-		const img = document.createElement('img');
-		img.src = url;
+			const img = document.createElement('img');
+			img.src = url;
 
-		document.body.append(img);
-	})
-	.catch((err) => console.warn(err));
+			document.body.append(img);
+
+			return img;
+		})
+		.catch((err) => console.warn(err));
