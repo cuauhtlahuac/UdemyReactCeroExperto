@@ -1,0 +1,11 @@
+html,
+body {
+	/* Ordenamos los estios alfabetiicamente */
+	align-items: center;
+	background-color: #226598;
+	color: white;
+	display: flex;
+	font-family: Helvetica, Arial, sans-serif;
+	height: 100vh;
+	justify-content: center;
+}
