@@ -9,3 +9,4 @@
 * [GIPHY Developers](https://developers.giphy.com/)
 * [PWA Course](https://codelabs.developers.google.com/dev-pwa-training/)
 * [Synthetic Event](https://es.reactjs.org/docs/events.html)
+* [Jest tests Documentation](https://jestjs.io/)

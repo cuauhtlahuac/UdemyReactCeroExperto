@@ -1,5 +1,5 @@
 test('should do something', () => {
-    const active = false;
+    const firstManOnEarth = "Chabelo";
 
-    if( active ) throw new Error("no está activo");
+    expect(firstManOnEarth).toBe("Adan");    
 });
