@@ -14,3 +14,9 @@ body {
 pre {
 	text-align: initial;
 }
+
+button {
+	padding: 7px;
+	font-size: 1.4rem;
+	margin-right: 10px;
+}

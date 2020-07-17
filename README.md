@@ -8,3 +8,4 @@
 * [Promise by MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 * [GIPHY Developers](https://developers.giphy.com/)
 * [PWA Course](https://codelabs.developers.google.com/dev-pwa-training/)
+* [Synthetic Event](https://es.reactjs.org/docs/events.html)

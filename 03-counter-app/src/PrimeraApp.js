@@ -5,7 +5,7 @@ import CounterApp from './CounterApp';
 export default function PrimeraApp({ saludo }) {
 	return (
 		<React.Fragment>
-			<CounterApp value={5} />
+			<CounterApp value={0} />
 		</React.Fragment>
 	);
 }
