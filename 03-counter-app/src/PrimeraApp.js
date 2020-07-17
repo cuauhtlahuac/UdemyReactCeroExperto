@@ -9,6 +9,10 @@ export default function PrimeraApp({ saludo }) {
 	);
 }
 
+PrimeraApp.defaultProps = {
+    saludo: "Saludo por default"
+}
+
 PrimeraApp.propTypes = {
 	saludo: PropTypes.string.isRequired
 };
