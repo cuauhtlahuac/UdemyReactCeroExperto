@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom/extend-expect'; 
-// esto para que la librería de de jest ejecute el expect
-// al final no es tan necesario porque vamos a usar Enzime
-// Testear así puede ser un dolor de huevos.
+import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
+Enzyme.configure({ adapter: new Adapter() });

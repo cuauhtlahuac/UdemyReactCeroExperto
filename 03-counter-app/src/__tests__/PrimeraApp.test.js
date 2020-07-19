@@ -1,13 +1,16 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { shallow } from 'enzyme';
+import '@testing-library/jest-dom'; // Para que me aparescan la lista de opciones de jest-dom
+
 import PrimeraApp from 'PrimeraApp';
 
 describe('<PrimeraApp />', () => {
-	test('should render Hola soy Goku!', () => {
-		const saludo = 'Hola soy Goku!';
+	test('should render <PrimeraApp /> correctly', () => {
+		
+		const saludo = 'Hola, Soy Goku!!';
 
-		const wrapper = render(<PrimeraApp saludo={saludo} />);
+		const wrapper = shallow(<PrimeraApp saludo={ saludo } />);
 
-		expect(wrapper.getByText( saludo )).toBeInTheDocument();
+		expect( wrapper ).toMatchSnapshot();
 	});
 });
