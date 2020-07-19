@@ -12,3 +12,4 @@
 * [Jest tests Documentation](https://jestjs.io/)
 * Para crear una variable de entorno en React escribir en .env el prefijo REACT_APP_
 * [Enzyme test Documentation](https://enzymejs.github.io/enzyme/)
+* [Enyme to Json Info](https://www.npmjs.com/package/enzyme-to-json)
