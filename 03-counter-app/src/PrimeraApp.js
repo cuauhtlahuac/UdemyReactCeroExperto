@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import CounterApp from './CounterApp';
+import { getImagen } from 'base-pruebas/11-async-await';
 
 export default function PrimeraApp({ saludo }) {
+	useEffect(() => {
+		getImagen();
+	}, []);
 	return (
 		<React.Fragment>
 			<CounterApp value={0} />
