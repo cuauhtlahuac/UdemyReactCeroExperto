@@ -10,3 +10,4 @@
 * [PWA Course](https://codelabs.developers.google.com/dev-pwa-training/)
 * [Synthetic Event](https://es.reactjs.org/docs/events.html)
 * [Jest tests Documentation](https://jestjs.io/)
+* Para crear una variable de entorno en React escribir en .env el prefijo REACT_APP_
