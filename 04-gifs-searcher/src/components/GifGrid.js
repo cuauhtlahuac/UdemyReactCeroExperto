@@ -21,7 +21,7 @@ const GifGrid = ({ category }) => {
 			},
 			[],
 		);
-		console.log({ imgs });
+
 		return setImages(imgs);
 	};
 
@@ -35,11 +35,11 @@ const GifGrid = ({ category }) => {
 	return (
 		<div>
 			<h3>{category}</h3>
-			<ul>
+			<div className="image-grid">
 				{images.map(image => {
 					return <GifGridItem key={image.id} {...image} />;
 				})}
-			</ul>
+			</div>
 		</div>
 	);
 };

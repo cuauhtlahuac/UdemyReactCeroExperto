@@ -5,17 +5,48 @@
 }
 
 body {
-	padding: 60px;
+	padding: 2rem;
+	margin: 0;
 }
 
 input {
+	color: #222;
+	font-family: 'Rubik', Arial, Helvetica, sans-serif;
 	font-size: 1rem;
 	font-weight: 300;
-	color: #222;
 	width: 100%;
-	font-family: 'Rubik', Arial, Helvetica, sans-serif;
 }
-.image-title:hover {
-	background-color: lightgrey;
+.card:hover {
+	border: teal 2px outset;
 	cursor: pointer;
+}
+.card {
+	align-self: flex-start;
+	border: #ccc solid 1px;
+	border-radius: 1rem;
+	box-shadow: #ddd 1px 1px 10px;
+	display: grid;
+	justify-items: center;
+	grid-template-rows: 1fr;
+	font-weight: 600;
+	font-size: 1.3rem;
+}
+
+.card p {
+	color: darkslategray;
+	padding: 1rem
+}
+.image-grid {
+	align-items: baseline;
+	display: grid;
+	grid-gap: 10px;
+	grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+	row-gap: 15px;
+	width: 100%;
+}
+
+img {
+	border-top-left-radius: 1rem ;
+	border-top-right-radius: 1rem ;
+	width: 100%;
 }

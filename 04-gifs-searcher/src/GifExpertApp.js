@@ -12,7 +12,7 @@ const GifExpertApp = () => {
 	if (sameValue) {
 		return (
 			<div>
-				<h1>same value</h1>
+				<h1>You wrote it again, please write other category </h1>
 				<button onClick={() => setSameValue(false)}>return</button>
 			</div>
 		);
@@ -30,11 +30,9 @@ const GifExpertApp = () => {
 			/>
 			<hr />
 
-			<ol>
-				{categories.map(category => {
-					return <GifGrid category={category} key={category} />;
-				})}
-			</ol>
+			{categories.map(category => {
+				return <GifGrid category={category} key={category} />;
+			})}
 		</div>
 	);
 };
