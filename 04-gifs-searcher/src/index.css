@@ -15,7 +15,7 @@ input {
 	width: 100%;
 	font-family: 'Rubik', Arial, Helvetica, sans-serif;
 }
-.images-titles:hover {
+.image-title:hover {
 	background-color: lightgrey;
 	cursor: pointer;
 }

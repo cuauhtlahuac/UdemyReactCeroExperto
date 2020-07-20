@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import GifGridItem from './GifGridItem';
 
 const GifGrid = ({ category }) => {
 	const [ images, setImages ] = useState([]);
@@ -12,10 +13,10 @@ const GifGrid = ({ category }) => {
 		const { data } = await resp.json();
 
 		const imgs = data.reduce(
-			(acc, { id, images: { downsized_large } = {}, title, url }) => {
+			(acc, { id, images: { downsized_medium } = {}, title, url }) => {
 				return [
 					...acc,
-					{ key: id, gif: downsized_large.url, title, link: url },
+					{ id, gif: downsized_medium.url, title, link: url },
 				];
 			},
 			[],
@@ -33,14 +34,12 @@ const GifGrid = ({ category }) => {
 
 	return (
 		<div>
-			<li key={category}>
-				{category}
-				<ul>
-					{images.map(item => {
-						return <li key={item.key} onClick={()=>console.log("click:" + item.title)} className="images-titles">{item.title}</li>;
-					})}
-				</ul>
-			</li>
+			<h3>{category}</h3>
+			<ul>
+				{images.map(image => {
+					return <GifGridItem key={image.id} {...image} />;
+				})}
+			</ul>
 		</div>
 	);
 };
