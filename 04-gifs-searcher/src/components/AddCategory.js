@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-function AddCategory({ setCategories }) {
+function AddCategory({
+	setCategories,
+	setCategoryDictionary,
+	setSameValue,
+	categoryDictionary,
+}) {
 	const [ inputValue, setInputValue ] = useState('');
 
 	const handleInputValue = e => setInputValue(e.target.value);
@@ -12,8 +17,16 @@ function AddCategory({ setCategories }) {
 		const trimmedInputValue = inputValue.trim();
 
 		if (trimmedInputValue && trimmedInputValue.length > 1) {
-			setCategories(cat => [ ...cat, trimmedInputValue ]);
+			setCategoryDictionary(catDic => ({
+				...catDic,
+				[trimmedInputValue]: trimmedInputValue,
+			}));
 
+			if (categoryDictionary.hasOwnProperty(trimmedInputValue)) {
+				setSameValue(true);
+			} else {
+				setCategories(cat => [ ...cat, trimmedInputValue ]);
+			}
 			setInputValue('');
 		}
 	};
