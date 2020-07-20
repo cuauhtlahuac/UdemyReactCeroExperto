@@ -1,5 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Rubik:wght@300;500&display=swap');
 
 * {
-	font-family: 'Roboto', 'Rubik', Arial, Helvetica, sans-serif;
+	font-family: 'Roboto', Arial, Helvetica, sans-serif;
+}
+
+body {
+	padding: 60px;
+}
+
+input {
+	font-size: 1rem;
+	font-weight: 300;
+	color: #222;
+	width: 100%;
+	font-family: 'Rubik', Arial, Helvetica, sans-serif;
 }
