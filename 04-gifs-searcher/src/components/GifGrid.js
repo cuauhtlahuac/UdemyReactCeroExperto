@@ -1,7 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 const GifGrid = ({ category }) => {
+	const [ images, setImages ] = useState([]);
+
 	const url = `https://api.giphy.com/v1/gifs/search?q=${category ||
 		'burgers'}&limit=20&api_key=${process.env.REACT_APP_GHIPY_KEY}`;
 
@@ -19,7 +21,7 @@ const GifGrid = ({ category }) => {
 			[],
 		);
 		console.log({ imgs });
-		return data;
+		return setImages(imgs);
 	};
 
 	useEffect(
@@ -31,7 +33,14 @@ const GifGrid = ({ category }) => {
 
 	return (
 		<div>
-			<li key={category}>{category}</li>
+			<li key={category}>
+				{category}
+				<ul>
+					{images.map(item => {
+						return <li key={item.key} onClick={()=>console.log("click:" + item.title)} className="images-titles">{item.title}</li>;
+					})}
+				</ul>
+			</li>
 		</div>
 	);
 };
