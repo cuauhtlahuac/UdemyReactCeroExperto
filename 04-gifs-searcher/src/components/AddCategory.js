@@ -25,7 +25,7 @@ function AddCategory({
 			if (categoryDictionary.hasOwnProperty(trimmedInputValue)) {
 				setSameValue(true);
 			} else {
-				setCategories(cat => [ ...cat, trimmedInputValue ]);
+				setCategories(cat => [ trimmedInputValue, ...cat ]);
 			}
 			setInputValue('');
 		}

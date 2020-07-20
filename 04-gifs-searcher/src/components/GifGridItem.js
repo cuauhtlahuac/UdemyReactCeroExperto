@@ -6,7 +6,7 @@ const GifGridItem = ({ id, gif, title }) => {
 			onClick={() => console.log('click:' + title)}
 			className="card"
 		>
-			<img src={gif} />
+			<img src={gif} alt={title}/>
 			<p>{title}</p>
 		</div>
 	);
