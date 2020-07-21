@@ -1,21 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import GifGridItem from './GifGridItem';
-import { getGifs } from 'utils/getGifs';
+import { useGetGifs } from 'hooks/useGetGifs';
+
 
 const GifGrid = ({ category }) => {
-	const [ images, setImages ] = useState([]);
 
-	useEffect(
-		() => {
-			getGifs(category).then(imgs => setImages(imgs));
-		},
-		[ category ],
-	);
-
+	const {data: images, loading} = useGetGifs(category);
+	
 	return (
 		<div>
 			<h3>{category}</h3>
+			{loading && <p>loading...</p>}
 			<div className="image-grid">
 				{images.map(image => {
 					return <GifGridItem key={image.id} {...image} />;

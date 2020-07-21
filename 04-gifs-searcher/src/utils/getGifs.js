@@ -6,14 +6,15 @@ export const getGifs = async category => {
 	const { data } = await resp.json();
 
 	const imgs = data.reduce(
-		(acc, { id, images: { downsized_medium } = {}, title, url }) => {
+		(acc, { id, images: { fixed_height } = {}, title, url }) => {
 			return [
 				...acc,
-				{ id, gif: downsized_medium.url, title, link: url },
+				{ id, gif: fixed_height.webp, title, link: url },
 			];
 		},
 		[],
 	);
 
-	return imgs; // al ser async regresa una promesa
-};
+	return imgs;
+}
+
