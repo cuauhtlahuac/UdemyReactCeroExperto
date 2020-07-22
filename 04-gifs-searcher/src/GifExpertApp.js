@@ -19,7 +19,7 @@ const GifExpertApp = () => {
 	}
 
 	return (
-		<div>
+		<section>
 			<h2 className="gif-title">Gif Searcher</h2>
 
 			<AddCategory
@@ -33,7 +33,7 @@ const GifExpertApp = () => {
 			{categories.map(category => {
 				return <GifGrid category={category} key={category} />;
 			})}
-		</div>
+		</section>
 	);
 };
 

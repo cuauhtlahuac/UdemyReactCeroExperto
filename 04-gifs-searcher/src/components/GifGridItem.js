@@ -1,18 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const GifGridItem = ({ gif, title }) => {
+	const [imageLoaded, setImageLoaded] = useState(false);
+
 	return (
-		<div
+		<article
 		className=
 		"card animate__animated 
 		animate__flipInX 
 		animate__delay-1s"
 		>
 
-			<img src={gif} alt={title} />
+			<img
+			 src={gif}
+			 alt={title}
+			 onLoad={()=> setImageLoaded(true)}
+			 className={`smooth-image image-${
+            imageLoaded ? 'visible' :  'hidden'
+          	}`}
+			/>
+			 
 			<p>{title}</p>
-
-		</div>
+		</article>
 	);
 };
 

@@ -32,11 +32,13 @@ function AddCategory({
 	};
 
 	return (
-		<form onSubmit={handleSubmit}>
+		<form onSubmit={handleSubmit} className="form">
+		<label htmlFor={"category"}>Category</label>
 			<input
 				type="text"
+				id={"category"}
 				value={inputValue}
-				placeholder="category"
+				placeholder="write a favorite gif category"
 				onChange={handleInputValue}
 			/>
 		</form>

@@ -10,9 +10,23 @@ body {
 	margin: 0;
 }
 
+title:active {
+	color: red;
+}
+
+form {
+	font-family: 'open sans', Arial, Helvetica, sans-serif;
+	display: flex;
+	flex-direction: column;
+	margin-top: 1.3rem;
+}
+
+form > label {
+	margin-bottom: 5px;
+}
+
 input {
 	color: #222;
-	font-family: 'Rubik', Arial, Helvetica, sans-serif;
 	font-size: 1.5rem;
 	font-weight: 300;
 	width: 100%;
@@ -23,8 +37,8 @@ input {
 
 .gif-title {
 	font-size: 3rem;
-    margin-bottom: 3px;
-    text-transform: lowercase;
+	margin-bottom: 3px;
+	text-transform: lowercase;
 }
 
 .title {
@@ -71,4 +85,16 @@ img {
 	border-top-left-radius: 1rem;
 	border-top-right-radius: 1rem;
 	width: 100%;
+}
+
+.smooth-image {
+	transition: opacity 1s;
+}
+
+.image-visible {
+	opacity: 1;
+}
+
+.image-hidden {
+	opacity: 0;
 }
