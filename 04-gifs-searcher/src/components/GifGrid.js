@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import { useGetGifs } from 'hooks/useGetGifs';
 
-// import GifGridItem from './GifGridItem';
 const GifGridItem = lazy(() => import('./GifGridItem'));
 
 const Loader = () => <div className="loading">Loading...</div>;
@@ -32,7 +31,7 @@ const GifGrid = ({ category }) => {
 
 			<section className="image-grid">
 				{images.map(image => (
-					<Suspense fallback={Loader} key={image.id}>
+					<Suspense fallback={ <Loader /> } key={image.id}>
 						<GifGridItem {...image} />
 					</Suspense>
 				))}
