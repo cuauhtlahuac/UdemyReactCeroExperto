@@ -23,6 +23,20 @@ form {
 
 form > label {
 	margin-bottom: 5px;
+
+animation-duration: 5s;
+animation-iteration-count: infinite;
+animation-name: label-color;
+}
+
+@keyframes label-color {
+	from {
+		color: white;
+	}
+
+	to {
+		color: black;
+	}
 }
 
 input {
@@ -56,16 +70,39 @@ input {
 	border: teal 2px outset;
 	cursor: pointer;
 }
+
 .card {
 	align-self: flex-start;
+	background-color: whitesmoke;
 	border: #ccc solid 1px;
 	border-radius: 1rem;
 	box-shadow: #ddd 1px 1px 10px;
 	display: grid;
 	justify-items: center;
-	grid-template-rows: 1fr;
 	font-weight: 600;
 	font-size: 1.3rem;
+}
+
+.one-space {
+	animation-duration: 1s;
+	animation-name: one-space;
+}
+
+@keyframes one-space {
+	from {
+		width: 100%;
+		z-index: 0;
+	}
+
+	to {
+		width: 100vmin;
+		z-index: 2;
+	}
+}
+
+.none-space {
+	animation-duration: 1s;
+	animation-name: one-space;
 }
 
 .card p {
@@ -86,6 +123,7 @@ img {
 	border-top-left-radius: 1rem;
 	border-top-right-radius: 1rem;
 	width: 100%;
+	color-interpolation-filters: sRGB;
 }
 
 .border-radius-bottom {
@@ -102,5 +140,5 @@ img {
 }
 
 .image-hidden {
-	opacity: 0;
+	opacity: 0.13;
 }
