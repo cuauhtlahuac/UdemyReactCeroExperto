@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
+import 'styles/components/AddCategory.scss'
+
 function AddCategory({
 	setCategories,
 	setCategoryDictionary,

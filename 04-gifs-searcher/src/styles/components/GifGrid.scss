@@ -1,0 +1,15 @@
+.image-grid {
+	align-items: baseline;
+	display: grid;
+	grid-gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(16em, 1fr));
+    row-gap: 15px;
+    min-width: 0;
+}
+
+.loading {
+	font-size: 2rem;
+	font-family: 'Rubik' Arial, Helvetica, sans-serif;
+	font-weight: 500;
+	color: rgba(0, 0, 0, 0.274);
+}

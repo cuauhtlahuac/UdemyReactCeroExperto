@@ -1,5 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Rubik:wght@300;500&display=swap');
+@use 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Rubik:wght@300;500&display=swap';
 @import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css');
+
 
 * {
 	font-family: 'Roboto', Arial, Helvetica, sans-serif;
@@ -8,35 +9,6 @@
 body {
 	padding: 2rem;
 	margin: 0;
-}
-
-title:active {
-	color: red;
-}
-
-form {
-	font-family: 'open sans', Arial, Helvetica, sans-serif;
-	display: flex;
-	flex-direction: column;
-	margin-top: 1.3rem;
-}
-
-form > label {
-	margin-bottom: 5px;
-
-animation-duration: 5s;
-animation-iteration-count: infinite;
-animation-name: label-color;
-}
-
-@keyframes label-color {
-	from {
-		color: white;
-	}
-
-	to {
-		color: black;
-	}
 }
 
 input {
@@ -57,88 +29,4 @@ input {
 
 .title {
 	font-size: 4rem;
-}
-
-.loading {
-	font-size: 2rem;
-	font-family: 'Rubik' Arial, Helvetica, sans-serif;
-	font-weight: 500;
-	color: rgba(0, 0, 0, 0.274);
-}
-
-.card:hover {
-	border: teal 2px outset;
-	cursor: pointer;
-}
-
-.card {
-	align-self: flex-start;
-	background-color: whitesmoke;
-	border: #ccc solid 1px;
-	border-radius: 1rem;
-	box-shadow: #ddd 1px 1px 10px;
-	display: grid;
-	justify-items: center;
-	font-weight: 600;
-	font-size: 1.3rem;
-}
-
-.one-space {
-	animation-duration: 1s;
-	animation-name: one-space;
-}
-
-@keyframes one-space {
-	from {
-		width: 100%;
-		z-index: 0;
-	}
-
-	to {
-		width: 100vmin;
-		z-index: 2;
-	}
-}
-
-.none-space {
-	animation-duration: 1s;
-	animation-name: one-space;
-}
-
-.card p {
-	color: darkslategray;
-	padding: 0 1rem;
-	text-align: center;
-}
-.image-grid {
-	align-items: baseline;
-	display: grid;
-	grid-gap: 10px;
-	grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-	row-gap: 15px;
-	width: 100%;
-}
-
-img {
-	border-top-left-radius: 1rem;
-	border-top-right-radius: 1rem;
-	width: 100%;
-	color-interpolation-filters: sRGB;
-}
-
-.border-radius-bottom {
-	border-bottom-left-radius: 1rem;
-	border-bottom-right-radius: 1rem;
-}
-
-.smooth-image {
-	transition: opacity 1s;
-}
-
-.image-visible {
-	opacity: 1;
-}
-
-.image-hidden {
-	opacity: 0.13;
 }

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from "prop-types";
 
+import 'styles/components/GifGridItem.scss'
+
 export const GifGridItem = ({ gif, title }) => {
 	const [ imageLoaded, setImageLoaded ] = useState(false);
 	const [ clicked, setClicked ] = useState(false);

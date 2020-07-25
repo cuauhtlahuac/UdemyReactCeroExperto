@@ -1,15 +1,17 @@
 import React, { lazy, Suspense } from 'react';
 import PropTypes from 'prop-types';
 
+import 'styles/components/GifGrid.scss'
+
 import { useGetGifs } from 'hooks/useGetGifs';
 
 const GifGridItem = lazy(() => import('./GifGridItem'));
 
-const Loader = () => <div className="loading">Loading...</div>;
 
 const GifGrid = ({ category }) => {
 	const { data: images, loading } = useGetGifs(category);
-
+	const Loader = () => <div className="loading">Loading...</div>;
+	
 	return (
 		<section>
 			<h3 className=
