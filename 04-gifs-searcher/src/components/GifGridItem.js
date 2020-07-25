@@ -27,6 +27,4 @@ export const GifGridItem = ({ gif, title }) => {
 	);
 };
 
-
-
 export default React.memo(GifGridItem);

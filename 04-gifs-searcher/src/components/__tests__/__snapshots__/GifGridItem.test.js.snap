@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<GifGridItem /> Should render correctly 1`] = `
+<article
+  className="card animate__animated 
+			animate__flipInX
+			false"
+  onClick={[Function]}
+>
+  <img
+    className="smooth-image image-hidden border-radius-bottom"
+    onLoad={[Function]}
+  />
+</article>
+`;
