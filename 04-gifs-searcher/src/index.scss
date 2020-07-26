@@ -1,9 +1,11 @@
 @use 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Rubik:wght@300;500&display=swap';
 @import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css');
 
+$input-color: #333;
 
 * {
 	font-family: 'Roboto', Arial, Helvetica, sans-serif;
+	font-style: 30px;
 }
 
 body {
@@ -12,7 +14,7 @@ body {
 }
 
 input {
-	color: #222;
+	color: rgba($input-color,1);
 	font-size: 1.5rem;
 	font-weight: 300;
 	width: 100%;

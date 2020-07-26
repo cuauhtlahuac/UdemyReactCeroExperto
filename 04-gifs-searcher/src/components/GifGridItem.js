@@ -29,4 +29,9 @@ export const GifGridItem = ({ gif, title }) => {
 	);
 };
 
+GifGridItem.propTypes = {
+	gif: PropTypes.string.isRequired,
+	title: PropTypes.string.isRequired
+}
+
 export default React.memo(GifGridItem);

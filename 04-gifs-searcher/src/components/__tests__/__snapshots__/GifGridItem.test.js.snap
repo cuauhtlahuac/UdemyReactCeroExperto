@@ -8,8 +8,13 @@ exports[`<GifGridItem /> Should render correctly 1`] = `
   onClick={[Function]}
 >
   <img
-    className="smooth-image image-hidden border-radius-bottom"
+    alt="Title"
+    className="smooth-image image-hidden false"
     onLoad={[Function]}
+    src="http://gif.com"
   />
+  <p>
+    Title
+  </p>
 </article>
 `;
