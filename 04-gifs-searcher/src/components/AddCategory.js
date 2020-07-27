@@ -35,7 +35,7 @@ function AddCategory({
 
 	return (
 		<form onSubmit={handleSubmit} className="form">
-		<label htmlFor={"category"}>Category</label>
+			<label htmlFor={"category"}>Category</label>
 			<input
 				type="text"
 				id={"category"}
