@@ -3,8 +3,8 @@ import { shallow } from 'enzyme';
 import AddCategory from 'components/AddCategory';
 
 describe('AddCategory tests', () => {
-    const foo = () => null;
-    const component = shallow(<AddCategory setCategories={ foo }/>);
+    const setCategories =   jest.fn();
+    const component = shallow(<AddCategory setCategories={ setCategories }/>);
     
 	test('should render correctly', () => {
 
