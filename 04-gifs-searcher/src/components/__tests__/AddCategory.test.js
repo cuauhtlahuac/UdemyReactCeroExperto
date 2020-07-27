@@ -20,5 +20,6 @@ describe('AddCategory tests', () => {
         input.simulate('change', { target: { id: "category", value } });
         
         expect( component.find('input').prop('value') ).toBe( value );
+        expect( component ).toMatchSnapshot();
     })
 });

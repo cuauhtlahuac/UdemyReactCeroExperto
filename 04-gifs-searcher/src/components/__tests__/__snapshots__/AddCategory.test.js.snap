@@ -1,5 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`AddCategory tests should change input value 1`] = `
+<form
+  className="form"
+  onSubmit={[Function]}
+>
+  <label
+    htmlFor="category"
+  >
+    Category
+  </label>
+  <input
+    id="category"
+    onChange={[Function]}
+    placeholder="write a favorite gif category"
+    type="text"
+    value="Hello 🌎"
+  />
+</form>
+`;
+
 exports[`AddCategory tests should render correctly 1`] = `
 <form
   className="form"
