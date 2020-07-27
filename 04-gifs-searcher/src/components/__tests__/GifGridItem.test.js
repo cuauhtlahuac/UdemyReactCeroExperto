@@ -1,6 +1,5 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import jest from "@testing-library/jest-dom";
 
 import { GifGridItem } from 'components/GifGridItem';
 
@@ -22,13 +21,13 @@ describe('<GifGridItem />', () => {
 	test('should have an image with gir url and alt=title', () => {
         const img = component.find('img');
         
-		console.log(img.html()); // Para imprimir el componente y poder ver sus propieades pero en html format
+		// console.log(img.html()); // Para imprimir el componente y poder ver sus propieades pero en html format
         
-		console.log(img.props()); // El metodo prop imprime un objetos con los atributos de html del elemento
+		// console.log(img.props()); // El metodo prop imprime un objetos con los atributos de html del elemento
         const { src } = img.props();
         const { alt } = img.props();
         
-		console.log(img.prop('className')); // Solo imprime una propiedad de un elemento que se le pasa en los parametros
+		// console.log(img.prop('className')); // Solo imprime una propiedad de un elemento que se le pasa en los parametros
         const className = img.prop('className');
 
         expect( src ).toBe( gif );
