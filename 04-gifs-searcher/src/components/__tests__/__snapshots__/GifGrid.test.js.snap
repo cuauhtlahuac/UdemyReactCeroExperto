@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GifGrid tests should render correctly 1`] = `
+<section>
+  <h3
+    className="title animate__animated animate__slideInRight"
+  />
+  <p
+    className="loading animate__animated animate__fadeIn animate__repeat-3 animate__faster"
+  >
+    loading...
+  </p>
+  <section
+    className="image-grid"
+  />
+</section>
+`;
