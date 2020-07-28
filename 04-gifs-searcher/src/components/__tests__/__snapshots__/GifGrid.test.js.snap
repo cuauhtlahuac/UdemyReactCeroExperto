@@ -4,12 +4,22 @@ exports[`GifGrid tests should render correctly 1`] = `
 <section>
   <h3
     className="title animate__animated animate__slideInRight"
-  />
-  <p
-    className="loading animate__animated animate__fadeIn animate__repeat-3 animate__faster"
   >
-    loading...
-  </p>
+    sol
+  </h3>
+  <section
+    className="image-grid"
+  />
+</section>
+`;
+
+exports[`GifGrid tests should render with mock change 1`] = `
+<section>
+  <h3
+    className="title animate__animated animate__slideInRight"
+  >
+    luna
+  </h3>
   <section
     className="image-grid"
   />
