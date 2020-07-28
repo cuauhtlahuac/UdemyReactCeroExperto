@@ -22,6 +22,19 @@ exports[`GifGrid tests should render with mock change 1`] = `
   </h3>
   <section
     className="image-grid"
-  />
+  >
+    <Suspense
+      fallback={<Loader />}
+      key="ass156"
+    >
+      <lazy
+        gif="http://any.com.gif"
+        id="ass156"
+        link="http://any.com.any"
+        title="title"
+        webp_size={5695}
+      />
+    </Suspense>
+  </section>
 </section>
 `;
