@@ -1,5 +1,45 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`AddCategory tests should call setCategories and clean text box 1`] = `
+<form
+  className="form"
+  onSubmit={[Function]}
+>
+  <label
+    htmlFor="category"
+  >
+    Category
+  </label>
+  <input
+    id="category"
+    onChange={[Function]}
+    placeholder="write a favorite gif category"
+    type="text"
+    value="Lets play 🕹"
+  />
+</form>
+`;
+
+exports[`AddCategory tests should call setCategories and clean text box 2`] = `
+<form
+  className="form"
+  onSubmit={[Function]}
+>
+  <label
+    htmlFor="category"
+  >
+    Category
+  </label>
+  <input
+    id="category"
+    onChange={[Function]}
+    placeholder="write a favorite gif category"
+    type="text"
+    value=""
+  />
+</form>
+`;
+
 exports[`AddCategory tests should change input value 1`] = `
 <form
   className="form"

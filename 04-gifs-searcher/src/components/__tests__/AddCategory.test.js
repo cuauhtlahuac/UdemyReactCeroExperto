@@ -12,8 +12,15 @@ describe('AddCategory tests', () => {
 
     beforeEach(() => {
 
-        component = shallow( <AddCategory setCategories={ setCategories }/> );
-        component.find('form').simulate("submit", {preventDefault(){}});
+        component = shallow( 
+        <AddCategory 
+        setCategories={ setCategories } 
+        setCategoryDictionary={ setCategoryDictionary }
+        categoryDictionary={{}}
+        setSameValue={ setSameValue }
+        />
+        );
+        
     })
     
 	test('should render correctly', () => {
@@ -26,7 +33,7 @@ describe('AddCategory tests', () => {
         
         const input = component.find('input');
         const value = 'Hello 🌎';
-        
+
         input.simulate('change', { target: { id: "category", value } });
         
         expect( component.find('input').prop('value') ).toBe( value );
@@ -35,17 +42,60 @@ describe('AddCategory tests', () => {
 
     test('should not call setCategories with empty value', () => {
 
-        expect( setCategories ).not.toBeCalled();
+        component.find('form').simulate("submit", {preventDefault(){}});
+
+        expect( setCategories ).not.toHaveBeenCalled();
     });
 
     test('should not call setCategoryDictionary with empty value', () => {
-        
-        expect( setCategoryDictionary ).not.toBeCalled();
+
+        component.find('form').simulate("submit", {preventDefault(){}});
+
+        expect( setCategoryDictionary ).not.toHaveBeenCalled();
     });
 
     test('should not call setSameValue with empty value', () => {
         
-        expect( setSameValue ).not.toBeCalled();
+        component.find('form').simulate("submit", {preventDefault(){}});
+
+        expect( setSameValue ).not.toHaveBeenCalled();
+    });
+
+    test('should call setCategories and clean text box', () => {
+        
+        component.find('input').simulate('change',{ target: { value: 'Lets play 🕹' } });
+        
+        expect( component ).toMatchSnapshot();
+        
+        component.find( 'form' ).simulate("submit", {preventDefault(){}});
+
+        expect( component ).toMatchSnapshot();
+        expect( setCategories ).toHaveBeenCalledTimes(1);
+        expect( setCategories ).toHaveBeenCalledWith( expect.any( Function ) ); // Para verificar que fue llamado con una función
+        expect( component.find( 'input' ).prop( 'value' ) ).toBe( '' );
+
     });
     
+    test('should call setCategoryDictionary once', () => {
+
+        expect( setCategoryDictionary ).toHaveBeenCalledTimes(1);
+    });
+
+    test('should call setSameValue when the value has repeated', () => {
+        const value = 'duplicated value 👥'
+
+        const component = shallow( 
+            <AddCategory 
+            setCategories={ setCategories } 
+            setCategoryDictionary={ setCategoryDictionary }
+            categoryDictionary={{ [value]: value }}
+            setSameValue={ setSameValue }
+            />
+        );
+
+        component.find('input').simulate('change',{ target: { value } });
+        component.find( 'form' ).simulate("submit", {preventDefault(){}});
+
+        expect( setSameValue ).toHaveBeenCalledTimes(1);
+    });    
 });
