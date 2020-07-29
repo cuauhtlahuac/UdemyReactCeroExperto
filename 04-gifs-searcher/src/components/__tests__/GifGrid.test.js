@@ -12,14 +12,14 @@ describe('GifGrid tests', () => {
 
         useGetGifs.mockReturnValue({
             data:[],
-            load: true,
+            loading: true,
         }); // simula el return de la funcion
 
         const component = shallow( <GifGrid category="sol"/> );
         expect( component ).toMatchSnapshot();
     });
 
-    test('should render with mock change', () => {
+    test('should render with mock changes', () => {
         const gifs = [
             {
                 id: 'ass156',
@@ -27,16 +27,26 @@ describe('GifGrid tests', () => {
                 link: "http://any.com.any",
                 gif: "http://any.com.gif",
                 webp_size: 5695,        
-            }];
+            },
+            {
+                id: 'ass336',
+                title: "title",
+                link: "http://any.com.any",
+                gif: "http://any.com.gif",
+                webp_size: 5695,        
+            }
+        ];
 
         useGetGifs.mockReturnValue({
             data: gifs,
-            load: false,
+            loading: false,
         }); 
 
         const component = shallow( <GifGrid category="luna"/> );
         expect( component ).toMatchSnapshot();
 
+        expect( component.find('p').exists() ).toBe( false );
+        expect( component.find('lazy').length ).toBe( gifs.length ); // GifGridItem está envuelto en un lazy
     })
     
     

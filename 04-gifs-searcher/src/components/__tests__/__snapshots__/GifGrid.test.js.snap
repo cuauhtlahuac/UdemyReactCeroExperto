@@ -7,13 +7,18 @@ exports[`GifGrid tests should render correctly 1`] = `
   >
     sol
   </h3>
+  <p
+    className="loading animate__animated animate__fadeIn animate__repeat-3 animate__faster"
+  >
+    loading...
+  </p>
   <section
     className="image-grid"
   />
 </section>
 `;
 
-exports[`GifGrid tests should render with mock change 1`] = `
+exports[`GifGrid tests should render with mock changes 1`] = `
 <section>
   <h3
     className="title animate__animated animate__slideInRight"
@@ -30,6 +35,18 @@ exports[`GifGrid tests should render with mock change 1`] = `
       <lazy
         gif="http://any.com.gif"
         id="ass156"
+        link="http://any.com.any"
+        title="title"
+        webp_size={5695}
+      />
+    </Suspense>
+    <Suspense
+      fallback={<Loader />}
+      key="ass336"
+    >
+      <lazy
+        gif="http://any.com.gif"
+        id="ass336"
         link="http://any.com.any"
         title="title"
         webp_size={5695}
