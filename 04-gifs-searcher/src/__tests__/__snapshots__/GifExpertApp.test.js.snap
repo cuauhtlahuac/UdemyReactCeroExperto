@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GifExpertApp Tests should render correctly 1`] = `
+<section>
+  <h1
+    className="gif-title"
+  >
+    Gif Searcher
+  </h1>
+  <AddCategory
+    categoryDictionary={Object {}}
+    setCategories={[Function]}
+    setCategoryDictionary={[Function]}
+    setSameValue={[Function]}
+  />
+  <hr />
+</section>
+`;
+
+exports[`GifExpertApp Tests should render gifGrid with dragon ball 1`] = `
+<section>
+  <h1
+    className="gif-title"
+  >
+    Gif Searcher
+  </h1>
+  <AddCategory
+    categoryDictionary={Object {}}
+    setCategories={[Function]}
+    setCategoryDictionary={[Function]}
+    setSameValue={[Function]}
+  />
+  <hr />
+  <GifGrid
+    category="Dragon ball"
+    key="Dragon ball"
+  />
+  <GifGrid
+    category="One punch man * "
+    key="One punch man * "
+  />
+</section>
+`;

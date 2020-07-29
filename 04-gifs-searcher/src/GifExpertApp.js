@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 import GifGrid from 'components/GifGrid';
 import AddCategory from 'components/AddCategory';
 
-const GifExpertApp = () => {
-	const initialState = [ 'Dragon ball' ];
-	const [ categories, setCategories ] = useState(initialState);
+const GifExpertApp = ({ definedCategories = [] }) => {
+
+	const [ categories, setCategories ] = useState(definedCategories);
 	const [ categoryDictionary, setCategoryDictionary ] = useState({});
 	const [ sameValue, setSameValue ] = useState(false);
 
