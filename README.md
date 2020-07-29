@@ -16,4 +16,4 @@
 * **[Structuring projects and naming components in React](https://hackernoon.com/structuring-projects-and-naming-components-in-react-1261b6e18d76)**
 * [Animate.css](https://animate.style/)
 * [App Deploy Instructions](githubpages.md)
-  
+* [react-hooks-testing-library](https://react-hooks-testing-library.com/)
