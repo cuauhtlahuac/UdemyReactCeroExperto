@@ -4,8 +4,8 @@ import ReactDOM from 'react-dom';
 import { HookApp } from 'HookApp';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <HookApp />
-  </React.StrictMode>,
+
+    <HookApp />,
+
   document.getElementById('root')
 );
