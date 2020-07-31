@@ -1,6 +1,5 @@
 import React from 'react';
-import { CounterApp } from 'component/01-useState/CounterApp';
-import { CounterWithCustomHooks } from 'component/CounterWithCustomHooks';
+import SimpleForm from 'component/02-useEffect/SimpleForm';
 
 export const HookApp = () => {
 	return (
@@ -10,10 +9,7 @@ export const HookApp = () => {
 				<h1>Hook App</h1>
 			</nav>
 			<section className="mb-5">
-				<CounterApp />
-			</section>
-			<section>
-				<CounterWithCustomHooks />
+				<SimpleForm />
 			</section>
 		</div>
 	);
