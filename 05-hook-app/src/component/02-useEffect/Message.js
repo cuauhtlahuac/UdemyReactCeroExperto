@@ -3,13 +3,13 @@ import React, { useEffect } from 'react'
 function Message() {
     useEffect(() => {
 
-        effect // Cuerpo del Effect
+        console.log('Message > DidMount');
 
         return () => {
-            cleanup // Similar a componentWillUnmount
+            console.log('Message > WillUnmount');
         }
 
-    }, [input]) // Alguna dependencia a escuchar
+    }, []);
 
     return (
         <h3>Hola Goku!</h3>
