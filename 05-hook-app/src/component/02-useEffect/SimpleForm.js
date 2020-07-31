@@ -8,9 +8,21 @@ const SimpleForm = () => {
 
     const { name, email } = state;
 
+    /*
+    La gente de React reomienda usar un effect por cada variable o efecto que se desea escuchar
+    */
+
     useEffect(()=>{
-        console.log("Hey!");
+        console.log("Component did mount");
     }, [])
+
+    useEffect(() => {
+        console.log(`Component did mount + name change ${name}`);
+    }, [ name ])
+
+    useEffect(() => {
+        console.log(`Component did mount + email change ${email}`);
+    }, [ email ])
 
     const handleInputChange = ({ target }) => {
          setState({
