@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Message from './Message';
 
 const SimpleForm = () => {
 
@@ -62,6 +63,8 @@ const SimpleForm = () => {
                 />
                 <small id="emailHelp" className="form-text text-muted">No compartiremos tu email.</small>
             </form>
+
+            { name === 'Goku' && <Message /> }
         </>
     )
 }
