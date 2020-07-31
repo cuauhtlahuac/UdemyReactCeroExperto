@@ -10,7 +10,7 @@ const SimpleForm = () => {
 
     useEffect(()=>{
         console.log("Hey!");
-    })
+    }, [])
 
     const handleInputChange = ({ target }) => {
          setState({
