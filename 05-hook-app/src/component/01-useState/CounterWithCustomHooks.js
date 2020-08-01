@@ -3,13 +3,13 @@ import useCounter from 'hooks/useCounter'
 
 export const CounterWithCustomHooks = () => {
 
-    const { state, increment, reset, decrement } = useCounter( 7 );
+    const { counter, increment, reset, decrement } = useCounter( 7 );
 
     const factor = 5;
 
     return (
         <>
-         <h2>Counter With Hooks: { state }</h2>
+         <h2>Counter With Hooks: { counter }</h2>
          <hr />
 
          <button
