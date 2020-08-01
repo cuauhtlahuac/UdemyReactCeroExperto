@@ -1,16 +1,28 @@
-import { useState } from "react"
+import { useState, useEffect } from 'react';
 
+export const useForm = (initialState = {}) => {
+	const [ values, setValues ] = useState(initialState);
+	const [ current, setCurrent ] = useState();
 
-export const useForm = ( initialState = {} ) => {
-    const [values, setValues] = useState( initialState )
+	useEffect(
+		() => {
 
-    const handleInputChange = ({ target }) => {
-        setValues({
-            ...values,
-            [target.name]: target.value,
-        })
-   }
+			if (current) {
+				document.querySelector(
+					`#simpleFormWithHooks [for=${current}]`,
+				).style.color = 'limegreen';
+			}
+		},
+		[ current ],
+	);
 
-   return [values, handleInputChange]
-}
+	const handleInputChange = ({ target }) => {
+		setValues({
+			...values,
+			[target.name]: target.value,
+		});
+		setCurrent(target.name);
+	};
 
+	return [ values, handleInputChange ];
+};

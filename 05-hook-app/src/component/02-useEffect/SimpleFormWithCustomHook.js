@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useForm } from 'hooks/useForm';
 
 const SimpleFormWithCustomHook = () => {
@@ -14,7 +14,11 @@ const SimpleFormWithCustomHook = () => {
             <h2>Form With Custom Hook</h2>  
             <hr />
 
-            <form className="form-group" onSubmit={(e)=>{e.preventDefault()}}>
+            <form
+                className="form-group"
+                onSubmit={(e)=>{e.preventDefault()}}
+                id="simpleFormWithHooks"
+            >
                 <label htmlFor="name">Nombre</label>
                 <input
                     autoComplete="off"
