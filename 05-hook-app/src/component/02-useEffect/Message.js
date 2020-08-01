@@ -1,18 +1,23 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 function Message() {
+
+    const [{ x, y }, setState] = useState({ x:0, y:0 });
+
     useEffect(() => {
+        const handleMousemove = ({ x,y }) => setState({ x,y });
 
-        console.log('Message > DidMount');
+        window.addEventListener( 'mousemove', handleMousemove );
 
-        return () => {
-            console.log('Message > WillUnmount');
-        }
+        return () => window.removeEventListener( 'mousemove', handleMousemove );
 
     }, []);
 
     return (
-        <h3>Hola Goku!</h3>
+        <>
+            <h3>Hola Goku!</h3>
+            <span className='mr-3'>{`x: ${x}`}</span><span>{`y: ${y}`}</span>
+        </>
     )
 }
 
