@@ -1,5 +1,6 @@
 import React from 'react';
-import SimpleForm from 'component/02-useEffect/SimpleForm';
+
+import SimpleFormWithCustomHook from 'component/02-useEffect/SimpleFormWithCustomHook';
 
 export const HookApp = () => {
 	return (
@@ -9,7 +10,7 @@ export const HookApp = () => {
 				<h1>Hook App</h1>
 			</nav>
 			<section className="mb-5">
-				<SimpleForm />
+				<SimpleFormWithCustomHook />
 			</section>
 		</div>
 	);
