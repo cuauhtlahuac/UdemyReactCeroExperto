@@ -14,7 +14,7 @@ const SimpleFormWithCustomHook = () => {
             <h2>Form With Custom Hook</h2>  
             <hr />
 
-            <form className="form-group ">
+            <form className="form-group" onSubmit={(e)=>{e.preventDefault()}}>
                 <label htmlFor="name">Nombre</label>
                 <input
                     autoComplete="off"
@@ -53,7 +53,11 @@ const SimpleFormWithCustomHook = () => {
                     type="password"
                     value={ password }
                 />
-                <small id="emailHelp" className="form-text text-muted">Pon letras, números y caractéres especiales.</small>
+                <small id="emailHelp" className="form-text text-muted mb-4">
+                    Pon letras, números y caractéres especiales.
+                </small>
+
+                <button type="submit" className="btn btn-primary">Guardar</button>
             </form>
         </>
     )
