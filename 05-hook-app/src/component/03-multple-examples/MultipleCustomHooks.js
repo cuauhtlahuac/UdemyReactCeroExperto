@@ -13,7 +13,7 @@ const MultipleCustomHooks = () => {
         loading,
     } = useFetch( url );
 
-    const { author, quote } = !!data && data[0]; // !!data Evalua el data, si viene null sería false
+    const { author, quote } = !!data && data[0];
 
     return (
         <>
