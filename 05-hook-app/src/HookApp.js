@@ -1,5 +1,6 @@
 import React from 'react';
-import MultipleCustomHooks from 'component/03-multple-examples/MultipleCustomHooks';
+import FocusScreen from 'component/04-useRef/FocusScreen';
+
 
 export const HookApp = () => {
 	return (
@@ -11,7 +12,7 @@ export const HookApp = () => {
 			</nav>
 
 			<section className="mb-5">
-				<MultipleCustomHooks />
+				<FocusScreen />
 			</section>
 		</div>
 	);
