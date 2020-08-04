@@ -1,5 +1,6 @@
 import React from 'react';
-import FocusScreen from 'component/04-useRef/FocusScreen';
+
+import RealExample from 'component/04-useRef/RealExample';
 
 
 export const HookApp = () => {
@@ -12,7 +13,7 @@ export const HookApp = () => {
 			</nav>
 
 			<section className="mb-5">
-				<FocusScreen />
+				<RealExample />
 			</section>
 		</div>
 	);

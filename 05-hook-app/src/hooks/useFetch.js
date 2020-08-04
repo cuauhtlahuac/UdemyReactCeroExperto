@@ -16,11 +16,14 @@ export default function useFetch( url ) {
         fetch( url )
         .then( resp => resp.json() )
         .then( data => { 
-            setState({
-				data,
-				loading: false,
-				error: null,
-			})
+			setTimeout(() => {
+				
+				setState({
+					data,
+					loading: false,
+					error: null,
+				})
+			}, 4000);
         })
 	}, [ url ]);
 
