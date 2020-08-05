@@ -1,7 +1,6 @@
 import React from 'react';
 
-import RealExample from 'component/04-useRef/RealExample';
-
+import Layout from 'component/05-useLayoutEffect/Layout';
 
 export const HookApp = () => {
 	return (
@@ -13,7 +12,7 @@ export const HookApp = () => {
 			</nav>
 
 			<section className="mb-5">
-				<RealExample />
+				<Layout />
 			</section>
 		</div>
 	);
