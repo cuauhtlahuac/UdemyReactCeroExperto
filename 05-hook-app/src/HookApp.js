@@ -1,6 +1,5 @@
 import React from 'react';
-
-import Layout from 'component/05-useLayoutEffect/Layout';
+import Memorize from 'component/06-memos/Memorize';
 
 const HookApp = () => (
   <div className="container">
@@ -12,7 +11,7 @@ const HookApp = () => (
     </nav>
 
     <section className="mb-5">
-      <Layout />
+      <Memorize />
     </section>
   </div>
 );
