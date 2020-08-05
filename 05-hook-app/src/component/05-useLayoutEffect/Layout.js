@@ -1,5 +1,3 @@
-/* eslint-disable import/no-unresolved */
-/* eslint-disable react/jsx-filename-extension */
 import React, { useLayoutEffect, useState, useRef } from 'react';
 
 import useFetch from 'hooks/useFetch';
