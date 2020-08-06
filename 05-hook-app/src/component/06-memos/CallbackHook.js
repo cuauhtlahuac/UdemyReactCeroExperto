@@ -1,19 +1,27 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import ShowIncrement from './ShowIncrement';
 
 const CallbackHook = () => {
   const [counter, setCounter] = useState(10);
 
-/*   const increment = () => {
+   const increment = () => {
     setCounter(counter + 1);
-  }; */
-  
+  };
+
+
+/*
   const increment = useCallback(
     (num) => {
       setCounter(c => c + num);
     },  
     [setCounter],
   )
+  */
+
+  useEffect(() => {
+    increment(5)
+    console.log('se ejecuta el useEffect sin parar');
+  }, [increment])
   
 
   return (
