@@ -1,5 +1,6 @@
 import React from 'react';
-import Memorize from 'component/06-memos/Memorize';
+
+import MemoHook from 'component/06-memos/MemoHook';
 
 const HookApp = () => (
   <div className="container">
@@ -11,7 +12,7 @@ const HookApp = () => (
     </nav>
 
     <section className="mb-5">
-      <Memorize />
+      <MemoHook />
     </section>
   </div>
 );
