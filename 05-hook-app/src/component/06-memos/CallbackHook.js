@@ -4,23 +4,16 @@ import ShowIncrement from './ShowIncrement';
 const CallbackHook = () => {
   const [counter, setCounter] = useState(10);
 
-   const increment = () => {
-    setCounter(counter + 1);
-  };
-
-
-/*
   const increment = useCallback(
     (num) => {
       setCounter(c => c + num);
     },  
     [setCounter],
-  )
-  */
+  );
 
   useEffect(() => {
     increment(5)
-    console.log('se ejecuta el useEffect sin parar');
+    console.log('sólo se renderiza una vez :)');
   }, [increment])
   
 
