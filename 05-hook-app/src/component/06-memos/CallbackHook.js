@@ -9,9 +9,8 @@ const CallbackHook = () => {
   }; */
   
   const increment = useCallback(
-    () => {
-      setCounter(c => c + 1); // Fabuloso hack!, esto evita otra renderización
-                              // porque evita pasar la dependencia de count
+    (num) => {
+      setCounter(c => c + num);
     },  
     [setCounter],
   )
