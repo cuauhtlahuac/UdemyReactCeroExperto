@@ -1,6 +1,6 @@
 import React from 'react';
 
-import CallbackHook from 'component/06-memos/CallbackHook';
+import { Padre } from 'component/07-tarea-memo/Padre';
 
 const HookApp = () => (
   <div className="container">
@@ -12,7 +12,7 @@ const HookApp = () => (
     </nav>
 
     <section className="mb-5">
-      <CallbackHook />
+      <Padre />
     </section>
   </div>
 );
