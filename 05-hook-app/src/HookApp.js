@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Padre } from 'component/07-tarea-memo/Padre';
+import TodoApp from 'component/08-use-reducer/TodoApp';
 
 const HookApp = () => (
   <div className="container">
@@ -12,7 +12,7 @@ const HookApp = () => (
     </nav>
 
     <section className="mb-5">
-      <Padre />
+      <TodoApp />
     </section>
   </div>
 );
