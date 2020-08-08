@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useEffect } from 'react';
 
 import { useForm } from 'hooks/useForm';
 import { todoReducer } from 'reducers/todoReducer';
@@ -21,6 +21,13 @@ const TodoApp = () => {
 	const [ { description }, handleInputChange, reset ] = useForm({
 		description: '',
 	});
+
+	useEffect(
+		() => {
+			localStorage.setItem('todos', JSON.stringify(todos));
+		},
+		[ todos ],
+	);
 
 	const handleSubmit = e => {
 		e.preventDefault();
