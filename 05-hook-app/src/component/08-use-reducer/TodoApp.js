@@ -1,28 +1,59 @@
-import React, { useReducer } from 'react'
+import React, { useReducer } from 'react';
 
 import { todoReducer } from 'reducers/todoReducer';
 
 import './todoAppStyles.css';
 
-const initialState = [{
-  id: new Date().getTime(),
-  task: 'Learn React',
-  done: false,
-}]
+const initialState = [
+	{
+		id: new Date().getTime(),
+		task: 'Learn React',
+		done: false,
+	},
+];
 
 const TodoApp = () => {
-  
-  const [todos] = useReducer(todoReducer, initialState);
+	const [ todos ] = useReducer(todoReducer, initialState);
 
-  console.table(todos);
+	console.table(todos);
 
-  return (
-    <div>
-      <h1>Todo App</h1>
-      <hr />
+	return (
+		<div>
+			<h1>
+				Todo App
+				<small> ( {todos.length} )</small>
+			</h1>
+			<hr />
 
-    </div>
-  )
-}
+			<div className="row">
+				<div className="col-7">
+					<ul className="list-group">
+						{todos.map((todo, i) => (
+							<li key={todo.id} className="list-group-item">
+								<p>{`${i + 1} .- ${todo.task}`}</p>
+								<button className="btn btn-danger">Borrar</button>
+							</li>
+						))}
+					</ul>
+				</div>
+				<div className="col-5">
+					<h4>Agregar todo</h4>
+					<hr />
+					<form>
+						<input
+              className="form-control"
+							type="text"
+							name="description"
+							placeholder="Aprender ..."
+							autoComplete="off"
+						/>
 
-export default TodoApp
+						<button className="btn btn-primary mt-3 btn-block">Agregar</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	);
+};
+
+export default TodoApp;
