@@ -1,34 +1,42 @@
 import React, { useReducer } from 'react';
 
+import { useForm } from 'hooks/useForm';
 import { todoReducer } from 'reducers/todoReducer';
 
 import './todoAppStyles.css';
 
-const initialState = [
-	{
-		id: new Date().getTime(),
-		task: 'Learn React',
-		done: false,
-	},
-];
+const init = () => {
+	return [
+		{
+			id: new Date().getTime(),
+			task: 'Learn React',
+			done: false,
+		},
+	];
+};
 
 const TodoApp = () => {
-	const [ todos, dispatch ] = useReducer(todoReducer, initialState);
+	const [ todos, dispatch ] = useReducer(todoReducer, [], init);
 
-	console.table(todos);
+	const [ { description }, handleInputChange, reset ] = useForm({
+		description: '',
+	});
 
 	const handleSubmit = e => {
 		e.preventDefault();
 
+		if (description.trim().length <= 1) return;
+
 		const newTodo = {
 			id: new Date().getTime(),
-			task: 'Nueva tarea',
+			task: description,
 			done: false,
 		};
 
 		const action = { type: 'addTodo', payload: newTodo };
 
 		dispatch(action);
+		reset();
 	};
 
 	return (
@@ -57,16 +65,15 @@ const TodoApp = () => {
 					<form onSubmit={handleSubmit}>
 						<input
 							className="form-control"
+							value={description}
 							type="text"
 							name="description"
-							placeholder="Aprender ..."
+							placeholder="Aprender..."
 							autoComplete="off"
+							onChange={handleInputChange}
 						/>
 
-						<button
-							className="btn btn-primary mt-3 btn-block"
-							type="submit"
-						>
+						<button className="btn btn-primary mt-3 btn-block" type="submit">
 							Agregar
 						</button>
 					</form>
