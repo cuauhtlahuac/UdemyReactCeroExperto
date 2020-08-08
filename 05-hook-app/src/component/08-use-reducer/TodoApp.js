@@ -6,13 +6,7 @@ import { todoReducer } from 'reducers/todoReducer';
 import './todoAppStyles.css';
 
 const init = () => {
-	return [
-		{
-			id: new Date().getTime(),
-			task: 'Learn React',
-			done: false,
-		},
-	];
+	return JSON.parse(localStorage.getItem('')) || [];
 };
 
 const TodoApp = () => {
