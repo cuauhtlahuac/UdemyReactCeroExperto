@@ -1,5 +1,4 @@
 p {
-  cursor: pointer;
   margin: 0;
 }
 
@@ -10,5 +9,9 @@ p {
 }
 
 .complete {
+  text-decoration: line-through;
+}
+
+.complete p{
   text-decoration: line-through;
 }
