@@ -34,10 +34,16 @@ const TodoApp = () => {
 			done: false,
 		};
 
-		const action = { type: 'addTodo', payload: newTodo };
+		const addTodo = { type: 'addTodo', payload: newTodo };
 
-		dispatch(action);
+		dispatch(addTodo);
 		reset();
+	};
+
+	const handleDelete = id => {
+
+		const removeTodo = { type: 'removeTodo', payload: id };
+		dispatch(removeTodo);
 	};
 
 	return (
@@ -54,7 +60,12 @@ const TodoApp = () => {
 						{todos.map((todo, i) => (
 							<li key={todo.id} className="list-group-item">
 								<p>{`${i + 1} .- ${todo.task}`}</p>
-								<button className="btn btn-danger">Borrar</button>
+								<button
+									className="btn btn-danger"
+									onClick={() => handleDelete(todo.id)}
+								>
+									Borrar
+								</button>
 							</li>
 						))}
 					</ul>
