@@ -6,7 +6,7 @@ import { todoReducer } from 'reducers/todoReducer';
 import './todoAppStyles.css';
 
 const init = () => {
-	return JSON.parse(localStorage.getItem('')) || [];
+	return JSON.parse(localStorage.getItem('todos')) || [];
 };
 
 const TodoApp = () => {
