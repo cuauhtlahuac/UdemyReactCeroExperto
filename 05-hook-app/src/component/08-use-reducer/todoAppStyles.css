@@ -2,6 +2,10 @@ p {
   margin: 0;
 }
 
+ul {
+  padding: 0;
+}
+
 .list-group-item {
   align-items: center;
   display: flex;
