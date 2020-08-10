@@ -13,7 +13,7 @@ import NotFound from './NotFound';
 
 const AppRouter = () => {
   return (
-    <div>
+    <div  className="container">
       <Router>
         <NavBar />
 
