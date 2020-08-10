@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FaTrashAlt, FaCheck } from 'react-icons/fa';
 
-import { handleComplete, handleDelete } from 'utils/todoHandels';
+import { handleComplete, handleDelete } from 'utils/todoHandles';
 
 const TodoListItem = ({ todo, index, dispatch }) => (
 	<li key={todo.id} className="list-group-item">

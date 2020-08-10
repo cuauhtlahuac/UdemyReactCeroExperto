@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { useForm } from 'hooks/useForm';
-import { handleSubmit } from 'utils/todoHandels';
+import { handleSubmit } from 'utils/todoHandles';
 
 const TodoForm = ({ todos, dispatch }) => {
 	const [ { description }, handleInputChange, reset ] = useForm({
