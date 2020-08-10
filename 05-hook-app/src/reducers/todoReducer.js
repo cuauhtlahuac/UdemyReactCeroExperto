@@ -8,9 +8,9 @@ export const todoReducer = (state = [], { type, payload }) => {
 			return [ ...state, payload ];
 
 		case REMOVE_TODO:
-			const newState = state.filter(task => task.id !== payload);
+			console.log(`%c Remove`, 'color: deepblue; font-size: 10pt; font-weight: 800')
 
-			return newState;
+			return state.filter(todo => todo.id !== payload);
 
 		case COMPLETE_TODO:
 			return state.reduce((acc, current) => {

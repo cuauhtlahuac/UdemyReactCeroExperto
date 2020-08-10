@@ -20,11 +20,11 @@ const TodoListItem = ({ todo, index, dispatch }) => (
 				<FaCheck color="white" />
 			</button>
 
-			<button className="btn btn-danger">
-				<FaTrashAlt
-					color="#fdd"
-					onClick={() => handleDelete(todo.id, dispatch)}
-				/>
+			<button
+				className="btn btn-danger"
+				onClick={() => handleDelete(todo.id, dispatch)}
+			>
+				<FaTrashAlt color="#fdd" />
 			</button>
 		</span>
 	</li>
