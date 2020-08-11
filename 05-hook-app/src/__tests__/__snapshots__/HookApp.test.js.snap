@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HookApp Tests should render correctly 1`] = `
+<div
+  className="container"
+>
+  <nav
+    className="navbar navbar-expand-lg navbar-light bg-light row my-md-5 my-sm-3 ali justify-content-center"
+  >
+    <h1>
+      Hook App
+    </h1>
+  </nav>
+  <section
+    className="mb-5"
+  >
+    <TodoApp />
+  </section>
+</div>
+`;
