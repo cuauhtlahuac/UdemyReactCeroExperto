@@ -3,7 +3,7 @@ import { useState } from "react"
 export default function useCounter( initialState = 13 ) {
     const [counter, setCounter] = useState( initialState )
 
-    function decrement({ factor = 1 }) {
+    function decrement(factor = 1) {
         setCounter(( counter <= 0 ) ? 0 : counter - factor);
     };
 
@@ -11,7 +11,7 @@ export default function useCounter( initialState = 13 ) {
         setCounter( initialState );
     };
 
-    function increment({ factor = 1 }) {
+    function increment(factor = 1) {
         setCounter(counter + factor);
     };
 
