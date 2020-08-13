@@ -37,7 +37,11 @@ export default function useFetch( url ) {
 					error: null,
 				})
 			};
-		})
+		}).catch( error => (setState({
+			data: null,
+			loading: false,
+			error: error,
+		})))
 	}, [ url ]);
 
 	return state;
