@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MultipleCustomHooks Tests should render correctly 1`] = `
+Array [
+  <h1>
+    Breaking Bad Quotes
+  </h1>,
+  <hr />,
+  <div
+    className="d-flex mb-2 justify-content-end"
+  >
+    <div
+      className="spinner-grow bg-info"
+      role="status"
+      style={
+        Object {
+          "height": "3rem",
+          "width": "3rem",
+        }
+      }
+    >
+      <span
+        className="sr-only"
+      >
+        Loading...
+      </span>
+    </div>
+  </div>,
+  <button
+    className="btn btn-primary"
+    onClick={[MockFunction]}
+  >
+    next quote
+  </button>,
+]
+`;
