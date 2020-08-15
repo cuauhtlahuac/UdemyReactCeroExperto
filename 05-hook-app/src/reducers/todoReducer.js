@@ -8,7 +8,6 @@ export const todoReducer = (state = [], { type, payload }) => {
 			return [ ...state, payload ];
 
 		case REMOVE_TODO:
-			console.log(`%c Remove`, 'color: deepblue; font-size: 10pt; font-weight: 800')
 
 			return state.filter(todo => todo.id !== payload);
 
