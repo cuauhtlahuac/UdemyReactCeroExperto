@@ -15,7 +15,7 @@ const RealExample = () => {
             <br />
             <br />
             <button className="btn btn-primary" onClick={ ()=> setShow( !show )}>
-                { show ? "Hiddde" : "Show" }
+                { show ? "Hide" : "Show" }
             </button>
         </div>
     )
