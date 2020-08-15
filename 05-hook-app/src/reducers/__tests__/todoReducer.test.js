@@ -29,4 +29,38 @@ describe('todoReducer Tests', () => {
 		expect(state.length).toBe(3);
 		expect(state[2]).toEqual(newTodo);
 	});
+
+	test('should remove a todo', () => {
+		const mockReducer = jest.fn(todoReducer);
+
+		const state = mockReducer(mockTodo, {
+			type: actions.REMOVE_TODO,
+			payload: 2,
+		});
+
+		expect(mockReducer).toHaveBeenCalled();
+		expect(state.length).toBe(1);
+		expect(state).toEqual([ mockTodo[0] ]);
+		expect(state[1]).toBe(undefined);
+	});
+
+	test('should complete a todo (toggle)', () => {
+		const mockReducer = jest.fn(todoReducer);
+
+		let state = mockReducer(mockTodo, {
+			type: actions.COMPLETE_TODO,
+			payload: 2,
+		});
+
+		expect(state[1].done).toBe(true);
+    expect(state[0]).toEqual(mockTodo[0]);
+    
+		state = mockReducer(state, {
+      type: actions.COMPLETE_TODO,
+			payload: 2,
+		});
+    
+		expect(state[1].done).toBe(false);
+    expect(state[0]).toEqual(mockTodo[0]);
+	});
 });
