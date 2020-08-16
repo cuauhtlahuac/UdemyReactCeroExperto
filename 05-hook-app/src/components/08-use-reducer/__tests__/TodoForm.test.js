@@ -8,8 +8,11 @@ import { todoMock } from 'fixtures/todoMock.js';
 import TodoForm from '../TodoForm';
 
 describe('TodoApp Test', () => {
+	const component = mount(<TodoForm dispatch={jest.fn()} />);
 
-	const component = mount(<TodoForm />);
+	afterAll(()=>{
+		component.unmount();
+	})
 
 	it('should render correctly', () => {
 		expect(component).toMatchSnapshot();
@@ -30,8 +33,8 @@ describe('TodoApp Test', () => {
 	});
 
 	test('should input change', () => {
-    const value = 'Aprender React';
-    
+		const value = 'Aprender React';
+
 		component.find('input').simulate('change', {
 			target: {
 				value,
@@ -40,11 +43,11 @@ describe('TodoApp Test', () => {
 		});
 
 		const onSubmit = jest.fn(component.find('form').prop('onSubmit'));
-    
+
 		act(() => {
 			onSubmit({ preventDefault() {} });
 		});
 
-    expect(onSubmit).toHaveBeenCalled();
+		expect(onSubmit).toHaveBeenCalled();
 	});
 });
