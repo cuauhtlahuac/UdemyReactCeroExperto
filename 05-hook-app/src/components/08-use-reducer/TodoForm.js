@@ -34,8 +34,8 @@ const TodoForm = ({ todos, dispatch }) => {
 };
 
 TodoForm.propTypes = {
-	todos: PropTypes.array.isRequired,
-	dispatch: PropTypes.func.isRequired,
+	todos: PropTypes.array,
+	dispatch: PropTypes.func,
 };
 
 export default TodoForm;
