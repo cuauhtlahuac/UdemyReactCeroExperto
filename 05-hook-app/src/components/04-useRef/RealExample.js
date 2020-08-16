@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import MultipleCustomHooks from 'component/03-multple-examples/MultipleCustomHooks'
+import MultipleCustomHooks from 'components/03-multple-examples/MultipleCustomHooks'
 
 const RealExample = () => {
 

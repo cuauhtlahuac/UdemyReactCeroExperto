@@ -23,13 +23,8 @@ describe('TodoListItem Tests', () => {
 		const button = component.find('.btn-outline-secondary');
 		const handleCompleteMock = jest.fn(handleComplete);
 
-		const onClickMock = jest
-			.fn(button.props().onClick)
-			.mockImplementation(handleCompleteMock(1, props.dispatch));
+		button.props().onClick(handleCompleteMock(1, props.dispatch));
 
-		onClickMock();
-
-		expect(onClickMock).toBeCalled();
 		expect(handleCompleteMock).toBeCalled();
 		expect(handleCompleteMock).toBeCalledWith(1, props.dispatch);
 	});
@@ -60,13 +55,17 @@ describe('TodoListItem Tests', () => {
 		const button = component.find('.btn-danger');
 		const handleDeleteMock = jest.fn(handleDelete);
 
-		const onClickMock = jest
-			.fn(button.props().onClick)
-			.mockImplementation(handleDeleteMock(1, props.dispatch));
+		button.props().onClick(handleDeleteMock(1, props.dispatch));
 
-		onClickMock();
-
-		expect(onClickMock).toBeCalled();
+		expect(handleDeleteMock).toBeCalled();
 		expect(handleDeleteMock).toBeCalledWith(1, props.dispatch);
 	});
+	/* 
+	it('should work ', () => {
+		const button = component.find('.btn-danger');
+		const onClickMock = jest.fn(button.props().onClick);
+		button.simulate('click');
+
+		expect(onClickMock).toBeCalled();
+	}); */
 });

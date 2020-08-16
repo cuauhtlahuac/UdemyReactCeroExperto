@@ -4,7 +4,7 @@ import { act } from 'react-dom/test-utils';
 import '@testing-library/jest-dom';
 
 import RealExample from '../RealExample';
-import MultipleCustomHooks from 'component/03-multple-examples/MultipleCustomHooks';
+import MultipleCustomHooks from 'components/03-multple-examples/MultipleCustomHooks';
 
 describe('Real Example Tests', () => {
 	let component;

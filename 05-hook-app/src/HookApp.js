@@ -1,6 +1,6 @@
 import React from 'react';
 
-import TodoApp from 'component/08-use-reducer/TodoApp';
+import TodoApp from 'components/08-use-reducer/TodoApp';
 
 const HookApp = () => (
   <div className="container">
