@@ -60,12 +60,4 @@ describe('TodoListItem Tests', () => {
 		expect(handleDeleteMock).toBeCalled();
 		expect(handleDeleteMock).toBeCalledWith(1, props.dispatch);
 	});
-	/* 
-	it('should work ', () => {
-		const button = component.find('.btn-danger');
-		const onClickMock = jest.fn(button.props().onClick);
-		button.simulate('click');
-
-		expect(onClickMock).toBeCalled();
-	}); */
 });
