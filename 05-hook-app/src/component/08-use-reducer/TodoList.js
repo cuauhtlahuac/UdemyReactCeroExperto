@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import TodoListItem from './TodoListItem';
 
-const TodoList = ({ todos, dispatch }) => (
+const TodoList = ({ todos = [], dispatch }) => (
 	<ul>
 		{todos.map((todo, index) => (
 			<TodoListItem
@@ -17,8 +17,8 @@ const TodoList = ({ todos, dispatch }) => (
 );
 
 TodoList.propTypes = {
-	dispatch: PropTypes.func.isRequired,
-	todos: PropTypes.array.isRequired,
+	dispatch: PropTypes.func,
+	todos: PropTypes.array,
 };
 
 export default TodoList;
