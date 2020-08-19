@@ -1,14 +1,22 @@
 import React from 'react';
-import { mount } from 'enzyme';
-import TodoApp from '../TodoApp';
+import { shallow, mount } from 'enzyme';
+import { act } from '@testing-library/react';
 
+import TodoApp from 'components/08-use-reducer/TodoApp';
 
-describe('TodoApp Test', () => {
-  const component = mount(<TodoApp />)
-  test('should render correctly', () => {
-    expect(component).toMatchSnapshot();
-  })
-  
+import { mockTodo } from 'fixtures/todoMock';
 
-  
-})
+describe('TodoApp Tests', () => {
+	test('should render correctly', () => {
+		const component = shallow(<TodoApp />);
+
+		expect(component).toMatchSnapshot();
+	});
+
+	test('should add a Todo', () => {
+		const component = mount(<TodoApp />);
+		const TodoList = component.find('TodoList');
+
+		expect(TodoList).toMatchSnapshot();
+	});
+});
