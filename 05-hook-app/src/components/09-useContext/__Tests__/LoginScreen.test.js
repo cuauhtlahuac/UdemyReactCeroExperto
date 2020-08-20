@@ -5,13 +5,12 @@ import { UserContext } from '../UserContext';
 import LoginScreen from '../LoginScreen';
 
 describe('HomeScreen Tests', () => {
-	const user = {
-		name: 'Cuautlahuac',
-		email: 'cuauh@gmail.com',
-	};
+	const user = { id: 132, name: 'Petronila' };
+
+	const setUser = jest.fn();
 
 	const component = mount(
-		<UserContext.Provider value={user}>
+		<UserContext.Provider value={{setUser}}>
 			<LoginScreen />
 		</UserContext.Provider>,
 	);
@@ -19,4 +18,13 @@ describe('HomeScreen Tests', () => {
 	test('should render correctly', () => {
 		expect(component).toMatchSnapshot();
 	});
+
+	test('should execute setUser with expected argument', () => {
+		
+		component.find('button').prop('onClick')();
+		
+		expect(setUser).toHaveBeenCalled();
+		expect(setUser).toHaveBeenCalledWith(user);
+	})
+	
 });
