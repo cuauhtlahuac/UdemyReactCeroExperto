@@ -16,9 +16,9 @@ const AppRouter = () => {
 					/>
 
 					<Route 
-						path="/pepitas" 
+						path="/" 
 						component={ DashboardRoutes }
-						// Quitar el exact para que respete 
+						// va sin exact para no afectar las rutas de Dashboard	
 					/>
 				</Switch>
 			</div>
