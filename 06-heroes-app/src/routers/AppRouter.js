@@ -1,17 +1,25 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Navbar from 'components/ui/NavBar';
+
 import LoginScreen from 'components/login/LoginScreen';
+import DashboardRoutes from './DashboardRoutes';
 
 const AppRouter = () => {
 	return (
 		<Router>
 			<div>
-				<Navbar />
-
 				<Switch>
-					<Route exact path="/login" component={ LoginScreen } />
-					<Route exact path="/" component={ ()=> <h1>Not Found</h1> } />
+					<Route
+						path="/login" 
+						component={ LoginScreen } 
+						exact
+					/>
+
+					<Route 
+						path="/pepitas" 
+						component={ DashboardRoutes }
+						// Quitar el exact para que respete 
+					/>
 				</Switch>
 			</div>
 		</Router>

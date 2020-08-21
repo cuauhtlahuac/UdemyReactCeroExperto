@@ -19,7 +19,7 @@ const Navbar = () => {
                         activeClassName="active"
                         className="nav-item nav-link" 
                         exact
-                        to="/marvel"
+                        to="pepitas/marvel"
                     >
                         Marvel
                     </NavLink>
