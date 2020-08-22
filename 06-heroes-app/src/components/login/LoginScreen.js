@@ -1,17 +1,25 @@
-import React from 'react'
+import React from 'react';
 
-const LoginScreen = (props) => {
-  const handleLogin = () => {
-    console.log(props);
-  }
+const LoginScreen = ({ history }) => {
 
-  return (
-    <div className="m-5">
-      <h1>Login</h1>
-      <hr />
-      <button className="btn btn-primary" onClick={handleLogin}> Login</button>
-    </div>
-  )
-}
+	const handleLogin = () => {
 
-export default LoginScreen
+		history.replace('/');
+	};
+
+	return (
+		<div className="m-5">
+			<h1>Login</h1>
+			<hr />
+
+			<button 
+        className="btn btn-primary"
+        onClick={handleLogin}
+      >
+				Login
+			</button>
+		</div>
+	);
+};
+
+export default LoginScreen;
