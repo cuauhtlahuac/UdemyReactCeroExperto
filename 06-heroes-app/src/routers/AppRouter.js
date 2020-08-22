@@ -18,7 +18,6 @@ const AppRouter = () => {
 					<Route 
 						path="/" 
 						component={ DashboardRoutes }
-						// va sin exact para no afectar las rutas de Dashboard	
 					/>
 				</Switch>
 			</div>

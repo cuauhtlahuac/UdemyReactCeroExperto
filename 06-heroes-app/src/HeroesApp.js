@@ -5,7 +5,7 @@ import AppRouter from 'routers/AppRouter'
 const HeroesApp = () => {
   return (
     <div>
-      <AppRouter /> 
+      <AppRouter />
     </div>
   )
 }
