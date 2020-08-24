@@ -1,10 +1,11 @@
 import React, { useMemo } from 'react';
 import queryString from 'query-string';
+import { useLocation } from 'react-router-dom';
 
 import HeroCard from 'components/heroes/HeroCard';
 import { heroes } from 'data/heroes';
 import { useForm } from 'hooks/useForm';
-import { useLocation } from 'react-router-dom';
+import { getHeroByName } from 'selectors/getHeroByName';
 
 const SearchScreen = ({ history }) => {
 	const { search } = useLocation();
@@ -13,7 +14,9 @@ const SearchScreen = ({ history }) => {
 		search,
 	]);
 
-	const filteredHeroes = heroes.filter(hero => hero.superhero === heroSearched);
+	const filteredHeroes = useMemo(() => getHeroByName(heroSearched), [
+		heroSearched,
+	]);
 
 	const [ formValues, handleInputChange, reset ] = useForm({ searchText: '' });
 
@@ -45,7 +48,7 @@ const SearchScreen = ({ history }) => {
 
 						<button
 							type="submit"
-							className="btn m-1 btn-block btn-outline-primary"
+							className="btn my-2 btn-block btn-outline-primary"
 						>
 							Search
 						</button>
@@ -55,6 +58,19 @@ const SearchScreen = ({ history }) => {
 				<div className="col-7">
 					<h4>Results</h4>
 					<hr />
+
+					{heroSearched.length < 1 && (
+						<div className="alert alert-info">
+							You don't searching for heroes yet
+						</div>
+					)}
+
+					{	( filteredHeroes.length < 1 &&
+						heroSearched.length > 0 ) && 
+						( <div className="alert alert-danger">
+								Hero "{`${heroSearched}`}" don't found
+							</div> )
+					}
 
 					{filteredHeroes.map(hero => <HeroCard key={hero.id} {...hero} />)}
 				</div>
