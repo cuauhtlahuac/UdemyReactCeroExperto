@@ -3,7 +3,6 @@ import queryString from 'query-string';
 import { useLocation } from 'react-router-dom';
 
 import HeroCard from 'components/heroes/HeroCard';
-import { heroes } from 'data/heroes';
 import { useForm } from 'hooks/useForm';
 import { getHeroByName } from 'selectors/getHeroByName';
 
