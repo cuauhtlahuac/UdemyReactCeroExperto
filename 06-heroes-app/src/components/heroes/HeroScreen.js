@@ -1,11 +1,27 @@
-import React from 'react'
+import React from 'react';
+import { useParams, Redirect } from 'react-router-dom';
+import { getHeroesById } from 'selectors/getHeroeById';
 
 const HeroesScreen = () => {
-  return (
-    <div>
-      <h1>Heroes</h1>
-    </div>
-  )
-}
+	const { heroId } = useParams(); // toma la información del parámetro enviado
 
-export default HeroesScreen
+  const [ hero ] = getHeroesById(heroId);
+  
+  if(!hero) return <Redirect to="/" />
+
+  const {
+		superhero,
+		publisher,
+		alter_ego,
+		first_appearance,
+		characters,
+  } = hero;
+
+	return (
+		<div>
+			<h1>{superhero}</h1>
+		</div>
+	);
+};
+
+export default HeroesScreen;

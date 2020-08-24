@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
-import Navbar from 'components/ui/NavBar';
 import { Switch, Route } from 'react-router-dom';
+
+import Navbar from 'components/ui/NavBar';
 import DCScreen from 'components/dc/DCScreen';
 import MarvelScreen from 'components/marvel/MarvelScreen';
 import HeroScreen from 'components/heroes/HeroScreen';

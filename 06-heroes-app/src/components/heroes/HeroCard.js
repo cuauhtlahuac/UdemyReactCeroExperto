@@ -20,7 +20,7 @@ const HeroCard = ({
 							alt={superhero}
 						/>
 					</div>
-					<div class="col-md-6">
+					<div className="col-md-6">
 						<div className="card-body">
 							<h5 className="card-title">{superhero}</h5>
 							<p className="card-text">{alter_ego}</p>
