@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 const HeroCard = ({
 	id,
@@ -13,11 +13,10 @@ const HeroCard = ({
 		<div className="col">
 			<div className="card mb-1" style={{ maxWidth: 540 }}>
 				<div className="row g-0">
-
 					<div className="col-md-6">
 						<img
-							src={`./assets/heroes/${id}.jpg`}
-							className="card-img"
+							src={`../assets/heroes/${id}.jpg`}
+							className="animate__animated animate__flipInY card-img"
 							alt={superhero}
 						/>
 					</div>
@@ -32,12 +31,9 @@ const HeroCard = ({
 							<p className="card-title">
 								<small className="text-muted">{first_appearance}</small>
 							</p>
-              <Link to={`./hero/${id}`}>
-                more...
-              </Link>
+							<Link to={`./hero/${id}`}>more...</Link>
 						</div>
 					</div>
-
 				</div>
 			</div>
 		</div>

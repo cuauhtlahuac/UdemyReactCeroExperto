@@ -13,7 +13,14 @@ const HeroesList = ({ publisher }) => {
 	);
 
 	return (
-		<div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-4">
+		<div className="animate__animated
+			animate__fadeIn
+			row row-cols-1
+			row-cols-sm-2 
+			row-cols-lg-3
+			row-cols-xl-4 
+			g-4"
+		>
 			{heroes.map(hero => <HeroCard key={hero.id} {...hero} />)}
 		</div>
 	);
