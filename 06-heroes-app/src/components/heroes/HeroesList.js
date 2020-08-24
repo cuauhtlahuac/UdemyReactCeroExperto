@@ -16,4 +16,4 @@ const HeroesList = ({ publisher }) => {
 	);
 };
 
-export default HeroesList;
+export default React.memo(HeroesList);
