@@ -11,7 +11,9 @@ const LoginScreen = ({ history }) => {
 			payload: { name: 'Cuauhtlahuac' },
 		});
 
-		history.replace('/');
+		const lastPath = localStorage.getItem('lastPath')
+
+		history.replace( lastPath );
 	};
 
 	return (

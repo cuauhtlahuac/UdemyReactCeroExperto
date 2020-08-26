@@ -8,6 +8,8 @@ const PrivateRoute = ({
   ...rest
 }) => {
 
+  localStorage.setItem('lastPath', rest.location.pathname);
+  
   const handleAuth = ( props ) => { // props que provee router
       if (isAuthenticated) {
         return <Component {...props} />
