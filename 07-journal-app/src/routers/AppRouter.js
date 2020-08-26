@@ -7,24 +7,6 @@ import JournalScreen from 'components/journal/JournalScreen';
 const AppRouter = props => {
 	return (
 			<Router>
-				<nav>
-					<ul>
-						<li>
-							<Link to="/">Home</Link>
-						</li>
-						<li>
-							<Link to="/auth">auth</Link>
-						</li>
-						<li>
-							<Link to="/auth/login">Login</Link>
-						</li>
-						<li>
-							<Link to="/auth/register">Register</Link>
-						</li>
-					</ul>
-				</nav>
-
-        <div>
 				<Switch>
 					<Route path="/auth" component={AuthRouter} />
 
@@ -32,7 +14,6 @@ const AppRouter = props => {
 
 					<Route path="/" component={()=><h1>Not Found</h1>} />
 				</Switch>
-        </div>
 			</Router>
 	);
 };

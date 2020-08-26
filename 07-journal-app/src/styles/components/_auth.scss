@@ -1,0 +1,16 @@
+.auth__main {
+  align-items: center;
+  background-color: $primary; // no es necesario importar la variable
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.auth__box-container {
+  background-color: white;
+  box-shadow: 0 3px $dark-gray;
+  border-radius: 2px;
+  padding: 20px;
+  width: 250px;
+}

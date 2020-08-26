@@ -22,3 +22,4 @@
 * [React Router](https://reactrouter.com/web/api/NavLink)
 * **[Modern React testing, part 2: Jest and Enzyme](https://blog.sapegin.me/all/react-testing-2-jest-and-enzyme/)**
 * [query-string for parse query params](https://www.npmjs.com/package/query-string)
+* [Sass Documentation](https://sass-lang.com/documentation)
