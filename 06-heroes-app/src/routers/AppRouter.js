@@ -20,6 +20,7 @@ const AppRouter = () => {
 					<PublicRoutes
 						path="/login" 
 						component={ LoginScreen } 
+						isAuthenticated={ user.logged }
 						exact
 					/>
 
