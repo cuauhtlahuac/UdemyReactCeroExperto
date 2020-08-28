@@ -5,7 +5,7 @@ const LoginScreen = () => {
 	return (
 		<React.Fragment>
 			<h3 className="auth__title mb-4">Login</h3>
-			<form>
+			<form autoComplete="off">
 				<input
 					type="text"
 					placeholder="Email"
@@ -45,7 +45,12 @@ const LoginScreen = () => {
 					</div>
 				</div>
 
-				<Link to="/auth/register">Create a new account</Link>
+				<Link 
+					to="/auth/register"
+					className="link"
+				>
+					Create a new account
+				</Link>
 			</form>
 		</React.Fragment>
 	);
