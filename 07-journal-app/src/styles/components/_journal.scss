@@ -7,66 +7,92 @@
 	color: white;
 	display: flex;
 	flex-direction: column;
-	height: 100%;
+	height: 100vh;
 	width: 450px;
 	@include padding-vertical(20px);
 }
 
 .journal__sidebar-navbar {
-  display: flex;
-  justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
 
-  & > h3 {
-    font-weight: lighter;
-  }
+	& > h3 {
+		font-weight: lighter;
+	}
 }
 
 .journal__new-entry {
-  align-items: center;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-top: 30px;
-  width: 100%;
+	align-items: center;
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-top: 30px;
+	width: 100%;
 
-  transition: color .3s ease;
+	transition: color .3s ease;
 
-  &:hover {
-    color: darken($color: white, $amount: 20)
-  }
+	&:hover {
+		color: darken($color: white, $amount: 20);
+	}
 }
 
 .journal__entries {
-  flex: 1 1 auto;
-  margin-top: 30px;
-  overflow: scroll;
+	flex: 1 1 auto;
+	margin-top: 30px;
+  overflow: auto;
+  padding: 0 5px;
 }
 
-.journal__entry{
-  background-color: white;
-  border-radius: 4px;
+.journal__entry {
+	background-color: white;
+	border-radius: 4px;
   color: $dark-gray;
-  display: flex;
-  margin-bottom: 10px;
-  overflow: hidden;
+	display: flex;
+	margin-bottom: 10px;
+	flex-direction: row;
+	overflow: hidden;
 }
 
 .journal__entry-picture {
-  height: 75px;
-  width: 75px;
-}
-
-.journal__entry-content {
-  font-size: 10px;
-
-}
-
-.journal__entry-title {
-  font-size: 14px;
-  font-weight: bold;
+	flex: 1;
+	height: 75px;
+	min-width: 100px;
 }
 
 .journal__entry-body {
-  padding: 10px;
+	padding: 0 0 0 10px;
+	display: flex;
+}
+
+.journal__entry-section {
+	display: flex;
+	flex-direction: column;
+	max-height: 75px;
+}
+
+.journal__entry-title {
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+	margin: 5px auto 0 auto;
+}
+
+.journal__entry-content {
+	font-size: 10px;
+	overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: justify;
+  line-clamp: 2;
+  box-decoration-break: slice;
+}
+
+.journal__entry-date-box {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	font-size: 12px;
+	justify-content: center;
+	padding: 5px;
+	text-align: center;
 }

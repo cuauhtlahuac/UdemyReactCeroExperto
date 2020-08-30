@@ -2,7 +2,7 @@ import React from 'react';
 
 const JournalEntry = () => {
 	return (
-		<div className="journal__entry">
+		<div className="journal__entry pointer">
 			<div
 				className="journal__entry-picture"
 				style={{
@@ -12,17 +12,18 @@ const JournalEntry = () => {
 				}}
 			/>
 			<div className="journal__entry-body">
+      <section className="journal__entry-section">
+
 				<p className="journal__entry-title">un nuevo día</p>
 				<p className="journal__entry-content">
 					industry. Lorem Ipsum has been the industry's standard dummy text ever
-					since the 1500s, when an unknown printer took a galley of type and
-					scrambled it to make a type specimen book. It has survived not only
-					five centuries, but also the leap into electronic typesetting,
-					remaining essentially unchang
+					since the 1500s, when an unknown printer took a galley of  printer took a gall
 				</p>
-        <div className="journal__entry-title">
-
-        </div>
+      </section>
+				<div className="journal__entry-date-box">
+					<span>Monday</span>
+					<h4>28</h4>
+				</div>
 			</div>
 		</div>
 	);
