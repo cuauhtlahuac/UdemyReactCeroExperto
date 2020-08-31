@@ -24,3 +24,5 @@
 * [query-string for parse query params](https://www.npmjs.com/package/query-string)
 * [Sass Documentation](https://sass-lang.com/documentation)
 * [font-awesome, The iconic SVG, font, and CSS toolkit](https://cdnjs.com/libraries/font-awesome)
+* [Redux Official](https://es.redux.js.org/)
+* [React Redux](https://react-redux.js.org/)
