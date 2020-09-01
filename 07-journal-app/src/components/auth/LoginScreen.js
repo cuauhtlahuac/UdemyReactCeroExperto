@@ -1,30 +1,45 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import { useForm } from 'hooks/useForm';
+
 const LoginScreen = () => {
+	const initialState = { email: 'cuitlagua@gmail.com', password: '4815926' };
+
+	const [ values, handleInputChange ] = useForm(initialState);
+
+	const { email, password } = values;
+
+	const handleSubmit = ( event ) => {
+		event.preventDefault();
+		// Aqui haremos nuestro primer dispatch
+	}
+	
+
 	return (
 		<React.Fragment>
 			<h3 className="auth__title mb-4">Login</h3>
-			<form autoComplete="off">
+			<form autoComplete="off" onSubmit={ handleSubmit }>
 				<input
-					type="text"
+					className="auth__input"
 					placeholder="Email"
 					name="email"
-					className="auth__input"
+					onChange={handleInputChange}
+					type="text"
+					value={email}
 				/>
 
 				<input
-					type="text"
+					className="auth__input"
 					placeholder="Password"
 					name="password"
-					className="auth__input"
+					onChange={handleInputChange}
+					type="password"
+					value={password}
 				/>
 
-				<button
-				 type="submit"
-				 className="btn btn-primary btn-block mt-2"
-				>
-				Login
+				<button type="submit" className="btn btn-primary btn-block mt-2">
+					Login
 				</button>
 
 				<div className="auth__social-networks">
@@ -45,10 +60,7 @@ const LoginScreen = () => {
 					</div>
 				</div>
 
-				<Link 
-					to="/auth/register"
-					className="link"
-				>
+				<Link to="/auth/register" className="link">
 					Create a new account
 				</Link>
 			</form>
