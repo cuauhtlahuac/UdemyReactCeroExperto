@@ -26,3 +26,4 @@
 * [font-awesome, The iconic SVG, font, and CSS toolkit](https://cdnjs.com/libraries/font-awesome)
 * [Redux Official](https://es.redux.js.org/)
 * [React Redux](https://react-redux.js.org/)
+* [redux-devtools usage](https://github.com/zalmoxisus/redux-devtools-extension#usage)
