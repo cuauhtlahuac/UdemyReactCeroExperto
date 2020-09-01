@@ -44,7 +44,7 @@
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
-	@include padding-horizontal(20px);
+	margin-bottom: 20px;
 	width: 100%;
 }
 
