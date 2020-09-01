@@ -1,25 +1,30 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import { useForm } from 'hooks/useForm';
 
+import { loginAction } from 'actions/auth';
+
 const LoginScreen = () => {
 	const initialState = { email: 'cuitlagua@gmail.com', password: '4815926' };
+
+	const dispatch = useDispatch();
 
 	const [ values, handleInputChange ] = useForm(initialState);
 
 	const { email, password } = values;
 
-	const handleSubmit = ( event ) => {
+	const handleSubmit = event => {
 		event.preventDefault();
-		// Aqui haremos nuestro primer dispatch
-	}
-	
+
+		dispatch(loginAction('11212s1', 'Cuauh'));
+	};
 
 	return (
 		<React.Fragment>
 			<h3 className="auth__title mb-4">Login</h3>
-			<form autoComplete="off" onSubmit={ handleSubmit }>
+			<form autoComplete="off" onSubmit={handleSubmit}>
 				<input
 					className="auth__input"
 					placeholder="Email"
