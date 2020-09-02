@@ -27,3 +27,5 @@
 * [Redux Official](https://es.redux.js.org/)
 * [React Redux](https://react-redux.js.org/)
 * [redux-devtools usage](https://github.com/zalmoxisus/redux-devtools-extension#usage)
+* [Firebase](https://firebase.google.com/)
+* [Firestore para SQL Developers - Youtube play list](https://www.youtube.com/playlist?list=PLCKuOXG0bPi29EkcAuVCln9ISbExcQk66)
