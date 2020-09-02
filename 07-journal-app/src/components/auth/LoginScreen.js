@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import { useForm } from 'hooks/useForm';
 
-import { loginAction } from 'actions/auth';
+import { startLoginEmailPassword } from 'actions/auth';
 
 const LoginScreen = () => {
 	const initialState = { email: 'cuitlagua@gmail.com', password: '4815926' };
@@ -18,7 +18,14 @@ const LoginScreen = () => {
 	const handleSubmit = event => {
 		event.preventDefault();
 
-		dispatch(loginAction('11212s1', 'Cuauh'));
+		/* Forma uno de llamar nuestra async action
+
+		const login = startLoginEmailPassword(email, password);
+		login(dispatch)
+
+		*/
+
+		dispatch(startLoginEmailPassword(email, password)) // forma bonita
 	};
 
 	return (
