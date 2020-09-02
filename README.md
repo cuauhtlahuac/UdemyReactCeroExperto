@@ -29,3 +29,4 @@
 * [redux-devtools usage](https://github.com/zalmoxisus/redux-devtools-extension#usage)
 * [Firebase](https://firebase.google.com/)
 * [Firestore para SQL Developers - Youtube play list](https://www.youtube.com/playlist?list=PLCKuOXG0bPi29EkcAuVCln9ISbExcQk66)
+* [redux-thunk](https://www.npmjs.com/package/redux-thunk)
