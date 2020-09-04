@@ -49,9 +49,9 @@
 }
 
 .auth_alert_error {
-	background-color: red;
-	border-radius: 5px;
-	color: white;
+	background-color: lighten(desaturate($alert, 15),15);
+	border-radius: 15px;
+	color: lighten($alert, $amount: 45);
 	display: flex;
 	justify-content: center;
 	margin-bottom: 10px;
