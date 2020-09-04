@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import isEmail from 'validator/lib/isEmail';
 import isEmpty from 'validator/lib/isEmpty';
@@ -7,6 +8,7 @@ import equals from 'validator/lib/equals';
 import isLength from 'validator/lib/isLength';
 
 import { useForm } from 'hooks/useForm';
+import { uiRemoveErrorAction, uiSetErrorAction } from 'actions/ui';
 
 const RegisterScreen = () => {
 	const initialState = {
@@ -16,33 +18,35 @@ const RegisterScreen = () => {
 		password2: '123456',
 	};
 
+	const dispatch = useDispatch();
+
 	const [ values, handleInputChange ] = useForm(initialState);
 
 	const { name, email, password, password2 } = values;
 
 	const handleSubmit = e => {
 		e.preventDefault();
-		if (isFormValid()) {
-			console.log({ name, email, password, password2 });
-		}
+		isAuthFormValid();
 	};
 
-	const isFormValid = () => {
+	const isAuthFormValid = () => {
+		let error = { status: false, msg: '' };
+
 		if (isEmpty(name, { ignore_whitespace: true })) {
-			console.log('Name is Required');
-			return false;
+			error = { status: true, msg: 'Name is Required' };
 		} else if (!isEmail(email)) {
-			console.log('Is not a valid Email');
-			return false;
+			error = { status: true, msg: 'Is not a valid Email' };
 		} else if (!isLength(password, { min: 6 })) {
-			console.log('Password must have at least 6 chars');
-			return false;
+			error = { status: true, msg: 'Password must have at least 6 chars' };
 		} else if (!equals(password, password2)) {
-			console.log('Password are different');
-			return false;
+			error = { status: true, msg: 'Password are different' };
 		}
 
-		return true;
+		if (error.status) {
+			dispatch(uiSetErrorAction(error.msg));
+		} else {
+			dispatch(uiRemoveErrorAction());
+		}
 	};
 
 	return (
