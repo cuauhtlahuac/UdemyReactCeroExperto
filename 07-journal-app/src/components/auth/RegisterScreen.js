@@ -1,54 +1,73 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+import { useForm } from 'hooks/useForm';
 
 const RegisterScreen = () => {
-  return (
-    <React.Fragment>
-      <h3 className="auth__title mb-4">Login</h3>
-      <form autoComplete="off">
-        <input
-          type="text"
-          placeholder="Name"
-          name="name"
-          className="auth__input"
-        />
-        <input
-          type="text"
-          placeholder="Email"
-          name="email"
-          className="auth__input"
-        />
-        <input
-          type="text"
-          placeholder="Password"
-          name="password"
-          className="auth__input"
-        />
+	const initialState = {
+		name: 'Cuauhtlahuac Aristeo',
+		email: 'cui13@hotmail.com',
+		password: '123456',
+		password2: '123456',
+	};
 
-      <input
-        type="text"
-        placeholder="Confirm password"
-        name="Password2"
-        className="auth__input"
-      />
+	const [ values, handleInputChange ] = useForm(initialState);
 
-      <button
-       type="submit"
-       className="btn btn-primary btn-block mt-2 mb-4"
-      >
-        register
-      </button>
+	const { name, email, password, password2 } = values;
 
-      <Link
-					to="/auth"
-					className="link"
-      >
-        You already register?
-      </Link>
+	const handleSubmit = e => {
+		e.preventDefault();
+		console.log({ name, email, password, password2 });
+	};
 
-    </form>
-  </React.Fragment>
-  )
-}
+	return (
+		<React.Fragment>
+			<h3 className="auth__title mb-4">Login</h3>
+			<form autoComplete="off" onSubmit={handleSubmit}>
+				<input
+					className="auth__input"
+					name="name"
+					onChange={handleInputChange}
+					placeholder="Name"
+					type="text"
+					value={name}
+				/>
+				<input
+					className="auth__input"
+					name="email"
+					onChange={handleInputChange}
+					placeholder="Email"
+					type="text"
+					value={email}
+				/>
+				<input
+					className="auth__input"
+					name="password"
+					onChange={handleInputChange}
+					placeholder="Password"
+					type="password"
+					value={password}
+				/>
 
-export default RegisterScreen
+				<input
+					className="auth__input"
+					name="password2"
+					onChange={handleInputChange}
+					placeholder="Confirm password"
+					type="password"
+					value={password2}
+				/>
+
+				<button type="submit" className="btn btn-primary btn-block mt-2 mb-4">
+					register
+				</button>
+
+				<Link to="/auth" className="link">
+					You already register?
+				</Link>
+			</form>
+		</React.Fragment>
+	);
+};
+
+export default RegisterScreen;
