@@ -1,6 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import isEmail from 'validator/lib/isEmail';
+import isEmpty from 'validator/lib/isEmpty';
+import equals from 'validator/lib/equals';
+import isLength from 'validator/lib/isLength';
+
 import { useForm } from 'hooks/useForm';
 
 const RegisterScreen = () => {
@@ -17,12 +22,33 @@ const RegisterScreen = () => {
 
 	const handleSubmit = e => {
 		e.preventDefault();
-		console.log({ name, email, password, password2 });
+		if (isFormValid()) {
+			console.log({ name, email, password, password2 });
+		}
+	};
+
+	const isFormValid = () => {
+		if (isEmpty(name, { ignore_whitespace: true })) {
+			console.log('Name is Required');
+			return false;
+		} else if (!isEmail(email)) {
+			console.log('Is not a valid Email');
+			return false;
+		} else if (!isLength(password, { min: 6 })) {
+			console.log('Password must have at least 6 chars');
+			return false;
+		} else if (!equals(password, password2)) {
+			console.log('Password are different');
+			return false;
+		}
+
+		return true;
 	};
 
 	return (
 		<React.Fragment>
 			<h3 className="auth__title mb-4">Login</h3>
+			<div className="auth_alert_error">Error</div>
 			<form autoComplete="off" onSubmit={handleSubmit}>
 				<input
 					className="auth__input"
