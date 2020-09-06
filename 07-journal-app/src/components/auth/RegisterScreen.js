@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import isEmail from 'validator/lib/isEmail';
 import isEmpty from 'validator/lib/isEmpty';
@@ -19,6 +19,10 @@ const RegisterScreen = () => {
 	};
 
 	const dispatch = useDispatch();
+	// traemos un pedazo del state
+
+	const localState = useSelector(globalState => globalState.ui);
+	const { msgError } = localState;
 
 	const [ values, handleInputChange ] = useForm(initialState);
 
@@ -52,7 +56,9 @@ const RegisterScreen = () => {
 	return (
 		<React.Fragment>
 			<h3 className="auth__title mb-4">Login</h3>
-			<div className="auth_alert_error">Error</div>
+			<div className="auth_alert_error">
+				{ msgError && <span>🚫 {msgError}</span> }
+			</div>
 			<form autoComplete="off" onSubmit={handleSubmit}>
 				<input
 					className="auth__input"

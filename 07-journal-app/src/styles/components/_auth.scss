@@ -49,19 +49,32 @@
 }
 
 .auth_alert_error {
-	background-color: lighten(desaturate($alert, 15),15);
-	border-radius: 15px;
-	color: lighten($alert, $amount: 45);
+	background-color: lighten(desaturate($alert, 5), 15);
+	border-radius: 5px;
+	color: lighten($alert, $amount: 48);
 	display: flex;
 	justify-content: center;
 	margin-bottom: 10px;
-	padding: 5px;
+	transition: margin 1s ease;
+	& > span {
+		animation-duration: .5s;
+		animation-name: animate-error;
+		margin: 10px;
+		opacity: 1;
+	}
+}
+
+@keyframes animate-error {
+	from {
+		margin: 0px;
+		opacity: 0;
+	}
 }
 
 label {
-  color: $dark-gray;
-  &:hover {
-    transition: margin-bottom 10 1s ease;
-    transition: border-top .3s ease;
-  }
+	color: $dark-gray;
+	&:hover {
+		transition: margin-bottom 10 1s ease;
+		transition: border-top .3s ease;
+	}
 }
