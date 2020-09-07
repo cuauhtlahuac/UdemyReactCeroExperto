@@ -24,9 +24,19 @@ export const startRegisterWithUserData = (email, password, name) => {
 		firebase
 			.auth()
 			.createUserWithEmailAndPassword(email, password)
-			.then(({ user }) => {
+			.then( async({ user }) => {
 				console.log(user);
-				dispatch(loginAction(user.uid, user.displayName));
+				
+				// Usamos la función de abajo para atualizar el nombre y otros datos del usuario
+				// antes de enviarlo al store.
+
+				await user.updateProfile({ 
+					displayName: name,
+				})
+
+				console.log(user); // revisar el cambio en la propiedad displayName
+			
+				//	dispatch(loginAction(updatedUserData.uid, updatedUserData.displayName));
 			});
 	};
 };
