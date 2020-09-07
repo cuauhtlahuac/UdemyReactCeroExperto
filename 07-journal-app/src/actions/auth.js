@@ -1,6 +1,8 @@
 import { types } from 'types/types';
 import { firebase, googleAuthProvider } from 'firebase/firebase-config';
 
+import { uiRemoveErrorAction, uiSetErrorAction } from 'actions/ui';
+
 export const startLoginEmailPassword = (email, password) => {
 	return dispatch => {
 		// el dispatch lo da thunk
@@ -19,25 +21,24 @@ export const startGoogleLogin = () => {
 	};
 };
 
-export const startRegisterWithUserData = (email, password, name) => {
+export const startRegisterWithFormData = (email, password, name) => {
 	return dispatch => {
 		firebase
 			.auth()
 			.createUserWithEmailAndPassword(email, password)
-			.then( async({ user }) => {
-				console.log(user);
-				
-				// Usamos la función de abajo para atualizar el nombre y otros datos del usuario
-				// antes de enviarlo al store.
+			.then(async ({ user }) => {
+				try {
+					await user.updateProfile({
+						displayName: name,
+					});
 
-				await user.updateProfile({ 
-					displayName: name,
-				})
-
-				console.log(user); // revisar el cambio en la propiedad displayName
-			
-				//	dispatch(loginAction(updatedUserData.uid, updatedUserData.displayName));
-			});
+					dispatch(loginAction(user.uid, user.displayName));
+					dispatch(uiRemoveErrorAction());
+				} catch (err) {
+					dispatch(uiSetErrorAction('- ' + err));
+				}
+			})
+			.catch(err => dispatch(uiSetErrorAction('- ' + err)));
 	};
 };
 
