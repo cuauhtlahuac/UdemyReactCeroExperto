@@ -12,11 +12,22 @@ export const startLoginEmailPassword = (email, password) => {
 
 export const startGoogleLogin = () => {
 	return dispatch => {
-		firebase.auth().signInWithPopup( googleAuthProvider )
-		.then( ({ user }) => {
+		firebase.auth().signInWithPopup(googleAuthProvider).then(({ user }) => {
 			const { uid, displayName } = user;
-			dispatch( loginAction( uid, displayName ) );
+			dispatch(loginAction(uid, displayName));
 		});
+	};
+};
+
+export const startRegisterWithUserData = (email, password, name) => {
+	return dispatch => {
+		firebase
+			.auth()
+			.createUserWithEmailAndPassword(email, password)
+			.then(({ user }) => {
+				console.log(user);
+				dispatch(loginAction(user.uid, user.displayName));
+			});
 	};
 };
 

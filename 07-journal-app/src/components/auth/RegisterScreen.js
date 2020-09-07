@@ -9,6 +9,7 @@ import isLength from 'validator/lib/isLength';
 
 import { useForm } from 'hooks/useForm';
 import { uiRemoveErrorAction, uiSetErrorAction } from 'actions/ui';
+import { startRegisterWithUserData } from 'actions/auth';
 
 const RegisterScreen = () => {
 	const initialState = {
@@ -30,7 +31,9 @@ const RegisterScreen = () => {
 
 	const handleSubmit = e => {
 		e.preventDefault();
-		isAuthFormValid();
+		if(isAuthFormValid()){
+			dispatch( startRegisterWithUserData( email, password, name ) )
+		};
 	};
 
 	const isAuthFormValid = () => {
@@ -48,8 +51,10 @@ const RegisterScreen = () => {
 
 		if (error.status) {
 			dispatch(uiSetErrorAction(error.msg));
+			return false;
 		} else {
 			dispatch(uiRemoveErrorAction());
+			return true;
 		}
 	};
 
