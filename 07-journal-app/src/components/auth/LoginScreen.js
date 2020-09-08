@@ -1,13 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { useForm } from 'hooks/useForm';
 
 import { startLoginEmailPassword, startGoogleLogin } from 'actions/auth';
 
 const LoginScreen = () => {
-	const initialState = { email: 'cuitlagua@gmail.com', password: '4815926' };
+	const initialState = { email: 'cui13@hotmail.com', password: '123456' };
+
+	const localState = useSelector(globalState => globalState.ui);
+	
+	const { msgError } = localState;
 
 	const dispatch = useDispatch();
 
@@ -18,13 +22,8 @@ const LoginScreen = () => {
 	const handleSubmit = event => {
 		event.preventDefault();
 
-		/* Forma uno de llamar nuestra async action
 
-		const login = startLoginEmailPassword(email, password);
-		login(dispatch)
-
-		*/
-		dispatch(startLoginEmailPassword(email, password)) // forma bonita
+		dispatch(startLoginEmailPassword(email, password)) 
 	};
 
 	const handleGoogleLogin = () => {
@@ -34,6 +33,9 @@ const LoginScreen = () => {
 	return (
 		<React.Fragment>
 			<h3 className="auth__title mb-4">Login</h3>
+			<div className="auth_alert_error">
+				{ msgError && <span>🚫 {msgError}</span> }
+			</div>
 			<form autoComplete="off" onSubmit={handleSubmit}>
 				<input
 					className="auth__input"

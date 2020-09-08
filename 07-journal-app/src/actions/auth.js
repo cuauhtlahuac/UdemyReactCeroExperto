@@ -4,11 +4,16 @@ import { firebase, googleAuthProvider } from 'firebase/firebase-config';
 import { uiRemoveErrorAction, uiSetErrorAction } from 'actions/ui';
 
 export const startLoginEmailPassword = (email, password) => {
-	return dispatch => {
-		// el dispatch lo da thunk
-		setTimeout(() => {
-			dispatch(loginAction(123, 'Pedrito'));
-		}, 3500);
+	return async dispatch => {
+		try {
+			const { user } = await firebase
+				.auth()
+				.signInWithEmailAndPassword(email, password);
+			dispatch(loginAction(user.uid, user.displayName));
+			dispatch(uiRemoveErrorAction());
+		} catch (err) {
+			dispatch(uiSetErrorAction('- ' + err));
+		}
 	};
 };
 
