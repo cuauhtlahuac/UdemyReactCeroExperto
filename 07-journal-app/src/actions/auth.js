@@ -1,18 +1,26 @@
 import { types } from 'types/types';
 import { firebase, googleAuthProvider } from 'firebase/firebase-config';
 
-import { uiRemoveErrorAction, uiSetErrorAction } from 'actions/ui';
+import {
+	uiRemoveErrorAction,
+	uiSetErrorAction,
+	uiStartLoading,
+	uiFinishLoading,
+} from 'actions/ui';
 
 export const startLoginEmailPassword = (email, password) => {
 	return async dispatch => {
 		try {
+			dispatch(uiStartLoading());
 			const { user } = await firebase
 				.auth()
 				.signInWithEmailAndPassword(email, password);
 			dispatch(loginAction(user.uid, user.displayName));
 			dispatch(uiRemoveErrorAction());
+			dispatch(uiFinishLoading());
 		} catch (err) {
 			dispatch(uiSetErrorAction('- ' + err));
+			dispatch(uiFinishLoading());
 		}
 	};
 };

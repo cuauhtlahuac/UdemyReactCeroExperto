@@ -11,7 +11,7 @@ const LoginScreen = () => {
 
 	const localState = useSelector(globalState => globalState.ui);
 	
-	const { msgError } = localState;
+	const { msgError, loading } = localState;
 
 	const dispatch = useDispatch();
 
@@ -21,7 +21,6 @@ const LoginScreen = () => {
 
 	const handleSubmit = event => {
 		event.preventDefault();
-
 
 		dispatch(startLoginEmailPassword(email, password)) 
 	};
@@ -55,7 +54,7 @@ const LoginScreen = () => {
 					value={password}
 				/>
 
-				<button type="submit" className="btn btn-primary btn-block mt-2">
+				<button type="submit" className="btn btn-primary btn-block mt-2" disabled={loading}>
 					Login
 				</button>
 

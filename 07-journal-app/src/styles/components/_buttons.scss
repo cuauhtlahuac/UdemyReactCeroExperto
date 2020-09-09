@@ -22,7 +22,8 @@
 	border-radius: 2px;
 
 	&:disabled {
-		background-color: lighten($color: $primary, $amount: 15);
+		background-color: lighten($color: $primary, $amount: 20);
+		color: lighten($color: $primary, $amount: 20);
 	}
 
 	&:hover {
