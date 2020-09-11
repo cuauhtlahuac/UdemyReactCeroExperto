@@ -55,10 +55,25 @@ export const startRegisterWithFormData = (email, password, name) => {
 	};
 };
 
+export const signOut = () => {
+	return async dispatch => {
+		try {
+			await firebase.auth().signOut();
+			dispatch(logoutAction());
+		} catch (err) {
+			console.log(err);
+		}
+	};
+};
+
 export const loginAction = (uid, displayName) => ({
 	type: types.login,
 	payload: {
 		uid,
 		displayName,
 	},
+});
+
+export const logoutAction = () => ({
+	type: types.logout,
 });
