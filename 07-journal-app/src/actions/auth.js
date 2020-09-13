@@ -1,5 +1,6 @@
 import { types } from 'types/types';
 import { firebase, googleAuthProvider } from 'firebase/firebase-config';
+import Swal from 'sweetalert2';
 
 import {
 	uiRemoveErrorAction,
@@ -20,6 +21,7 @@ export const startLoginEmailPassword = (email, password) => {
 			dispatch(uiFinishLoading());
 		} catch (err) {
 			dispatch(uiSetErrorAction('- ' + err));
+			Swal.fire('Error!', `${err.message}`, 'error');
 			dispatch(uiFinishLoading());
 		}
 	};
@@ -51,7 +53,10 @@ export const startRegisterWithFormData = (email, password, name) => {
 					dispatch(uiSetErrorAction('- ' + err));
 				}
 			})
-			.catch(err => dispatch(uiSetErrorAction('- ' + err)));
+			.catch(err => {
+				dispatch(uiSetErrorAction('- ' + err));
+				Swal.fire('Error!', `${err.message}`, 'error');
+			});
 	};
 };
 
@@ -61,7 +66,7 @@ export const signOut = () => {
 			await firebase.auth().signOut();
 			dispatch(logoutAction());
 		} catch (err) {
-			console.log(err);
+			Swal.fire('Error!', `${err.message}`, 'error');
 		}
 	};
 };
