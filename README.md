@@ -31,3 +31,4 @@
 * [Firestore para SQL Developers - Youtube play list](https://www.youtube.com/playlist?list=PLCKuOXG0bPi29EkcAuVCln9ISbExcQk66)
 * [redux-thunk](https://www.npmjs.com/package/redux-thunk)
 * [validator.js](https://www.npmjs.com/package/validator)
+* [Sweet Alert](https://sweetalert2.github.io/)

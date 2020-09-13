@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import sweetAlert from 'sweetalert2/dist/sweetalert2.js'
 
 import { useForm } from 'hooks/useForm';
 
@@ -29,6 +30,18 @@ const LoginScreen = () => {
 			dispatch(startGoogleLogin())
 	 }
 
+	 useEffect(() => {
+		if(msgError){
+			sweetAlert.fire({
+				title: 'Error!',
+				text: `${msgError}`,
+				icon: 'error',
+				confirmButtonText: 'Ok',
+			})
+		}
+
+	 }, [msgError])
+	 
 	return (
 		<React.Fragment>
 			<h3 className="auth__title mb-4">Login</h3>
