@@ -2,10 +2,12 @@ import React from 'react';
 
 import JournalEntries from './JournalEntries';
 import { signOut } from 'actions/auth';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Sidebar = () => {
 	const dispatch = useDispatch();
+
+	const { name } = useSelector(state => state.auth)
 
 	const handleLogout = () => {
 		dispatch(signOut());
@@ -15,8 +17,8 @@ const Sidebar = () => {
 		<aside className="journal__sidebar">
 			<div className="journal__sidebar-navbar">
 				<h3 className="mt-4">
-					<i className="far fa-moon" />
-					<span>uahtlahuac</span>
+					<i className="fa fa-user" aria-hidden="true"/>
+					<span>{ ` ${name}` }</span>
 				</h3>
 				<button className="btn" onClick={handleLogout}>
 					Logout
