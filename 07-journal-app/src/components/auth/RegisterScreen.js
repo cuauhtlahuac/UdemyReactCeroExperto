@@ -62,7 +62,7 @@ const RegisterScreen = () => {
 		<React.Fragment>
 			<h3 className="auth__title mb-4">Login</h3>
 			<div className="auth_alert_error">
-				{ msgError && <span>🚫 {msgError}</span> }
+				{ msgError && <span><span role="img" aria-label="warning">🚫</span> {msgError}</span> }
 			</div>
 			<form autoComplete="off" onSubmit={handleSubmit}>
 				<input

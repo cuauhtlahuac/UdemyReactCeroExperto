@@ -3,7 +3,7 @@ import React from 'react'
 import NoteScreen from 'components/notes/NoteScreen'
 
 import Sidebar from './Sidebar'
-import NothingSelected from './NothingSelected'
+// import NothingSelected from './NothingSelected'
 
 const JournalScreen = () => {
   return (

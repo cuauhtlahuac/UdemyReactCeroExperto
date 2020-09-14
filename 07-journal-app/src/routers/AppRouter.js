@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Switch, Link, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
 
 import { firebase } from 'firebase/firebase-config';
 
@@ -39,7 +39,7 @@ const AppRouter = props => {
 	if (checking)
 		return (
 			<div className="general-center">
-				<img src="https://www.downgraf.com/media/2019/05/Loader-animation-principle-freebie.gif" />
+				<img src="https://www.downgraf.com/media/2019/05/Loader-animation-principle-freebie.gif" alt="Loader Animation" />
 			</div>
 		);
 

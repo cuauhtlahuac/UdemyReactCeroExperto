@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -33,7 +33,7 @@ const LoginScreen = () => {
 		<React.Fragment>
 			<h3 className="auth__title mb-4">Login</h3>
 			<div className="auth_alert_error">
-				{ msgError && <span>🚫 {msgError}</span> }
+				{ msgError && <span><span role="img" aria-label="warning">🚫</span> {msgError}</span> }
 			</div>
 			<form autoComplete="off" onSubmit={handleSubmit}>
 				<input
