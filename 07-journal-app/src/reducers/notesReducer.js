@@ -1,13 +1,21 @@
+import { types } from 'types/types';
+
 const initialState = {
-  notes: [],
-  active: null,
-}
+	notes: [],
+	active: null,
+};
 
-export const notesReducer = ( state = initialState, { type, payload }) => {
+export const notesReducer = (state = initialState, { type, payload }) => {
+	switch (type) {
+		case types.notesActive:
+			return {
+				...state,
+				active: {
+					...payload,
+				},
+			};
 
-  switch (type) {
-  
-    default:
-      return state;
-  }
-}
+		default:
+			return state;
+	}
+};
