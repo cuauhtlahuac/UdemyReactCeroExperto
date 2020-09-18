@@ -5,6 +5,8 @@ import { firebase } from 'firebase/firebase-config';
 
 import { useDispatch } from 'react-redux';
 import { loginAction } from 'actions/auth';
+import { loadNotes } from 'helpers/loadNotes';
+import { loadNotesAction } from 'actions/notes';
 import JournalScreen from 'components/journal/JournalScreen';
 
 import PublicRoutes from './PublicRoutes';
@@ -20,11 +22,17 @@ const AppRouter = props => {
 
 	useEffect(
 		() => {
-			firebase.auth().onAuthStateChanged(user => {
+			firebase.auth().onAuthStateChanged(async user => {
 				// es un observable
 				if (user && user.uid) {
 					// solo usuarios autenticados
 					dispatch(loginAction(user.uid, user.displayName));
+					console.log(user.uid);
+					const notes = await loadNotes(user.uid);
+					console.log({notes});
+
+					dispatch(loadNotesAction(notes));
+
 					setIsLogged(true);
 				} else {
 					setIsLogged(false);
@@ -39,7 +47,10 @@ const AppRouter = props => {
 	if (checking)
 		return (
 			<div className="general-center">
-				<img src="https://www.downgraf.com/media/2019/05/Loader-animation-principle-freebie.gif" alt="Loader Animation" />
+				<img
+					src="https://www.downgraf.com/media/2019/05/Loader-animation-principle-freebie.gif"
+					alt="Loader Animation"
+				/>
 			</div>
 		);
 
