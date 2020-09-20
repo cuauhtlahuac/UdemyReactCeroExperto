@@ -11,12 +11,20 @@ export const startNewNoteAction = () => {
 			body: '',
 			date: new Date().getTime(),
 		};
-		
+
 		const document = await db.collection(`${uid}/journal/notes`).add(newNote);
 
 		dispatch(activateNoteAction(document.id, newNote));
 	};
 };
+
+export const startLoadingNotesAction = (uid) => {
+	return async( dispatch ) => {
+		const notes = await loadNotes(uid);
+
+		dispatch(loadNotesAction(notes));
+	}
+}
 
 export const loadNotesAction = notes => ({
 	type: types.notesLoad,

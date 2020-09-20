@@ -5,8 +5,7 @@ import { firebase } from 'firebase/firebase-config';
 
 import { useDispatch } from 'react-redux';
 import { loginAction } from 'actions/auth';
-import { loadNotes } from 'helpers/loadNotes';
-import { loadNotesAction } from 'actions/notes';
+import { startLoadingNotesAction } from 'actions/notes';
 import JournalScreen from 'components/journal/JournalScreen';
 
 import PublicRoutes from './PublicRoutes';
@@ -27,11 +26,8 @@ const AppRouter = props => {
 				if (user && user.uid) {
 					// solo usuarios autenticados
 					dispatch(loginAction(user.uid, user.displayName));
-					console.log(user.uid);
-					const notes = await loadNotes(user.uid);
-					console.log({notes});
 
-					dispatch(loadNotesAction(notes));
+					dispatch(startLoadingNotesAction(user.uid));
 
 					setIsLogged(true);
 				} else {
