@@ -32,3 +32,4 @@
 * [redux-thunk](https://www.npmjs.com/package/redux-thunk)
 * [validator.js](https://www.npmjs.com/package/validator)
 * [Sweet Alert](https://sweetalert2.github.io/)
+* [Moment js](https://momentjs.com/)
