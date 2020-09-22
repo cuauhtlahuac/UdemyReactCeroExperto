@@ -1,25 +1,34 @@
 import React, { useEffect, useState } from 'react';
 
 import NotesAppBar from './NotesAppBar';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useForm } from 'hooks/useForm';
+import { updateNotesAction } from 'actions/notes';
 
 const NoteScreen = () => {
 	const { active: activeNote } = useSelector(state => state.notes);
+	const dispatch = useDispatch();
 
 	const [ values, handleInputChange, reset ] = useForm(activeNote);
 
 	const { body, title, url } = values;
 
-	useEffect(() => {
+	useEffect(
+		() => {
+			reset(activeNote);
+		},
+		[ activeNote ],
+	);
 
-		reset(activeNote);
-
-	}, [activeNote]);
+	const handleSaveNote = () => {
+		dispatch(
+			updateNotesAction(activeNote.id, activeNote.index, { ...activeNote, body, title, url }),
+		);
+	};
 
 	return (
 		<div className="notes__main-content">
-			<NotesAppBar />
+			<NotesAppBar handleSaveNote={handleSaveNote} />
 
 			<div className="notes__content">
 				<input
@@ -38,10 +47,11 @@ const NoteScreen = () => {
 					value={body}
 					onChange={handleInputChange}
 				/>
-
-				<div className="notes__image">
-					<img src={url} alt={title} />
-				</div>
+				{url && (
+					<div className="notes__image">
+						<img src={url} alt={title} />
+					</div>
+				)}
 			</div>
 		</div>
 	);

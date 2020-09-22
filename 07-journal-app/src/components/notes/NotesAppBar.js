@@ -1,20 +1,19 @@
-import React from 'react'
+import React from 'react';
+import moment from 'moment';
 
-const NotesAppBar = () => {
-  return (
-    <div className="notes__app-bar">
-      <span>28 agosto 2020</span>
-      <div>
-        <button className="btn">
-          Picture
-        </button>
+const NotesAppBar = ({ handleSaveNote }) => {
+	return (
+		<div className="notes__app-bar">
+			<span>{moment().format('dddd D, MMMM YYYY')}</span>
+			<div>
+				<button className="btn">Picture</button>
 
-        <button className="btn">
-          Save
-        </button>
-      </div>
-    </div>
-  )
-}
+				<button className="btn" onClick={handleSaveNote}>
+					Save
+				</button>
+			</div>
+		</div>
+	);
+};
 
-export default NotesAppBar
+export default NotesAppBar;

@@ -18,17 +18,39 @@ export const startNewNoteAction = () => {
 	};
 };
 
-export const startLoadingNotesAction = (uid) => {
-	return async( dispatch ) => {
+export const updateNotesAction = (id, index, note) => {
+	return async (dispatch, getState) => {
+		const { uid } = getState().auth;
+		const document = await db
+			.collection(`${uid}/journal/notes`)
+			.doc(id)
+			.update({ ...note });
+
+		dispatch(activateNoteAction(id, note));
+
+		dispatch(saveNoteAction(index, note));
+	};
+};
+
+export const startLoadingNotesAction = uid => {
+	return async dispatch => {
 		const notes = await loadNotes(uid);
 
 		dispatch(loadNotesAction(notes));
-	}
-}
+	};
+};
 
 export const loadNotesAction = notes => ({
 	type: types.notesLoad,
 	payload: notes,
+});
+
+export const saveNoteAction = (index, note) => ({
+	type: types.notesUpdated,
+	payload: {
+		index,
+		note,
+	},
 });
 
 export const activateNoteAction = (id, note) => ({
