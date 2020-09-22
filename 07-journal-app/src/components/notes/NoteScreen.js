@@ -5,12 +5,17 @@ import { useSelector } from 'react-redux';
 import { useForm } from 'hooks/useForm';
 
 const NoteScreen = () => {
-
-	const {active: activeNote} = useSelector(state => state.notes);
+	const { active: activeNote } = useSelector(state => state.notes);
 
 	const [ values, handleInputChange, reset ] = useForm(activeNote);
 
-	const { body, title, url } = activeNote;
+	const { body, title, url } = values;
+
+	useEffect(() => {
+
+		reset(activeNote);
+
+	}, [activeNote]);
 
 	return (
 		<div className="notes__main-content">
