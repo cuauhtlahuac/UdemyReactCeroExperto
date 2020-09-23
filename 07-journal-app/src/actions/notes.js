@@ -21,12 +21,15 @@ export const startNewNoteAction = () => {
 export const updateNotesAction = (id, index, note) => {
 	return async (dispatch, getState) => {
 		const { uid } = getState().auth;
+
+		const noteTo = { ...note };
+
+		delete noteTo.id;
+
 		const document = await db
 			.collection(`${uid}/journal/notes`)
 			.doc(id)
-			.update({ ...note });
-
-		dispatch(activateNoteAction(id, note));
+			.update({ ...noteTo });
 
 		dispatch(saveNoteAction(index, note));
 	};

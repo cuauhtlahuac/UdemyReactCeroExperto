@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import { activateNoteAction } from 'actions/notes';
 
-const JournalEntry = ({ id, index, body, title, date, url }) => {
+const JournalEntry = ({ id, index, body, title, date, url = null }) => {
 	const noteDate = moment(date);
 
 	const dispatch = useDispatch();

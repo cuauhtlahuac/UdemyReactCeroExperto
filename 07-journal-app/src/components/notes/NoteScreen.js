@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import NotesAppBar from './NotesAppBar';
 import { useSelector, useDispatch } from 'react-redux';
 import { useForm } from 'hooks/useForm';
-import { updateNotesAction } from 'actions/notes';
+import { updateNotesAction, activateNoteAction } from 'actions/notes';
 
 const NoteScreen = () => {
 	const { active: activeNote } = useSelector(state => state.notes);
@@ -15,14 +15,25 @@ const NoteScreen = () => {
 
 	useEffect(
 		() => {
-			reset(activeNote);
+			if (activeNote.id != values.id) {
+				reset(activeNote);
+			}
 		},
 		[ activeNote ],
 	);
 
+	useEffect(
+		() => {
+			dispatch(activateNoteAction(values.id, { ...values }));
+		},
+		[ values ],
+	);
+
 	const handleSaveNote = () => {
 		dispatch(
-			updateNotesAction(activeNote.id, activeNote.index, { ...activeNote, body, title, url }),
+			updateNotesAction(values.id, activeNote.index, {
+				...values,
+			}),
 		);
 	};
 
