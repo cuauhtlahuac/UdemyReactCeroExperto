@@ -33,3 +33,4 @@
 * [validator.js](https://www.npmjs.com/package/validator)
 * [Sweet Alert](https://sweetalert2.github.io/)
 * [Moment js](https://momentjs.com/)
+* [cloudinary](https://cloudinary.com/): *Use Cloudinary to efficiently create, manage, and deliver images, videos and other media, personalized and optimized for every device and channel.*
