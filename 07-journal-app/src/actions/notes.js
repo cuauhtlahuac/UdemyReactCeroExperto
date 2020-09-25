@@ -1,6 +1,7 @@
 import { db } from 'firebase/firebase-config';
 import { types } from 'types/types';
 import { loadNotes } from 'helpers/loadNotes';
+import { loadFile } from 'helpers/loadFile';
 
 export const startNewNoteAction = () => {
 	return async (dispatch, getState) => {
@@ -63,3 +64,13 @@ export const activateNoteAction = (id, note) => ({
 		...note,
 	},
 });
+
+export const fileUploadAction = file => {
+	return async (dispatch, getState) => {
+		const { active: activeNote } = getState().notes;
+
+		const fileUrl = await loadFile(file);
+
+		console.log(fileUrl);
+	};
+};
