@@ -2,6 +2,7 @@ import { db } from 'firebase/firebase-config';
 import { types } from 'types/types';
 import { loadNotes } from 'helpers/loadNotes';
 import { loadFile } from 'helpers/loadFile';
+import Swal from 'sweetalert2';
 
 export const startNewNoteAction = () => {
 	return async (dispatch, getState) => {
@@ -33,6 +34,8 @@ export const updateNotesAction = (id, index, note) => {
 			.update({ ...noteTo });
 
 		dispatch(saveNoteAction(index, note));
+
+		
 	};
 };
 
@@ -69,7 +72,18 @@ export const fileUploadAction = file => {
 	return async (dispatch, getState) => {
 		const { active: activeNote } = getState().notes;
 
+		Swal.fire({
+			title: 'Uploading',
+			text: 'Please wait',
+			allowOutsideClick: false,
+			onBeforeOpen: () => {
+				Swal.showLoading();
+			},
+		});
+
 		const fileUrl = await loadFile(file);
+
+		Swal.close();
 
 		dispatch(
 			updateNotesAction(activeNote.id, activeNote.index, {
