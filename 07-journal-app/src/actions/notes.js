@@ -71,6 +71,11 @@ export const fileUploadAction = file => {
 
 		const fileUrl = await loadFile(file);
 
-		console.log(fileUrl);
+		dispatch(
+			updateNotesAction(activeNote.id, activeNote.index, {
+				...activeNote,
+				url: fileUrl,
+			}),
+		);
 	};
 };
