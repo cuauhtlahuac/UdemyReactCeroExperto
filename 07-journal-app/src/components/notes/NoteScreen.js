@@ -15,7 +15,7 @@ const NoteScreen = () => {
 
 	useEffect(
 		() => {
-			if (activeNote.id != values.id) {
+			if (activeNote.id !== values.id || activeNote.url !== values.url) {
 				reset(activeNote);
 			}
 		},

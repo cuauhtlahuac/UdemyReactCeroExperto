@@ -12,7 +12,7 @@ const NotesAppBar = ({ handleSaveNote }) => {
 
 	const handleFile = e => {
 		const [ file ] = e.target.files;
-		console.log(file);
+
 		if (file) {
 			dispatch(fileUploadAction(file));
 		}
@@ -36,7 +36,9 @@ const NotesAppBar = ({ handleSaveNote }) => {
 					Picture
 				</button>
 
-				<button className="btn">Save</button>
+				<button className="btn" onClick={handleSaveNote}>
+					Save
+				</button>
 			</div>
 		</div>
 	);

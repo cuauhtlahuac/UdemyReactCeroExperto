@@ -35,7 +35,11 @@ export const updateNotesAction = (id, index, note) => {
 
 		dispatch(saveNoteAction(index, note));
 
-		
+		Swal.fire({
+			title: 'Saved',
+			icon: 'success',
+			text: `Note: ${noteTo.title}`,
+		});
 	};
 };
 
@@ -71,6 +75,8 @@ export const activateNoteAction = (id, note) => ({
 export const fileUploadAction = file => {
 	return async (dispatch, getState) => {
 		const { active: activeNote } = getState().notes;
+		let fileUrl;
+		let urlSuccess = false;
 
 		Swal.fire({
 			title: 'Uploading',
@@ -81,15 +87,18 @@ export const fileUploadAction = file => {
 			},
 		});
 
-		const fileUrl = await loadFile(file);
+		try {
+			fileUrl = await loadFile(file);
+			urlSuccess = true;
+		} catch (err) {
+			throw err;
+		}
 
-		Swal.close();
-
-		dispatch(
-			updateNotesAction(activeNote.id, activeNote.index, {
-				...activeNote,
-				url: fileUrl,
-			}),
-		);
+		if (urlSuccess) {
+			dispatch(
+				activateNoteAction(activeNote.id, { ...activeNote, url: fileUrl }),
+			);
+			Swal.close();
+		}
 	};
 };
