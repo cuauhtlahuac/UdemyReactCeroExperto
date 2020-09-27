@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { useForm } from 'hooks/useForm';
 import { updateNotesAction, activateNoteAction } from 'actions/notes';
 
 import NotesAppBar from './NotesAppBar';
+import { activeNoteValuesChanged } from 'helpers/valuesChanged';
 
 const NoteScreen = () => {
 	const { active: activeNote } = useSelector(state => state.notes);
@@ -23,26 +24,20 @@ const NoteScreen = () => {
 		[ activeNote, reset, values.id, values.url ],
 	);
 
+	const valuesChanged = useMemo(
+		() => activeNoteValuesChanged(activeNote, values),
+		[ activeNote, values ],
+	);
+
 	useEffect(
 		() => {
-			const valuesChanged =
-				activeNote.originalNote.body !== values.body ||
-				activeNote.originalNote.title !== values.title ||
-				activeNote.originalNote.url !== values.url;
-
 			if (valuesChanged) {
 				dispatch(activateNoteAction(values.id, { ...values, changed: true }));
 			} else {
 				dispatch(activateNoteAction(values.id, { ...values, changed: false }));
 			}
 		},
-		[
-			values,
-			dispatch,
-			activeNote.originalNote.body,
-			activeNote.originalNote.title,
-			activeNote.originalNote.url,
-		],
+		[ values, dispatch ],
 	);
 
 	const handleSaveNote = () => {
