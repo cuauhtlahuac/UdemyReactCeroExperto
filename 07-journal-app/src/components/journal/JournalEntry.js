@@ -10,16 +10,17 @@ const JournalEntry = ({ id, index, body, title, date, url = null }) => {
 	const dispatch = useDispatch();
 
 	const handleActive = () => {
-		dispatch(
-			activateNoteAction(id, {
-				body,
-				date,
-				index,
-				timeStamp: new Date().getTime(),
-				title,
-				url,
-			}),
-		);
+		const noteData = {
+			body,
+			date,
+			index,
+			timeStamp: new Date().getTime(),
+			title,
+			url,
+		};
+
+		const originalNote = { ...noteData };
+		dispatch(activateNoteAction(id, { ...noteData, originalNote }));
 	};
 
 	return (

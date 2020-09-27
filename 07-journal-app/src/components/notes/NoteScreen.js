@@ -24,7 +24,16 @@ const NoteScreen = () => {
 
 	useEffect(
 		() => {
-			dispatch(activateNoteAction(values.id, { ...values }));
+			const valuesChanged =
+				activeNote.originalNote.body !== values.body ||
+				activeNote.originalNote.title !== values.title ||
+				activeNote.originalNote.url !== values.url;
+
+			if (valuesChanged) {
+				dispatch(activateNoteAction(values.id, { ...values, changed: true }));
+			} else {
+				dispatch(activateNoteAction(values.id, { ...values, changed: false }));
+			}
 		},
 		[ values ],
 	);
@@ -39,7 +48,10 @@ const NoteScreen = () => {
 
 	return (
 		<div className="notes__main-content">
-			<NotesAppBar handleSaveNote={handleSaveNote} />
+			<NotesAppBar
+				handleSaveNote={handleSaveNote}
+				changed={activeNote.changed}
+			/>
 
 			<div className="notes__content">
 				<input

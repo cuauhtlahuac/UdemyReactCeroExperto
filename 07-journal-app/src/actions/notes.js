@@ -27,13 +27,15 @@ export const updateNotesAction = (id, index, note) => {
 		const noteTo = { ...note };
 
 		delete noteTo.id;
+		delete noteTo.changed;
 
 		const document = await db
 			.collection(`${uid}/journal/notes`)
 			.doc(id)
 			.update({ ...noteTo });
 
-		dispatch(saveNoteAction(index, note));
+		dispatch(saveNoteAction(index, { ...noteTo, id }));
+		dispatch(activateNoteAction(id, { ...noteTo, originalNote: noteTo }));
 
 		Swal.fire({
 			title: 'Saved',

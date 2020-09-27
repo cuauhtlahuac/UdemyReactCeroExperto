@@ -3,7 +3,7 @@ import moment from 'moment';
 import { useDispatch } from 'react-redux';
 import { fileUploadAction } from 'actions/notes';
 
-const NotesAppBar = ({ handleSaveNote }) => {
+const NotesAppBar = ({ handleSaveNote, changed = false }) => {
 	const dispatch = useDispatch();
 
 	const handleUploadPicture = () => {
@@ -36,7 +36,11 @@ const NotesAppBar = ({ handleSaveNote }) => {
 					Picture
 				</button>
 
-				<button className="btn" onClick={handleSaveNote}>
+				<button
+					className="btn btn-active"
+					disabled={!changed}
+					onClick={handleSaveNote}
+				>
 					Save
 				</button>
 			</div>
