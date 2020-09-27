@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import { useDispatch } from 'react-redux';
+
 import { fileUploadAction } from 'actions/notes';
 
 const NotesAppBar = ({ handleSaveNote, changed = false }) => {

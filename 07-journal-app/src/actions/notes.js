@@ -1,8 +1,9 @@
+import Swal from 'sweetalert2';
 import { db } from 'firebase/firebase-config';
+
 import { types } from 'types/types';
 import { loadNotes } from 'helpers/loadNotes';
 import { loadFile } from 'helpers/loadFile';
-import Swal from 'sweetalert2';
 
 export const startNewNoteAction = () => {
 	return async (dispatch, getState) => {
@@ -29,7 +30,7 @@ export const updateNotesAction = (id, index, note) => {
 		delete noteTo.id;
 		delete noteTo.changed;
 
-		const document = await db
+		await db
 			.collection(`${uid}/journal/notes`)
 			.doc(id)
 			.update({ ...noteTo });

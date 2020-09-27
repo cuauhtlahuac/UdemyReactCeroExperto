@@ -1,13 +1,13 @@
 import React from 'react';
 
-import JournalEntries from './JournalEntries';
 import { signOut } from 'actions/auth';
 import { startNewNoteAction } from 'actions/notes';
 import { useDispatch, useSelector } from 'react-redux';
 
+import JournalEntries from './JournalEntries';
+
 const Sidebar = () => {
 	const dispatch = useDispatch();
-
 	const { name } = useSelector(state => state.auth);
 
 	const handleLogout = () => {

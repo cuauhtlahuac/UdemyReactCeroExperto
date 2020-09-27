@@ -3,37 +3,41 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { useForm } from 'hooks/useForm';
-
 import { startLoginEmailPassword, startGoogleLogin } from 'actions/auth';
 
 const LoginScreen = () => {
 	const initialState = { email: 'cui13@hotmail.com', password: '123456' };
 
-	const localState = useSelector(globalState => globalState.ui);
-	
-	const { msgError, loading } = localState;
-
-	const dispatch = useDispatch();
-
 	const [ values, handleInputChange ] = useForm(initialState);
+	const dispatch = useDispatch();
+	const localState = useSelector(globalState => globalState.ui);
+
+	const { msgError, loading } = localState;
 
 	const { email, password } = values;
 
 	const handleSubmit = event => {
 		event.preventDefault();
 
-		dispatch(startLoginEmailPassword(email, password)) 
+		dispatch(startLoginEmailPassword(email, password));
 	};
 
 	const handleGoogleLogin = () => {
-			dispatch(startGoogleLogin())
-	 }
+		dispatch(startGoogleLogin());
+	};
 
 	return (
 		<React.Fragment>
 			<h3 className="auth__title mb-4">Login</h3>
 			<div className="auth_alert_error">
-				{ msgError && <span><span role="img" aria-label="warning">🚫</span> {msgError}</span> }
+				{msgError && (
+					<span>
+						<span role="img" aria-label="warning">
+							🚫
+						</span>{' '}
+						{msgError}
+					</span>
+				)}
 			</div>
 			<form autoComplete="off" onSubmit={handleSubmit}>
 				<input
@@ -54,7 +58,11 @@ const LoginScreen = () => {
 					value={password}
 				/>
 
-				<button type="submit" className="btn btn-primary btn-block mt-2" disabled={loading}>
+				<button
+					type="submit"
+					className="btn btn-primary btn-block mt-2"
+					disabled={loading}
+				>
 					Login
 				</button>
 

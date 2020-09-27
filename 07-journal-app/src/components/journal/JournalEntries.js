@@ -8,9 +8,13 @@ const JournalEntries = () => {
 
 	return (
 		<div className="journal__entries">
-			{list.map((note, index) => (
+			{
+				list.map(
+					(note, index) => (
 				<JournalEntry key={note.id} {...note} index={index} />
-			))}
+					)
+				)
+			}
 		</div>
 	);
 };

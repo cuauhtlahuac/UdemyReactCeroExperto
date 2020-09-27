@@ -20,20 +20,19 @@ const RegisterScreen = () => {
 	};
 
 	const dispatch = useDispatch();
-	// traemos un pedazo del state
-
 	const localState = useSelector(globalState => globalState.ui);
-	const { msgError } = localState;
-
 	const [ values, handleInputChange ] = useForm(initialState);
+
+	const { msgError } = localState;
 
 	const { name, email, password, password2 } = values;
 
 	const handleSubmit = e => {
 		e.preventDefault();
-		if(isAuthFormValid()){
-			dispatch( startRegisterWithFormData( email, password, name ) )
-		};
+
+		if (isAuthFormValid()) {
+			dispatch(startRegisterWithFormData(email, password, name));
+		}
 	};
 
 	const isAuthFormValid = () => {
@@ -51,9 +50,11 @@ const RegisterScreen = () => {
 
 		if (error.status) {
 			dispatch(uiSetErrorAction(error.msg));
+
 			return false;
 		} else {
 			dispatch(uiRemoveErrorAction());
+
 			return true;
 		}
 	};
@@ -62,7 +63,14 @@ const RegisterScreen = () => {
 		<React.Fragment>
 			<h3 className="auth__title mb-4">Login</h3>
 			<div className="auth_alert_error">
-				{ msgError && <span><span role="img" aria-label="warning">🚫</span> {msgError}</span> }
+				{msgError && (
+					<span>
+						<span role="img" aria-label="warning">
+							🚫
+						</span>{' '}
+						{msgError}
+					</span>
+				)}
 			</div>
 			<form autoComplete="off" onSubmit={handleSubmit}>
 				<input
