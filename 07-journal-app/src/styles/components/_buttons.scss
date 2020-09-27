@@ -1,3 +1,4 @@
+$border-width: .15rem;
 .btn {
 	background-color: transparent;
 	border: none;
@@ -8,12 +9,53 @@
 
 	transition: color .3s ease;
 
-	&:focus {
-		outline: none;
+	&.btn-active:not(:disabled) {
+		@keyframes changeBgc {
+			from {
+				background-color: $primary;
+				border: $border-width white solid;
+			}
+			to {
+				background-color: adjust-color(
+					$color: invert($primary),
+					$hue: 0,
+					$saturation: 50%,
+					$lightness: 10%,
+					$alpha: 1.0
+				);
+				color: darken($primary, 30);
+				border: $border-width invert($color: white) solid;
+			}
+		}
+
+		border-radius: .3rem;
+		background-color: darken($color: $primary, $amount: 10);
+		transition-property: border color;
+		transition-duration: 1s;
+
+		& {
+			animation-name: changeBgc;
+			animation-duration: 3s;
+			animation-iteration-count: infinite;
+			animation-direction: alternate;
+		}
 	}
 
-	&:hover {
-		color: darken($color: white, $amount: 30);
+	&.btn-active {
+		&:disabled {
+			color: darken($primary, 10);
+			border: $border-width darken($primary, 10) solid;
+			transition-property: color;
+			transition-duration: 1s;
+		}
+
+		&:focus {
+			outline: none;
+		}
+
+		&:hover:not(:disabled) {
+			color: darken($color: white, $amount: 30);
+		}
 	}
 }
 
