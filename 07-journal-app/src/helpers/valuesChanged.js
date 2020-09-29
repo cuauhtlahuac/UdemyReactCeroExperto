@@ -17,15 +17,16 @@ export const activeNoteValuesChanged = values => {
 			)
 		) {
 			currentValues = { ...currentValues, changed: true };
-		} else if (
-			currentValues.originalNote.url &&
-			currentValues.originalNote.url.length >= 0 &&
-			Boolean(
-				currentValues.originalNote.url.localeCompare(currentValues.url) !== 0,
-			)
-		) {
-			currentValues = { ...currentValues, changed: true };
-		}
+		} else if (currentValues.url && currentValues.url.length >= 0)
+			if (typeof currentValues.url !== typeof currentValues.originalNote.url) {
+				currentValues = { ...currentValues, changed: true };
+			} else if (
+				Boolean(
+					currentValues.originalNote.url.localeCompare(currentValues.url) !== 0,
+				)
+			) {
+				currentValues = { ...currentValues, changed: true };
+			}
 	}
 
 	return currentValues;

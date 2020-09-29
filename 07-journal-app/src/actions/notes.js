@@ -8,17 +8,40 @@ import { activeNoteValuesChanged } from 'helpers/valuesChanged';
 
 export const startNewNoteAction = () => {
 	return async (dispatch, getState) => {
-		const { uid } = getState().auth;
+		const { auth, notes } = getState();
+		const { uid } = auth;
+		const { list } = notes;
 
 		const newNote = {
 			title: '',
 			body: '',
 			date: new Date().getTime(),
+			url: null,
 		};
 
 		const document = await db.collection(`${uid}/journal/notes`).add(newNote);
 
-		dispatch(activateNoteAction(document.id, newNote));
+		dispatch(saveNewNoteAction(document.id, list.length, newNote));
+	};
+};
+
+export const saveNewNoteAction = (id, index, newNote) => {
+	return dispatch => {
+		dispatch(saveNoteAction(index, { ...newNote, id, index }));
+
+		dispatch(
+			activateNoteAction(id, {
+				...newNote,
+				originalNote: newNote,
+				index,
+			}),
+		);
+
+		Swal.fire({
+			title: 'Created',
+			icon: 'success',
+			text: `New Note, put a title and text, then save it`,
+		});
 	};
 };
 
@@ -30,6 +53,7 @@ export const updateNotesAction = (id, index, note) => {
 
 		delete noteTo.id;
 		delete noteTo.changed;
+		delete noteTo.originalNote;
 
 		await db.collection(`${uid}/journal/notes`).doc(id).update({ ...noteTo });
 
