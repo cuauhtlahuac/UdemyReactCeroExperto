@@ -1,4 +1,15 @@
 $border-width: .15rem;
+@mixin background-button-color($hue){
+	background-color: adjust-color(
+					$color: invert($primary),
+					$hue: $hue,
+					$saturation: 50%,
+					$lightness: 10%,
+					$alpha: 1.0
+				);
+}
+
+
 .btn {
 	background-color: transparent;
 	border: none;
@@ -12,17 +23,12 @@ $border-width: .15rem;
 	&.btn-active:not(:disabled) {
 		@keyframes changeBgc {
 			from {
-				background-color: $primary;
+				@include background-button-color(300);
 				border: $border-width white solid;
+				color: white;
 			}
 			to {
-				background-color: adjust-color(
-					$color: invert($primary),
-					$hue: 0,
-					$saturation: 50%,
-					$lightness: 10%,
-					$alpha: 1.0
-				);
+				@include background-button-color(0);
 				color: darken($primary, 30);
 				border: $border-width invert($color: white) solid;
 			}
