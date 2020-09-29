@@ -3,14 +3,14 @@ export const activeNoteValuesChanged = values => {
 
 	if (values.hasOwnProperty('originalNote')) {
 		if (
-			currentValues.originalNote.body &&
+			currentValues.originalNote.body >= 0 &&
 			Boolean(
 				currentValues.originalNote.body.localeCompare(currentValues.body) !== 0,
 			)
 		) {
 			currentValues = { ...currentValues, changed: true };
 		} else if (
-			currentValues.originalNote.title &&
+			currentValues.originalNote.title.length >= 0 &&
 			Boolean(
 				currentValues.originalNote.title.localeCompare(currentValues.title) !==
 					0,
@@ -18,7 +18,8 @@ export const activeNoteValuesChanged = values => {
 		) {
 			currentValues = { ...currentValues, changed: true };
 		} else if (
-			currentValues.originalNote.title &&
+			currentValues.originalNote.url &&
+			currentValues.originalNote.url.length >= 0 &&
 			Boolean(
 				currentValues.originalNote.url.localeCompare(currentValues.url) !== 0,
 			)
