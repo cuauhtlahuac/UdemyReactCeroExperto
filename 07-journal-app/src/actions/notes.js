@@ -100,6 +100,31 @@ export const activateNoteAction = (id, note) => {
 	};
 };
 
+export const deleteNoteAction = (noteId) => {
+	return async (dispatch, getState) => {
+		const { uid } = getState().auth;
+		try {
+			await db.collection(`${uid}/journal/notes`).doc(noteId).delete()
+			Swal.fire({
+				title: 'Note deleted',
+				icon: "success",
+				timer: 1500,
+				allowOutsideClick: false,
+				showConfirmButton: false,
+			})
+		} catch (error) {
+			Swal.fire({
+				title: 'Something went wrong',
+				text: 'Please try again',
+				icon: "error",
+				timer: 1500,
+				allowOutsideClick: false,
+				showConfirmButton: false,
+			})
+		}
+	}
+}
+
 export const fileUploadAction = file => {
 	return async (dispatch, getState) => {
 		const { active: activeNote } = getState().notes;
