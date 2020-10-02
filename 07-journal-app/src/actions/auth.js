@@ -9,6 +9,8 @@ import {
 	uiFinishLoading,
 } from 'actions/ui';
 
+import { cleanNotesAction } from './notes';
+
 export const startLoginEmailPassword = (email, password) => {
 	return async dispatch => {
 		try {
@@ -65,6 +67,7 @@ export const signOut = () => {
 		try {
 			await firebase.auth().signOut();
 			dispatch(logoutAction());
+			dispatch(cleanNotesAction());
 		} catch (err) {
 			Swal.fire('Error!', `${err.message}`, 'error');
 		}

@@ -91,6 +91,12 @@ export const saveNoteAction = (index, note) => ({
 	},
 });
 
+export const cleanNotesAction = () => {
+	return {
+		type: types.notesLogoutAndClean,
+	}
+}
+
 export const activateNoteAction = (id, note) => {
 	const newNote = activeNoteValuesChanged(note);
 	return {
