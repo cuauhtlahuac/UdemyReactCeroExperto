@@ -64,6 +64,8 @@ export const updateNotesAction = (id, index, note) => {
 			title: 'Saved',
 			icon: 'success',
 			text: `Note: ${noteTo.title}`,
+			showConfirmButton: false,
+			timer: 1000,
 		});
 	};
 };
@@ -89,6 +91,12 @@ export const saveNoteAction = (index, note) => ({
 	},
 });
 
+export const cleanNotesAction = () => {
+	return {
+		type: types.notesLogoutAndClean,
+	}
+}
+
 export const activateNoteAction = (id, note) => {
 	const newNote = activeNoteValuesChanged(note);
 	return {
@@ -99,6 +107,35 @@ export const activateNoteAction = (id, note) => {
 		},
 	};
 };
+
+export const deleteNoteAction = (noteId) => {
+	return async (dispatch, getState) => {
+		const { uid } = getState().auth;
+		try {
+			await db.collection(`${uid}/journal/notes`).doc(noteId).delete();
+			dispatch(deleteNoteStoredAction(noteId));
+			Swal.fire({
+				title: 'Note deleted',
+				icon: "success",
+				timer: 1500,
+				showConfirmButton: false,
+			})
+		} catch (error) {
+			Swal.fire({
+				title: 'Something went wrong',
+				text: 'Please try again',
+				icon: "error",
+				timer: 1500,
+				showConfirmButton: false,
+			})
+		}
+	}
+}
+
+export const deleteNoteStoredAction = (noteId) => ({
+	type: types.notesDelete,
+	payload: { id: noteId },
+})
 
 export const fileUploadAction = file => {
 	return async (dispatch, getState) => {
