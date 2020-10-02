@@ -1,6 +1,6 @@
 import Swal from 'sweetalert2';
 import { db } from 'firebase/firebase-config';
-
+// one contribution
 import { types } from 'types/types';
 import { loadNotes } from 'helpers/loadNotes';
 import { loadFile } from 'helpers/loadFile';
