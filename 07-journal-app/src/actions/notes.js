@@ -1,6 +1,6 @@
 import Swal from 'sweetalert2';
 import { db } from 'firebase/firebase-config';
-// one contribution
+
 import { types } from 'types/types';
 import { loadNotes } from 'helpers/loadNotes';
 import { loadFile } from 'helpers/loadFile';
@@ -21,31 +21,33 @@ export const startNewNoteAction = () => {
 
 		const document = await db.collection(`${uid}/journal/notes`).add(newNote);
 
-		dispatch(saveNewNoteAction(document.id, list.length, newNote));
+		dispatch(saveNewNoteAction(document.id, newNote));
 	};
 };
 
-export const saveNewNoteAction = (id, index, newNote) => {
-	return dispatch => {
-		dispatch(saveNoteAction(index, { ...newNote, id, index }));
+export const saveNewNoteAction = (id, newNote) => dispatch => {
+	dispatch(addNewNoteAction(id, newNote));
 
-		dispatch(
-			activateNoteAction(id, {
-				...newNote,
-				originalNote: newNote,
-				index,
-			}),
-		);
+	dispatch(
+		activateNoteAction(id, {
+			...newNote,
+			originalNote: newNote,
+		}),
+	);
 
-		Swal.fire({
-			title: 'Created',
-			icon: 'success',
-			text: `New Note, put a title and text, then save it`,
-		});
-	};
+	Swal.fire({
+		title: 'Created',
+		icon: 'success',
+		text: `New Note, put a title and text, then save it`,
+	});
 };
 
-export const updateNotesAction = (id, index, note) => {
+export const addNewNoteAction = (id, newNote) => ({
+	type: types.notesAddNew,
+	payload: { id, newNote },
+});
+
+export const updateNotesAction = (id, note) => {
 	return async (dispatch, getState) => {
 		const { uid } = getState().auth;
 
@@ -57,7 +59,7 @@ export const updateNotesAction = (id, index, note) => {
 
 		await db.collection(`${uid}/journal/notes`).doc(id).update({ ...noteTo });
 
-		dispatch(saveNoteAction(index, { ...noteTo, id }));
+		dispatch(saveNoteAction(id, { ...noteTo, id }));
 		dispatch(activateNoteAction(id, { ...noteTo, originalNote: noteTo }));
 
 		Swal.fire({
@@ -83,10 +85,10 @@ export const loadNotesAction = notes => ({
 	payload: notes,
 });
 
-export const saveNoteAction = (index, note) => ({
+export const saveNoteAction = (id, note) => ({
 	type: types.notesUpdated,
 	payload: {
-		index,
+		id,
 		note,
 	},
 });
@@ -94,8 +96,8 @@ export const saveNoteAction = (index, note) => ({
 export const cleanNotesAction = () => {
 	return {
 		type: types.notesLogoutAndClean,
-	}
-}
+	};
+};
 
 export const activateNoteAction = (id, note) => {
 	const newNote = activeNoteValuesChanged(note);
@@ -108,7 +110,7 @@ export const activateNoteAction = (id, note) => {
 	};
 };
 
-export const deleteNoteAction = (noteId) => {
+export const deleteNoteAction = noteId => {
 	return async (dispatch, getState) => {
 		const { uid } = getState().auth;
 		try {
@@ -116,26 +118,26 @@ export const deleteNoteAction = (noteId) => {
 			dispatch(deleteNoteStoredAction(noteId));
 			Swal.fire({
 				title: 'Note deleted',
-				icon: "success",
+				icon: 'success',
 				timer: 1500,
 				showConfirmButton: false,
-			})
+			});
 		} catch (error) {
 			Swal.fire({
 				title: 'Something went wrong',
 				text: 'Please try again',
-				icon: "error",
+				icon: 'error',
 				timer: 1500,
 				showConfirmButton: false,
-			})
+			});
 		}
-	}
-}
+	};
+};
 
-export const deleteNoteStoredAction = (noteId) => ({
+export const deleteNoteStoredAction = noteId => ({
 	type: types.notesDelete,
 	payload: { id: noteId },
-})
+});
 
 export const fileUploadAction = file => {
 	return async (dispatch, getState) => {

@@ -2,7 +2,11 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { useForm } from 'hooks/useForm';
-import { updateNotesAction, activateNoteAction, deleteNoteAction } from 'actions/notes';
+import {
+	updateNotesAction,
+	activateNoteAction,
+	deleteNoteAction,
+} from 'actions/notes';
 
 import NotesAppBar from './NotesAppBar';
 
@@ -10,7 +14,7 @@ const NoteScreen = () => {
 	const { active: activeNote } = useSelector(state => state.notes);
 	const dispatch = useDispatch();
 
-	const [values, handleInputChange, reset] = useForm(activeNote);
+	const [ values, handleInputChange, reset ] = useForm(activeNote);
 
 	const { body, title, url } = values;
 
@@ -20,19 +24,19 @@ const NoteScreen = () => {
 				reset(activeNote);
 			}
 		},
-		[activeNote, reset, values.id, values.url],
+		[ activeNote, reset, values.id, values.url ],
 	);
 
 	useEffect(
 		() => {
 			dispatch(activateNoteAction(values.id, { ...values }));
 		},
-		[values, dispatch],
+		[ values, dispatch ],
 	);
 
 	const handleSaveNote = () => {
 		dispatch(
-			updateNotesAction(values.id, activeNote.index, {
+			updateNotesAction(values.id, {
 				...values,
 			}),
 		);
@@ -40,7 +44,7 @@ const NoteScreen = () => {
 
 	const handleDelete = () => {
 		dispatch(deleteNoteAction(values.id));
-	}
+	};
 
 	return (
 		<div className="notes__main-content">
@@ -72,7 +76,9 @@ const NoteScreen = () => {
 					</div>
 				)}
 			</div>
-			<button className="btn btn-danger" onClick={handleDelete}>delete</button>
+			<button className="btn btn-danger" onClick={handleDelete}>
+				delete
+			</button>
 		</div>
 	);
 };

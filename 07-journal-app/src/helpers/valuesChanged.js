@@ -3,7 +3,7 @@ export const activeNoteValuesChanged = values => {
 
 	if (values.hasOwnProperty('originalNote')) {
 		if (
-			currentValues.originalNote.body >= 0 &&
+			currentValues.originalNote.body.length >= 0 &&
 			Boolean(
 				currentValues.originalNote.body.localeCompare(currentValues.body) !== 0,
 			)

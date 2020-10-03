@@ -1,3 +1,5 @@
+import findIndex from 'lodash/findIndex';
+
 import { types } from 'types/types';
 
 const initialState = {
@@ -16,9 +18,11 @@ export const notesReducer = (state = initialState, { type, payload }) => {
 			};
 
 		case types.notesUpdated:
+			const index = findIndex(state.list, note => note.id === payload.id );
+
 			const newList = [...state.list];
 
-			newList[payload.index] = payload.note;
+			newList[index] = payload.note;
 
 			return {
 				...state,
@@ -29,6 +33,12 @@ export const notesReducer = (state = initialState, { type, payload }) => {
 			return {
 				...state,
 				list: payload,
+			};
+
+		case types.notesAddNew:
+			return {
+				...state,
+				list: [{ ...payload.newNote, id: payload.id }, ...state.list],
 			};
 
 		case types.notesDelete:
@@ -42,10 +52,7 @@ export const notesReducer = (state = initialState, { type, payload }) => {
 			}
 
 		case types.notesLogoutAndClean:
-			return {
-				list: [],
-				active: null,
-			}
+			return initialState;
 
 		default:
 			return state;

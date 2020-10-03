@@ -24,7 +24,7 @@ export const loadFile = async file => {
 			Swal.fire({
 				titleText: 'Upload Image Error',
 				icon: 'error',
-				text: `${cloudResp}`,
+				text: 'Something went wrong',
 				footer: 'We are sorry',
 			});
 			throw cloudResp;
@@ -32,9 +32,9 @@ export const loadFile = async file => {
 	} catch (err) {
 		Swal.close();
 		Swal.fire({
-			titleText: 'Upload Image Error',
+			titleText: 'Upload Image Error!',
 			icon: 'error',
-			text: `${err}`,
+			text: `${err.error.message}`,
 			footer: 'Please check your connection',
 		});
 		throw err;

@@ -14,4 +14,5 @@ export const types = {
 	notesFileUrl: 'Notes/Update file url',
 	notesDelete: 'Notes/Delete note',
 	notesLogoutAndClean: 'Notes/Logout and clean',
+	notesAddNew: 'Notes/Add new note',
 };
