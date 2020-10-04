@@ -24,7 +24,10 @@ const JournalEntry = ({ id, index, body, title, date, url = null }) => {
 	};
 
 	return (
-		<div className="journal__entry pointer" onClick={handleActive}>
+		<div className="journal__entry pointer
+										animate__animated
+										animate__bounceInDown"
+				 onClick={handleActive}>
 			{url && (
 				<div
 					className="journal__entry-picture"

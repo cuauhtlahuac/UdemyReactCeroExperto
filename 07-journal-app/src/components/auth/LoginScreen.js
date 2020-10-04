@@ -27,7 +27,7 @@ const LoginScreen = () => {
 	};
 
 	return (
-		<React.Fragment>
+		<div className="animate__animated animate__fadeIn">
 			<h3 className="auth__title mb-4">Login</h3>
 			<div className="auth_alert_error">
 				{msgError && (
@@ -88,7 +88,7 @@ const LoginScreen = () => {
 					Create a new account
 				</Link>
 			</form>
-		</React.Fragment>
+		</div>
 	);
 };
 
