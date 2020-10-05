@@ -47,20 +47,22 @@ export const addNewNoteAction = (id, newNote) => ({
 	payload: { id, newNote },
 });
 
-export const updateNotesAction = (id, note) => {
+export const updateNotesAction = ( id ) => {
 	return async (dispatch, getState) => {
 		const { uid } = getState().auth;
+		const { active: note } = getState().notes;
 
 		const noteTo = { ...note };
 
 		delete noteTo.id;
 		delete noteTo.changed;
 		delete noteTo.originalNote;
+		delete noteTo.saved;
 
 		await db.collection(`${uid}/journal/notes`).doc(id).update({ ...noteTo });
 
 		dispatch(saveNoteAction(id, { ...noteTo, id }));
-		dispatch(activateNoteAction(id, { ...noteTo, originalNote: noteTo }));
+		dispatch(activateNoteAction(id, { ...noteTo, originalNote: noteTo, saved: true }));
 
 		Swal.fire({
 			title: 'Saved',
