@@ -22,9 +22,9 @@ const JournalEntry = ({ id, index, body, title, date, url = null }) => {
 
 	const originalNote = { ...noteData };
 
+	const activeEntry = Boolean(active && id === active.id);
 	const handleActive = () => {
 		if (active && !active.saved && active.changed) {
-
 			Swal.fire({
 				title: "Note doesn't saved",
 				text:
@@ -36,12 +36,10 @@ const JournalEntry = ({ id, index, body, title, date, url = null }) => {
 			}).then(({ isConfirmed, isDenied }) => {
 				if (isConfirmed) {
 					dispatch(updateNotesAction(active.id));
-
 				} else {
 					dispatch(activateNoteAction(id, { ...noteData, originalNote }));
 				}
 			});
-
 		} else {
 			dispatch(activateNoteAction(id, { ...noteData, originalNote }));
 		}
@@ -49,9 +47,10 @@ const JournalEntry = ({ id, index, body, title, date, url = null }) => {
 
 	return (
 		<div
-			className="journal__entry pointer
+			className={`journal__entry pointer
 										animate__animated
-										animate__bounceInDown"
+										animate__bounceInDown
+										${activeEntry && 'entry_active'}`}
 			onClick={handleActive}
 		>
 			{url && (
@@ -68,8 +67,10 @@ const JournalEntry = ({ id, index, body, title, date, url = null }) => {
 					<p className="journal__entry-title">{title}</p>
 					<p className="journal__entry-content">{body}</p>
 				</section>
+
 				<div className="journal__entry-date-box">
 					<span>{noteDate.format('dddd')}</span>
+
 					<h4>{noteDate.format('DD')}</h4>
 				</div>
 			</div>

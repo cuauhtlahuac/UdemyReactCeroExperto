@@ -40,18 +40,32 @@
 .journal__entries {
 	flex: 1 1 auto;
 	margin-top: 30px;
-  overflow: auto;
-  padding: 0 5px;
+	overflow: auto;
+	padding: 0 5px;
 }
 
 .journal__entry {
 	background-color: white;
 	border-radius: 4px;
-  color: $dark-gray;
+	color: $dark-gray;
 	display: flex;
 	margin-bottom: 10px;
 	flex-direction: row;
 	overflow: hidden;
+
+	&:hover {
+		color: darken($color: black, $amount: 60);
+		background-color: darken($color: white, $amount: 10);
+	}
+}
+
+.entry_active {
+	background-color: darken($color:$primary, $amount: 10);
+	color: lighten($color:$primary, $amount: 39);
+	&:hover {
+		background-color: darken($color:$primary, $amount: 15);
+		color: lighten($color:$primary, $amount: 35);
+	}
 }
 
 .journal__entry-picture {
@@ -81,10 +95,10 @@
 .journal__entry-content {
 	font-size: 10px;
 	overflow: hidden;
-  text-overflow: ellipsis;
-  text-align: justify;
-  line-clamp: 2;
-  box-decoration-break: slice;
+	text-overflow: ellipsis;
+	text-align: justify;
+	line-clamp: 2;
+	box-decoration-break: slice;
 }
 
 .journal__entry-date-box {
