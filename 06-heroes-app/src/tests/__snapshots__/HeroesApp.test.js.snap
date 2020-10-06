@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeroesApp tests should render correctly 1`] = `
+<ContextProvider
+  value={
+    Object {
+      "dispatch": [Function],
+      "user": Object {
+        "logged": false,
+      },
+    }
+  }
+>
+  <AppRouter />
+</ContextProvider>
+`;
