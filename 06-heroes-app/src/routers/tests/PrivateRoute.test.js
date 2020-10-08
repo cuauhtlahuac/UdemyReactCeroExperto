@@ -1,28 +1,22 @@
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import React from 'react';
+import { MemoryRouter } from 'react-router-dom';
 import PrivateRoute from 'routers/PrivateRoute';
 
 describe('Pruebas de <PrivateRoute />', () => {
-  let props = {};
-  let component = () => <p>x</p>;
+	const props = {
+    isAuthenticated: false,
+    component: () => <span>dokdokd</span>,
+    location: { pathname: '/', key: 'koskoks' },
+  };;
 
-	beforeEach(() => {
-		props = {
-			isAuthenticated: false,
-			component: jest.fn(() => <p>dokdokd</p>),
-			location: { pathname: '/' },
-		};
-    component = shallow(<PrivateRoute {...props} />);
-	});
-
-	test('should render correctly', () => {
-
-    expect(component).toMatchSnapshot();
-	});
-  
 	test('should show component if isAuthenticated and save in localStorage', () => {
-    component.setProps({...props, isAuthenticated: true })
-    
-    expect(component).toMatchSnapshot();
-  });
+		const component = mount(
+			<MemoryRouter>
+				<PrivateRoute {...props} isAuthenticated={true} />
+			</MemoryRouter>,
+		);
+
+		expect(component.find('span').exists()).toBe(true);
+	});
 });
