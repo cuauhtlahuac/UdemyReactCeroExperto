@@ -1,6 +1,7 @@
 import { shallow, mount } from 'enzyme';
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
+
 import PrivateRoute from 'routers/PrivateRoute';
 
 describe('Pruebas de <PrivateRoute />', () => {
@@ -8,7 +9,9 @@ describe('Pruebas de <PrivateRoute />', () => {
     isAuthenticated: false,
     component: () => <span>dokdokd</span>,
     location: { pathname: '/', key: 'koskoks' },
-  };;
+	};
+	
+	Storage.prototype.setItem = jest.fn(); // Web Storage Api
 
 	test('should show component if isAuthenticated and save in localStorage', () => {
 		const component = mount(
@@ -19,4 +22,8 @@ describe('Pruebas de <PrivateRoute />', () => {
 
 		expect(component.find('span').exists()).toBe(true);
 	});
+
+	test('should call local storage setItem method', () => {
+		expect(localStorage.setItem).toHaveBeenCalledWith('lastPath', '/');
+	})
 });
