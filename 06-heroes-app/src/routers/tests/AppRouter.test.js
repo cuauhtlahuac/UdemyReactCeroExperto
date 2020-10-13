@@ -20,7 +20,11 @@ describe('<PrivateRoute /> Tests', () => {
 		);
 	});
 
-	test('should show component if is not Authenticated and save in localStorage', () => {
+	afterEach(()=>{
+		component.unmount;
+	})
+
+	test('should render correctly', () => {
 		expect(component).toMatchSnapshot();
 	});
 });
