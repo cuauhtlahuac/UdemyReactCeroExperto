@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NavBar /> should render correctly 1`] = `
+<nav
+  className="navbar navbar-expand-sm navbar-dark bg-dark p-3"
+>
+  <a
+    className="navbar-brand"
+    href="/"
+    onClick={[Function]}
+  >
+    Home
+  </a>
+  <div
+    className="navbar-collapse"
+  >
+    <div
+      className="navbar-nav"
+    >
+      <a
+        aria-current={null}
+        className="nav-item nav-link"
+        href="/marvel"
+        onClick={[Function]}
+      >
+        Marvel
+      </a>
+      <a
+        aria-current={null}
+        className="nav-item nav-link"
+        href="/dc"
+        onClick={[Function]}
+      >
+        DC
+      </a>
+      <a
+        aria-current={null}
+        className="nav-item nav-link"
+        href="/search"
+        onClick={[Function]}
+      >
+        Search
+      </a>
+    </div>
+  </div>
+  <div
+    className="navbar-collapse collapse w-100 order-3 dual-collapse2"
+  >
+    <ul
+      className="navbar-nav ml-auto"
+    >
+      <span
+        className="nav-item nav-link text-info"
+      />
+      <button
+        className="nav-item nav-link btn btn-outline-primary"
+        onClick={[Function]}
+      >
+        Logout
+      </button>
+    </ul>
+  </div>
+</nav>
+`;
