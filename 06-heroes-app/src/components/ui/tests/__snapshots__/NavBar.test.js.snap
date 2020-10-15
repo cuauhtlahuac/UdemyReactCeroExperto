@@ -6,7 +6,6 @@ exports[`<NavBar /> should render correctly 1`] = `
 >
   <a
     className="navbar-brand"
-    href="/"
     onClick={[Function]}
   >
     Home
@@ -20,7 +19,6 @@ exports[`<NavBar /> should render correctly 1`] = `
       <a
         aria-current={null}
         className="nav-item nav-link"
-        href="/marvel"
         onClick={[Function]}
       >
         Marvel
@@ -28,7 +26,6 @@ exports[`<NavBar /> should render correctly 1`] = `
       <a
         aria-current={null}
         className="nav-item nav-link"
-        href="/dc"
         onClick={[Function]}
       >
         DC
@@ -36,7 +33,6 @@ exports[`<NavBar /> should render correctly 1`] = `
       <a
         aria-current={null}
         className="nav-item nav-link"
-        href="/search"
         onClick={[Function]}
       >
         Search
@@ -51,7 +47,9 @@ exports[`<NavBar /> should render correctly 1`] = `
     >
       <span
         className="nav-item nav-link text-info"
-      />
+      >
+        John Titor
+      </span>
       <button
         className="nav-item nav-link btn btn-outline-primary"
         onClick={[Function]}
