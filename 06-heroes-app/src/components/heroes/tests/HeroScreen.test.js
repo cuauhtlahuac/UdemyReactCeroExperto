@@ -11,12 +11,12 @@ describe('Tests <HeroScreen />', () => {
 	};
 
 	const component = mount(
-		<MemoryRouter>
+		<MemoryRouter initialEntries={['/hero']}>
 			<HeroesScreen history={historyMock} />
 		</MemoryRouter>,
 	);
 
-	test('should render correctly', () => {
-		expect(component).toMatchSnapshot();
+	test('should show the component redirect if don\'t have arguments', () => {
+		expect(component.find('Redirect').exists()).toBe(true);
 	});
 });
