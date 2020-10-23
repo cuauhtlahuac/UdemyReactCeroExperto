@@ -1,10 +1,11 @@
 import React from 'react';
 import { MemoryRouter, Route } from 'react-router-dom';
-const { mount } = require('enzyme');
 
 import SearchScreen from '../SearchScreen';
 
-describe('<SearchScreen /> Tests', () => {
+const { mount } = require('enzyme');
+
+describe('<SearchScreen /> Basic Tests', () => {
 	const component = mount(
 		<MemoryRouter initialEntries={[ '/search' ]}>
 			<Route path="/" component={SearchScreen} />
@@ -21,19 +22,35 @@ describe('<SearchScreen /> Tests', () => {
 		);
 	});
 
-	describe('', () => {
+	describe('<SearchScreen /> Complex Tests', () => {
 		const component = mount(
 			<MemoryRouter initialEntries={[ '/search?q=batman' ]}>
 				<Route path="/search" component={SearchScreen} />
 			</MemoryRouter>,
 		);
+
 		test('should update data when url change', () => {
 			expect(component.find('div.alert-info').exists()).not.toBe(true);
 
 			expect(component.find('h5.card-title').text()).toBe('Batman');
 		});
+
 		test('should clear the text input', () => {
 			expect(component.find('input[name="searchText"]').prop('value')).toBe('');
+		});
+
+		test('should show error if a hero is not found', () => {
+			const villain = 'Octopus';
+
+			const component = mount(
+				<MemoryRouter initialEntries={[ `/search?q=${villain}` ]}>
+					<Route path="/search" component={SearchScreen} />
+				</MemoryRouter>,
+			);
+
+			expect(component.find('div.alert-danger').text()).toBe(
+				`Hero "${villain}" don't found`,
+			);
 		});
 	});
 });

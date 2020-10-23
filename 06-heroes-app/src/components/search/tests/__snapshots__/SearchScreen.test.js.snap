@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SearchScreen /> Tests should render correctly 1`] = `
+exports[`<SearchScreen /> Basic Tests should render correctly 1`] = `
 <div>
   <div
     className="row"
