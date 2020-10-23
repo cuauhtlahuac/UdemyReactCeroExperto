@@ -23,6 +23,10 @@ describe('<SearchScreen /> Basic Tests', () => {
 	});
 
 	describe('<SearchScreen /> Complex Tests', () => {
+		const history = {
+			push: jest.fn(),
+		};
+
 		const component = mount(
 			<MemoryRouter initialEntries={[ '/search?q=batman' ]}>
 				<Route path="/search" component={SearchScreen} />
@@ -51,6 +55,31 @@ describe('<SearchScreen /> Basic Tests', () => {
 			expect(component.find('div.alert-danger').text()).toBe(
 				`Hero "${villain}" don't found`,
 			);
+		});
+
+		test('should call history push', () => {
+			const hero = 'Spider';
+
+			const component = mount(
+				<MemoryRouter initialEntries={[ `/search?q=${hero}` ]}>
+					<Route
+						path="/search"
+						component={props => <SearchScreen history={history} />}
+					/>
+				</MemoryRouter>,
+			);
+
+			const input = component.find('input');
+			input.simulate('change', {
+				target: {
+					name: 'searchText',
+					value: hero,
+				},
+			});
+
+			component.find('form').simulate('submit');
+
+			expect(history.push).toHaveBeenCalledWith(`?q=${hero}`);
 		});
 	});
 });
