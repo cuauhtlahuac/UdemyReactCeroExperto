@@ -16,4 +16,6 @@
     2.  Para desminificar en vscode presionamos View->command palet->escribir format document.
     3.  Todos los href se tiene que agregar un . antes del slash, excepto por los que son CDN
     4.  Volvemos a hacer push
-11. Nuevamente esperar a que se ponga en verde, darl click y ya debe funcionar.
+11. Nuevamente esperar a que se ponga en verde, dar click y ya debe funcionar.
+
+12. ***Alternativa***: Este [link](https://dev.to/yuribenjamin/how-to-deploy-react-app-in-github-pages-2a1f) explica una forma muy sencilla de hacer el deploy en github
