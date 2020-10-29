@@ -1,10 +1,13 @@
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
+import 'moment/locale/es'
 
 import NavBar from 'components/ui/NavBar';
 import { messages } from 'components/utils/calendar-messages-es';
 
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+
+moment.locale('es')
 
 const localizer = momentLocalizer(moment);
 
