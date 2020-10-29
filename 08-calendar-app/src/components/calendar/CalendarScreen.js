@@ -1,7 +1,8 @@
-import NavBar from 'components/ui/NavBar';
-import React from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
+
+import NavBar from 'components/ui/NavBar';
+import { messages } from 'components/utils/calendar-messages-es';
 
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
@@ -11,7 +12,7 @@ const events = [
 	{
 		title: 'cumpleaños',
 		start: moment().toDate(),
-		end: moment().add(2, 'hours').toDate(),
+		end: moment().add(5, 'hours').toDate(),
 		bgcolor: '#fa09f5',
 	},
 ];
@@ -26,6 +27,7 @@ const CalendarScreen = () => {
 				events={events}
 				startAccessor="start"
 				endAccessor="end"
+				messages={messages}
 			/>
 		</div>
 	);
