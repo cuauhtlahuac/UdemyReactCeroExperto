@@ -23,6 +23,16 @@ const events = [
 const eventStyleGetter = ( event, start, end, isSelected ) => {
 	console.log(event, start, end, isSelected)
 
+	const style = {
+		backgroundColor: "blue",
+		borderRadius: 0,
+		opacity: 0.8,
+		display: 'block'
+	}
+
+	return {
+		style
+	}
 }
 
 const CalendarScreen = () => {
