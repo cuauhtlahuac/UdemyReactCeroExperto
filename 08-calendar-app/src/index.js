@@ -5,9 +5,7 @@ import CalendarApp from './CalendarApp'
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <CalendarApp />
-  </React.StrictMode>,
+    <CalendarApp />,
   document.getElementById('root')
 );
 
