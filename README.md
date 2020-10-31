@@ -35,3 +35,4 @@
 * [Moment js](https://momentjs.com/)
 * [cloudinary](https://cloudinary.com/): *Use Cloudinary to efficiently create, manage, and deliver images, videos and other media, personalized and optimized for every device and channel.*
 * [React big calendar](https://www.npmjs.com/package/react-big-calendar)
+* [FullCalendar](https://github.com/fullcalendar/fullcalendar) & [FC-React-Docs](https://fullcalendar.io/docs/react)
