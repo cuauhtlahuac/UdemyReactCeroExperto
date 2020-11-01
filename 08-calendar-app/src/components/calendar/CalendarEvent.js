@@ -1,12 +1,15 @@
-import React from 'react';
+cimport React from 'react';
 
-const CalendarEvent = ({event}) => {
-  console.log({event});
-  return (
-    <div>
-      <span>Hola Mundo</span>
-    </div>
-  )
-}
+alendarconst CalendarEvent = ({ event }) => {
+	console.log({ event });
+  const { title, name, extendedProps} = event;
+  const { user = {} } = extendedProps;
+	return (
+		<div style={{ height: 100 }}>
+			<span>{title}</span>
+			<strong> - {user.name || ''}</strong>
+		</div>
+	);
+};
 
-export default CalendarEvent
+export default CalendarEvent;

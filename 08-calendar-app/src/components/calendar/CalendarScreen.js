@@ -18,6 +18,16 @@ const events = [
 		start: moment().toDate(),
 		end: moment().add(2, 'hours').toDate(),
 		bgcolor: '#fa09f5',
+		user: {
+			_id: '123',
+			name: 'Francis'
+		}
+	},
+	{
+		title: 'otro evento',
+		start: "2020-10-30T20:48:35.277-06:00",
+		end: "2020-10-30T21:48:35.277-06:00",
+		myProp: "anything"
 	},
 ];
 
@@ -35,6 +45,7 @@ const CalendarScreenFull = () => {
 					center: 'title',
 					right: 'dayGridDay,dayGridWeek, dayGridMonth',
 				}}
+				
 			/>
 		</div>
 	);
