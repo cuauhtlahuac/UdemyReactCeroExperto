@@ -1,16 +1,18 @@
 import React from 'react';
-
-import FullCalendar from '@fullcalendar/react';
-import dayGridPlugin from '@fullcalendar/daygrid';
+import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
+import 'moment/locale/es';
 
 import NavBar from 'components/ui/NavBar';
+import { messages } from 'components/utils/calendar-messages-es';
 
 import CalendarEvent from './CalendarEvent';
 
-import 'moment/locale/es';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 moment.locale('es');
+
+const localizer = momentLocalizer(moment);
 
 const events = [
 	{
@@ -23,32 +25,42 @@ const events = [
 			name: 'Francis'
 		}
 	},
-	{
-		title: 'otro evento',
-		start: "2020-10-30T20:48:35.277-06:00",
-		end: "2020-10-30T21:48:35.277-06:00",
-		myProp: "anything"
-	},
 ];
 
-const CalendarScreenFull = () => {
+const eventStyleGetter = (event, start, end, isSelected) => {
+	console.log(event, start, end, isSelected);
+
+	const style = {
+		backgroundColor: 'blue',
+		borderRadius: 0,
+		opacity: 0.7,
+		display: 'block',
+		height: 100,
+	};
+
+	return {
+		style,
+	};
+};
+
+const CalendarScreen = () => {
 	return (
 		<div className="calendar-screen">
 			<NavBar />
-			<FullCalendar
-				plugins={[ dayGridPlugin ]}
-				initialView="dayGridMonth"
+
+			<Calendar
+				localizer={localizer}
 				events={events}
-				eventContent={CalendarEvent}
-				headerToolbar={{
-					left: 'prev,next',
-					center: 'title',
-					right: 'dayGridDay,dayGridWeek, dayGridMonth',
+				messages={messages}
+				startAccessor="start"
+				endAccessor="end"
+				eventPropGetter={eventStyleGetter}
+				components={{
+					events: CalendarEvent,
 				}}
-				
 			/>
 		</div>
 	);
 };
 
-export default CalendarScreenFull;
+export default CalendarScreen;

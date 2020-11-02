@@ -1,13 +1,13 @@
-cimport React from 'react';
+import React from 'react';
+import moment from 'moment';
 
-alendarconst CalendarEvent = ({ event }) => {
+const CalendarEvent = ({ event }) => {
 	console.log({ event });
-  const { title, name, extendedProps} = event;
-  const { user = {} } = extendedProps;
+  const { title, name, user } = event;
 	return (
 		<div style={{ height: 100 }}>
 			<span>{title}</span>
-			<strong> - {user.name || ''}</strong>
+      
 		</div>
 	);
 };
