@@ -3,11 +3,10 @@ import moment from 'moment';
 
 const CalendarEvent = ({ event }) => {
 	console.log({ event });
-  const { title, name, user } = event;
+  const { title } = event;
 	return (
-		<div style={{ height: 100 }}>
-			<span>{title}</span>
-      
+		<div>
+			<span>{title}</span>      
 		</div>
 	);
 };
