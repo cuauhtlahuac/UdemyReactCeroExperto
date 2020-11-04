@@ -7,6 +7,7 @@ import NavBar from 'components/ui/NavBar';
 import { messages } from 'components/utils/calendar-messages-es';
 
 import CalendarEvent from './CalendarEvent';
+import CalendarModal from './CalendarModal';
 
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
@@ -79,6 +80,8 @@ const CalendarScreen = () => {
 					events: CalendarEvent,
 				}}
 			/>
+
+			<CalendarModal />
 		</div>
 	);
 };
