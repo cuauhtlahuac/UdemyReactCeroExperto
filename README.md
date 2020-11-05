@@ -37,3 +37,4 @@
 * [React big calendar](https://www.npmjs.com/package/react-big-calendar)
 * [FullCalendar](https://github.com/fullcalendar/fullcalendar) & [FC-React-Docs](https://fullcalendar.io/docs/react)
 * [react-modal](https://www.npmjs.com/package/react-modal)
+* [react-datetime-picker](https://www.npmjs.com/package/react-datetime-picker)
