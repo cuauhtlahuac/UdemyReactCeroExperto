@@ -54,6 +54,11 @@ const CalendarModal = props => {
 		setFormValues({ ...formValues, end: e });
 	};
 
+	const handleModalSubmit = e => {
+		e.preventDefault();
+		console.log(formValues);
+	};
+
 	return (
 		<ReactModal
 			className="modal"
@@ -65,7 +70,7 @@ const CalendarModal = props => {
 		>
 			<h1> Nuevo evento </h1>
 			<hr />
-			<form className="container">
+			<form className="container" onSubmit={handleModalSubmit}>
 				<div className="form-group">
 					<label>Fecha y hora inicio</label>
 					<DateTimePicker
