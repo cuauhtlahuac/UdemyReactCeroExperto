@@ -21,19 +21,37 @@ const startDate = moment().minutes(0).seconds(0).add(1, 'hours').toDate();
 
 const CalendarModal = props => {
 	const [ dateStart, setDateStart ] = useState(startDate);
+
 	const [ dateEnd, setDateEnd ] = useState(
 		moment(startDate).add(1, 'hour').toDate(),
 	);
 
+	const [ formValues, setFormValues ] = useState({
+		title: '',
+		notes: '',
+		start: dateStart,
+		end: dateEnd,
+	});
+
+	const { title, notes, start, end } = formValues;
+
+	const handleInputChange = ({ target }) => {
+		setFormValues({ ...formValues, [target.name]: target.value });
+	};
+
 	const handleCloseModal = () => {};
 
 	const onStartDateChange = e => {
+		const end = moment(e).add(1, 'hour').toDate();
+
 		setDateStart(e);
-		setDateEnd(moment(e).add(1, 'hour').toDate());
+		setDateEnd(end);
+		setFormValues({ ...formValues, start: e, end });
 	};
 
 	const onFinishDateChange = e => {
 		setDateEnd(moment(e).toDate());
+		setFormValues({ ...formValues, end: e });
 	};
 
 	return (
@@ -77,6 +95,8 @@ const CalendarModal = props => {
 						placeholder="Título del evento"
 						name="title"
 						autoComplete="off"
+						onChange={handleInputChange}
+						value={title}
 					/>
 					<small id="emailHelp" className="form-text text-muted">
 						Una descripción corta
@@ -90,6 +110,8 @@ const CalendarModal = props => {
 						placeholder="Notas"
 						rows="5"
 						name="notes"
+						onChange={handleInputChange}
+						value={notes}
 					/>
 					<small id="emailHelp" className="form-text text-muted">
 						Información adicional
