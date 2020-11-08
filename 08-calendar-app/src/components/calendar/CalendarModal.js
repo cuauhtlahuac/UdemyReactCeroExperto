@@ -56,7 +56,8 @@ const CalendarModal = props => {
 
 	const handleModalSubmit = e => {
 		e.preventDefault();
-		console.log(formValues);
+		const momentStart = moment( start );
+		const momentEnd = moment( end );
 	};
 
 	return (
