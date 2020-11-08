@@ -38,3 +38,6 @@
 * [FullCalendar](https://github.com/fullcalendar/fullcalendar) & [FC-React-Docs](https://fullcalendar.io/docs/react)
 * [react-modal](https://www.npmjs.com/package/react-modal)
 * [react-datetime-picker](https://www.npmjs.com/package/react-datetime-picker)
+* [react i18n](https://react.i18next.com/guides/quick-start)
+* [ISO 639](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) is a standardized nomenclature used to classify languages.
+* [ISO 3166-1 alpha-2 codes](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) are two-letter country codes.

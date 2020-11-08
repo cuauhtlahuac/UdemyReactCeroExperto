@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import ReactModal from 'react-modal';
 import Swal from 'sweetalert2';
+import { useTranslation } from 'react-i18next';
 
 import DateTimePicker from 'react-datetime-picker';
 import moment from 'moment';
@@ -21,6 +22,7 @@ ReactModal.setAppElement('#root');
 const startDate = moment().minutes(0).seconds(0).add(1, 'hours').toDate();
 
 const CalendarModal = props => {
+	const { t, i18n } = useTranslation();
 	const [ dateStart, setDateStart ] = useState(startDate);
 
 	const [ dateEnd, setDateEnd ] = useState(
@@ -74,11 +76,11 @@ const CalendarModal = props => {
 			overlayClassName="modal-fondo"
 			style={customStyles}
 		>
-			<h1> Nuevo evento </h1>
+			<h1> {t("translation:calendar-modal.title")} </h1>
 			<hr />
 			<form className="container" onSubmit={handleModalSubmit}>
 				<div className="form-group">
-					<label>Fecha y hora inicio</label>
+					<label> {t("translation:calendar-modal.startDateTitle")} </label>
 					<DateTimePicker
 						onChange={onStartDateChange}
 						value={dateStart}
@@ -88,7 +90,7 @@ const CalendarModal = props => {
 				</div>
 
 				<div className="form-group">
-					<label>Fecha y hora fin</label>
+					<label> {t("translation:calendar-modal.endDateTitle")} </label>
 					<DateTimePicker
 						onChange={onFinishDateChange}
 						value={dateEnd}

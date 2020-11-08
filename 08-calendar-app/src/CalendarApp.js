@@ -1,12 +1,15 @@
+import { Suspense } from "react";
 import AppRouter from "components/routers/AppRouter";
+
+import './i18n';
 
 import './styles.css'
 
 function CalendarApp() {
 	return (
-		<div>
+		<Suspense fallback={<p>Loading...</p>}>
 			<AppRouter />
-		</div>
+		</Suspense>
 	);
 }
 
