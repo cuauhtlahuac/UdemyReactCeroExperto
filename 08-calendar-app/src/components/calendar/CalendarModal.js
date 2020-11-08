@@ -56,8 +56,12 @@ const CalendarModal = props => {
 
 	const handleModalSubmit = e => {
 		e.preventDefault();
-		const momentStart = moment( start );
-		const momentEnd = moment( end );
+		const momentStart = moment(start);
+		const momentEnd = moment(end);
+
+		if (momentStart.isSameOrAfter(momentEnd)) {
+			alert("start date most be before the end date")
+		}
 	};
 
 	return (
