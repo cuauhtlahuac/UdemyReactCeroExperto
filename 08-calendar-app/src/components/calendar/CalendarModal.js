@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import ReactModal from 'react-modal';
+import Swal from 'sweetalert2';
 
 import DateTimePicker from 'react-datetime-picker';
 import moment from 'moment';
@@ -60,7 +61,7 @@ const CalendarModal = props => {
 		const momentEnd = moment(end);
 
 		if (momentStart.isSameOrAfter(momentEnd)) {
-			alert("start date most be before the end date")
+			Swal.fire('error');
 		}
 	};
 
