@@ -76,11 +76,12 @@ const CalendarModal = props => {
 			overlayClassName="modal-fondo"
 			style={customStyles}
 		>
-			<h1> {t("translation:calendar-modal.title")} </h1>
+			<h1> {t('translation:calendar-modal.title')} </h1>
 			<hr />
 			<form className="container" onSubmit={handleModalSubmit}>
+
 				<div className="form-group">
-					<label> {t("translation:calendar-modal.startDateTitle")} </label>
+					<label> {t('translation:calendar-modal.startDateTitle')} </label>
 					<DateTimePicker
 						onChange={onStartDateChange}
 						value={dateStart}
@@ -90,7 +91,7 @@ const CalendarModal = props => {
 				</div>
 
 				<div className="form-group">
-					<label> {t("translation:calendar-modal.endDateTitle")} </label>
+					<label> {t('translation:calendar-modal.endDateTitle')} </label>
 					<DateTimePicker
 						onChange={onFinishDateChange}
 						value={dateEnd}
@@ -100,19 +101,20 @@ const CalendarModal = props => {
 				</div>
 
 				<hr />
+
 				<div className="form-group">
-					<label>Titulo y notas</label>
+					<label> {t('translation:calendar-modal.titleNote')} </label>
 					<input
 						type="text"
 						className="form-control"
-						placeholder="Título del evento"
+						placeholder={t('translation:calendar-modal.eventTitle')}
 						name="title"
 						autoComplete="off"
 						onChange={handleInputChange}
 						value={title}
 					/>
 					<small id="emailHelp" className="form-text text-muted">
-						Una descripción corta
+						{t('translation:calendar-modal.shortDescription')}
 					</small>
 				</div>
 
@@ -120,20 +122,20 @@ const CalendarModal = props => {
 					<textarea
 						type="text"
 						className="form-control"
-						placeholder="Notas"
+						placeholder={t('translation:calendar-modal.notes')}
 						rows="5"
 						name="notes"
 						onChange={handleInputChange}
 						value={notes}
 					/>
 					<small id="emailHelp" className="form-text text-muted">
-						Información adicional
+						{t('translation:calendar-modal.additional')}
 					</small>
 				</div>
 
 				<button type="submit" className="btn btn-outline-primary btn-block">
 					<i className="far fa-save" />
-					<span> Guardar</span>
+					<span> {t('translation:calendar-modal.save')} </span>
 				</button>
 			</form>
 		</ReactModal>

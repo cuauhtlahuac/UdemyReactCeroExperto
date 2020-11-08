@@ -3,6 +3,12 @@
 	"calendar-modal": {
     "title": "Nuevo evento",
     "startDateTitle": "Fecha y hora de inicio",
-    "endDateTitle": "Fecha y hora de término"
+    "endDateTitle": "Fecha y hora de término",
+    "titleNote": "Título y notas",
+    "eventTitle": "Título del evento",
+    "shortDescription": "Una descripción corta",
+    "notes": "Notas",
+    "additional": "Información adicional",
+    "save": "Guardar"
   }
 }
