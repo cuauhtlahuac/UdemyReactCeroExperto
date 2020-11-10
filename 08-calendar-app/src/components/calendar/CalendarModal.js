@@ -22,7 +22,7 @@ ReactModal.setAppElement('#root');
 const startDate = moment().minutes(0).seconds(0).add(1, 'hours').toDate();
 
 const CalendarModal = props => {
-	const { t, i18n } = useTranslation();
+	const { t } = useTranslation();
 	const [ dateStart, setDateStart ] = useState(startDate);
 
 	const [ dateEnd, setDateEnd ] = useState(
@@ -36,7 +36,9 @@ const CalendarModal = props => {
 		end: dateEnd,
 	});
 
-	const { title, notes, start, end } = formValues;
+	const [ titleValid, setTitleValid ] = useState();
+
+	const { title, notes, end, start } = formValues;
 
 	const handleInputChange = ({ target }) => {
 		setFormValues({ ...formValues, [target.name]: target.value });
@@ -63,7 +65,28 @@ const CalendarModal = props => {
 		const momentEnd = moment(end);
 
 		if (momentStart.isSameOrAfter(momentEnd)) {
-			Swal.fire('error');
+			Swal.fire(
+				'error',
+				t('translation:calendar-modal.errors.minorEndDate'),
+				'error',
+			);
+		}
+
+		if (title.trim().length < 2) {
+			setTitleValid(false);
+		} else {
+			setTitleValid(true);
+			handleCloseModal();
+		}
+	};
+
+	const titleFeedback = () => {
+		if (titleValid === false) {
+			return 'is-invalid';
+		} else if (title.trim().length > 2) {
+			return 'is-valid';
+		} else {
+			return null;
 		}
 	};
 
@@ -79,7 +102,6 @@ const CalendarModal = props => {
 			<h1> {t('translation:calendar-modal.title')} </h1>
 			<hr />
 			<form className="container" onSubmit={handleModalSubmit}>
-
 				<div className="form-group">
 					<label> {t('translation:calendar-modal.startDateTitle')} </label>
 					<DateTimePicker
@@ -106,7 +128,7 @@ const CalendarModal = props => {
 					<label> {t('translation:calendar-modal.titleNote')} </label>
 					<input
 						type="text"
-						className="form-control"
+						className={`form-control ${titleFeedback()}`}
 						placeholder={t('translation:calendar-modal.eventTitle')}
 						name="title"
 						autoComplete="off"

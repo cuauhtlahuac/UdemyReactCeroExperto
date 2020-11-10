@@ -9,6 +9,9 @@
     "shortDescription": "Una descripción corta",
     "notes": "Notas",
     "additional": "Información adicional",
-    "save": "Guardar"
+    "save": "Guardar",
+    "errors": {
+      "minorEndDate": "La fecha fin debe ser mayor a la fecha de inicio"
+    }
   }
 }
