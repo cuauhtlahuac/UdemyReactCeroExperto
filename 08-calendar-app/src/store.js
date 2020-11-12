@@ -1,13 +1,13 @@
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga'
+import testReducer from 'reducers/testReducer'
 
+const sagaMiddleware = createSagaMiddleware();
 
-function reducer(state = { tests: 'tests data' }) {
-	return state;
-}
-
-const sagaMiddleware = createSagaMiddleware()
+const reducers = combineReducers({
+  test: testReducer,
+})
  
 const composeEnhancers =
   typeof window === 'object' &&
@@ -21,6 +21,6 @@ const enhancer = composeEnhancers(
   // other store enhancers if any
 );
 
-const store = createStore(reducer, enhancer);
+const store = createStore(reducers, enhancer);
 
 export default store;
