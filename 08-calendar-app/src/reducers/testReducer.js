@@ -1,3 +1,3 @@
-export default function testReducer(state = { tests: 'tests data' }) {
+export function testReducer(state = { tests: 'tests data' }) {
 	return state;
 }
