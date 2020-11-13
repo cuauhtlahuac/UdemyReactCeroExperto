@@ -6,6 +6,8 @@ import { useTranslation } from 'react-i18next';
 import DateTimePicker from 'react-datetime-picker';
 import moment from 'moment';
 
+import composer from './composer';
+
 const customStyles = {
 	content: {
 		bottom: 'auto',
@@ -19,9 +21,7 @@ const customStyles = {
 
 ReactModal.setAppElement('#root');
 
-const startDate = moment().minutes(0).seconds(0).add(1, 'hours').toDate();
-
-const CalendarModal = props => {
+const CalendarModal = ({ startDate, modalOpen, dispatchers }) => {
 	const { t } = useTranslation();
 	const [ dateStart, setDateStart ] = useState(startDate);
 
@@ -44,7 +44,9 @@ const CalendarModal = props => {
 		setFormValues({ ...formValues, [target.name]: target.value });
 	};
 
-	const handleCloseModal = () => {};
+	const handleCloseModal = () => {
+		dispatchers.closeModalAction();
+	};
 
 	const onStartDateChange = e => {
 		const end = moment(e).add(1, 'hour').toDate();
@@ -94,7 +96,7 @@ const CalendarModal = props => {
 		<ReactModal
 			className="modal"
 			closeTimeoutMS={200}
-			isOpen={true}
+			isOpen={modalOpen}
 			onRequestClose={handleCloseModal}
 			overlayClassName="modal-fondo"
 			style={customStyles}
@@ -164,4 +166,4 @@ const CalendarModal = props => {
 	);
 };
 
-export default CalendarModal;
+export default composer(CalendarModal);
