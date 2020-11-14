@@ -8,6 +8,7 @@ import { messages } from 'components/utils/calendar-messages-es';
 
 import CalendarEvent from './CalendarEvent';
 import CalendarModal from './CalendarModal';
+import composer from './composer';
 
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
@@ -28,13 +29,14 @@ const events = [
 	},
 ];
 
-const CalendarScreen = () => {
+const CalendarScreen = ({ openModalAction }) => {
 	const [ lastView, setLastView ] = useState(
 		localStorage.getItem('lastView') || 'month',
 	);
 
 	const onDoubleClick = e => {
 		console.log({ dclick: e });
+		openModalAction();
 	};
 
 	const onSelect = e => {
@@ -86,4 +88,4 @@ const CalendarScreen = () => {
 	);
 };
 
-export default CalendarScreen;
+export default composer(CalendarScreen);

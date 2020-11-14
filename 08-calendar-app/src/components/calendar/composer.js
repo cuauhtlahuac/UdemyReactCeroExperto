@@ -1,16 +1,18 @@
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 
 import moment from 'moment';
 
 import { closeModalAction, openModalAction } from 'actions/uiActions';
-import { compose } from 'redux';
+import { memo } from 'react';
 
-// const Counter = ...
+const startDate = moment().minutes(0).seconds(0).add(1, 'hours').toDate();
 
-const mapStateToProps = (state /*, ownProps*/) => {
+const mapStateToProps = (state, props) => {
 	return {
 		test: state.test,
-		modalOpen: state.ui.modalOpen,
+    modalOpen: state.ui.modalOpen,
+    startDate,
 	};
 };
 
@@ -19,9 +21,6 @@ const mapDispatchToProps = {
 	openModalAction,
 };
 
-const mapPropsToProps = () => ({
-	startDate: moment().minutes(0).seconds(0).add(1, 'hours').toDate(),
-	dispatchers: mapDispatchToProps,
-});
+const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
-export default connect(mapStateToProps, mapPropsToProps);
+export default compose(withConnect, memo);
