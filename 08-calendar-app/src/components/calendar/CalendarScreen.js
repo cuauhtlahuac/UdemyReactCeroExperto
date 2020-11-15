@@ -34,8 +34,7 @@ const CalendarScreen = ({ openModalAction }) => {
 		localStorage.getItem('lastView') || 'month',
 	);
 
-	const onDoubleClick = e => {
-		console.log({ dclick: e });
+	const onDoubleClick = () => {
 		openModalAction();
 	};
 
@@ -48,20 +47,12 @@ const CalendarScreen = ({ openModalAction }) => {
 		localStorage.setItem('lastView', e);
 	};
 
-	const eventStyleGetter = (event, start, end, isSelected) => {
-		console.log(event, start, end, isSelected);
-
-		const style = {
-			backgroundColor: 'blue',
-			borderRadius: 0,
-			opacity: 0.7,
-			display: 'block',
-		};
-
-		return {
-			style,
-		};
-	};
+	const eventStyleGetter = (event, start, end, isSelected) => ({
+		backgroundColor: 'blue',
+		borderRadius: 0,
+		opacity: 0.7,
+		display: 'block',
+	});
 
 	return (
 		<div className="calendar-screen">

@@ -21,8 +21,11 @@ const customStyles = {
 
 ReactModal.setAppElement('#root');
 
-const CalendarModal = ({ startDate, modalOpen, closeModalAction }) => {
+const CalendarModal = ({ modalOpen, closeModalAction }) => {
 	const { t } = useTranslation();
+
+	const startDate = moment().minutes(0).seconds(0).add(1, 'hours').toDate();
+
 	const [ dateStart, setDateStart ] = useState(startDate);
 
 	const [ dateEnd, setDateEnd ] = useState(
