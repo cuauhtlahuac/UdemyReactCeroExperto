@@ -1,13 +1,15 @@
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 
+import { modalOpenSelector } from './selectors';
+
 import { closeModalAction, openModalAction } from 'actions/uiActions';
 import { memo } from 'react';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
 	return {
 		test: state.test,
-    modalOpen: state.ui.modalOpen,
+		modalOpen: modalOpenSelector(state),
 	};
 };
 
