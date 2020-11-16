@@ -42,3 +42,4 @@
 * [ISO 639](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) is a standardized nomenclature used to classify languages.
 * [ISO 3166-1 alpha-2 codes](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) are two-letter country codes.
 * [redux saga](https://redux-saga.js.org/)
+* immer: [immer-docs](https://immerjs.github.io/immer/docs/introduction), [egghead-course](https://egghead.io/lessons/react-render-immutable-data-using-react)
