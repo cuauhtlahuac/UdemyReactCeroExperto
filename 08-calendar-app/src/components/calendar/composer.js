@@ -4,12 +4,13 @@ import { memo } from 'react';
 
 import { closeModalAction, openModalAction } from 'actions/uiActions';
 
-import { modalOpenSelector } from './selectors';
+import { modalOpenSelector, eventsSelector } from './selectors';
 
 const mapStateToProps = state => {
 	return {
 		test: state.test,
 		modalOpen: modalOpenSelector(state),
+		events: eventsSelector(state),
 	};
 };
 

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'moment/locale/es';
@@ -11,36 +11,24 @@ import CalendarModal from './CalendarModal';
 import composer from './composer';
 
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+import { Profiler } from 'react';
 
 moment.locale('es');
 
 const localizer = momentLocalizer(moment);
 
-const events = [
-	{
-		title: 'cumpleaños',
-		start: moment().toDate(),
-		end: moment().add(2, 'hours').toDate(),
-		bgcolor: '#fa09f5',
-		user: {
-			_id: '123',
-			name: 'Francis',
-		},
-	},
-];
-
-const CalendarScreen = ({ openModalAction }) => {
+const CalendarScreen = ({ openModalAction, events }) => {
 	const [ lastView, setLastView ] = useState(
 		localStorage.getItem('lastView') || 'month',
 	);
 
-	const onDoubleClick = () => {
+	const onDoubleClick = useCallback(() => {
 		openModalAction();
-	};
+	}, []);
 
-	const onSelect = e => {
+	const onSelect = useCallback(e => {
 		console.log({ select: e });
-	};
+	}, []);
 
 	const onViewChange = e => {
 		setLastView(e);
@@ -73,7 +61,6 @@ const CalendarScreen = ({ openModalAction }) => {
 					events: CalendarEvent,
 				}}
 			/>
-
 			<CalendarModal />
 		</div>
 	);
