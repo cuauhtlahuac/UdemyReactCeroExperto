@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-
-import { modalOpenSelector } from './selectors';
+import { memo } from 'react';
 
 import { closeModalAction, openModalAction } from 'actions/uiActions';
-import { memo } from 'react';
+
+import { modalOpenSelector } from './selectors';
 
 const mapStateToProps = state => {
 	return {

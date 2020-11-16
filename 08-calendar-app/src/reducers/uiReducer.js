@@ -1,16 +1,16 @@
 import produce from 'immer';
 
-import { types } from 'types';
+import { types, uniqueTypes } from 'types';
 
 const initialState = { modalOpen: false };
 
 export const uiReducer = produce((draft, action) => {
 	switch (action.type) {
-		case types.uiOpenModal:
+		case types[uniqueTypes.uiOpenModal]:
 			draft.modalOpen = true;
 			return;
 
-		case types.uiCloseModal:
+		case types[uniqueTypes.uiCloseModal]:
 			draft.modalOpen = false;
 			return;
 	}

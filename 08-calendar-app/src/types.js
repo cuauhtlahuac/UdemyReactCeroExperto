@@ -1,4 +1,9 @@
+export const uniqueTypes = {
+	uiOpenModal: Symbol('ui/open-modal'),
+	uiCloseModal: Symbol('ui/close-modal'),
+};
+
 export const types = {
-	uiOpenModal: 'ui/open-modal',
-	uiCloseModal: 'ui/close-modal',
+	[uniqueTypes.uiOpenModal]: 'ui/open-modal',
+	[uniqueTypes.uiCloseModal]: 'ui/close-modal',
 };

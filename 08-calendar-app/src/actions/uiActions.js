@@ -1,13 +1,13 @@
-import { types } from 'types';
+import { types, uniqueTypes  } from 'types';
 
 export const closeModalAction = () => {
 	return {
-		type: types.uiCloseModal,
+		type: types[uniqueTypes.uiCloseModal],
 	};
 };
 
 export const openModalAction = () => {
 	return {
-		type: types.uiOpenModal,
+		type: types[uniqueTypes.uiOpenModal],
 	};
 };
