@@ -17,7 +17,7 @@ moment.locale('es');
 
 const localizer = momentLocalizer(moment);
 
-const CalendarScreen = ({ openModalAction, events }) => {
+const CalendarScreen = ({ openModalAction, events, eventSetActiveAction }) => {
 	const [ lastView, setLastView ] = useState(
 		localStorage.getItem('lastView') || 'month',
 	);
@@ -27,7 +27,7 @@ const CalendarScreen = ({ openModalAction, events }) => {
 	}, []);
 
 	const onSelect = useCallback(e => {
-		console.log({ select: e });
+		eventSetActiveAction(e);
 	}, []);
 
 	const onViewChange = e => {

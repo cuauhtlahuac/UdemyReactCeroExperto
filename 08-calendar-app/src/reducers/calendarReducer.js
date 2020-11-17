@@ -1,5 +1,5 @@
 import produce from 'immer';
-import moment from 'moment'
+import moment from 'moment';
 
 import { types, uniqueTypes } from 'types';
 
@@ -21,5 +21,11 @@ const initialState = {
 
 export const calendarReducer = produce((draft, action) => {
 	switch (action.type) {
+		case types[uniqueTypes.eventAddNew]:
+			draft.push(action.payload);
+			return;
+			case types[uniqueTypes.eventSetActive]:
+			draft.activeEvent = action.payload;
+			return;
 	}
 }, initialState);
