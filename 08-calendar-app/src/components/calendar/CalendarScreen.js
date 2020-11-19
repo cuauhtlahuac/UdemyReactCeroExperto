@@ -23,12 +23,9 @@ const CalendarScreen = ({ openModalAction, events, eventSetActiveAction }) => {
 		localStorage.getItem('lastView') || 'month',
 	);
 
-	const onDoubleClick = useCallback(() => {
-		openModalAction();
-	}, []);
-
 	const onSelect = useCallback(e => {
 		eventSetActiveAction(e);
+		openModalAction();
 	}, []);
 
 	const onViewChange = e => {
@@ -53,7 +50,6 @@ const CalendarScreen = ({ openModalAction, events, eventSetActiveAction }) => {
 				messages={messages}
 				startAccessor="start"
 				endAccessor="end"
-				onDoubleClickEvent={onDoubleClick}
 				onSelectEvent={onSelect}
 				onView={onViewChange}
 				view={lastView}
@@ -62,11 +58,10 @@ const CalendarScreen = ({ openModalAction, events, eventSetActiveAction }) => {
 					events: CalendarEvent,
 				}}
 			/>
-			
-			<AddNewFab />
-			
+
+			<AddNewFab openModal={openModalAction} />
+
 			<CalendarModal />
-			
 		</div>
 	);
 };
