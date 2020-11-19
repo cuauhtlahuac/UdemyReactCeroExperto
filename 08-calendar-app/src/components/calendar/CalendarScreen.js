@@ -5,6 +5,7 @@ import 'moment/locale/es';
 
 import NavBar from 'components/ui/NavBar';
 import { messages } from 'components/utils/calendar-messages-es';
+import AddNewFab from 'components/ui/AddNewFab';
 
 import CalendarEvent from './CalendarEvent';
 import CalendarModal from './CalendarModal';
@@ -61,7 +62,11 @@ const CalendarScreen = ({ openModalAction, events, eventSetActiveAction }) => {
 					events: CalendarEvent,
 				}}
 			/>
+			
+			<AddNewFab />
+			
 			<CalendarModal />
+			
 		</div>
 	);
 };
