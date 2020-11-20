@@ -21,7 +21,7 @@ const customStyles = {
 
 ReactModal.setAppElement('#root');
 
-const CalendarModal = ({ modalOpen, closeModalAction }) => {
+const CalendarModal = ({ modalOpen, closeModalAction, eventAddNewAction }) => {
 	const { t } = useTranslation();
 
 	const startDate = moment().minutes(0).seconds(0).add(1, 'hours').toDate();
@@ -81,6 +81,14 @@ const CalendarModal = ({ modalOpen, closeModalAction }) => {
 			setTitleValid(false);
 		} else {
 			setTitleValid(true);
+			eventAddNewAction({
+					...formValues,
+					id: new Date().getTime(), // Id temporal
+					user: {
+						_id: '123',
+						name: 'Arturo'
+					}
+				});
 			handleCloseModal();
 		}
 	};

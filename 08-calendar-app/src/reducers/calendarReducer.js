@@ -22,7 +22,7 @@ const initialState = {
 export const calendarReducer = produce((draft, action) => {
 	switch (action.type) {
 		case types[uniqueTypes.eventAddNew]:
-			draft.push(action.payload);
+			draft.events.push(action.payload);
 			return;
 			case types[uniqueTypes.eventSetActive]:
 			draft.activeEvent = action.payload;
