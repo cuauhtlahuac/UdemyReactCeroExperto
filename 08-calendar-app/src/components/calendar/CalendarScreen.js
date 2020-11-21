@@ -12,7 +12,6 @@ import CalendarModal from './CalendarModal';
 import composer from './composer';
 
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import { Profiler } from 'react';
 
 moment.locale('es');
 
@@ -26,19 +25,22 @@ const CalendarScreen = ({ openModalAction, events, eventSetActiveAction }) => {
 	const onSelect = useCallback(e => {
 		eventSetActiveAction(e);
 		openModalAction();
-	}, []);
+	}, [eventSetActiveAction, openModalAction]);
 
-	const onViewChange = e => {
+	const onViewChange = useCallback(e => {
 		setLastView(e);
 		localStorage.setItem('lastView', e);
-	};
+	}, [setLastView]);
 
-	const eventStyleGetter = (event, start, end, isSelected) => ({
-		backgroundColor: 'blue',
-		borderRadius: 0,
-		opacity: 0.7,
-		display: 'block',
-	});
+	const eventStyleGetter = useCallback(
+		(event, start, end, isSelected) => ({
+			backgroundColor: 'blue',
+			borderRadius: 0,
+			opacity: 0.7,
+			display: 'block',
+		}),
+		[],
+	);
 
 	return (
 		<div className="calendar-screen">

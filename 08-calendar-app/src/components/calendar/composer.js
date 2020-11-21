@@ -9,7 +9,6 @@ import { modalOpenSelector, eventsSelector } from './selectors';
 
 const mapStateToProps = state => {
 	return {
-		test: state.test,
 		modalOpen: modalOpenSelector(state),
 		events: eventsSelector(state),
 	};

@@ -1,21 +1,9 @@
 import produce from 'immer';
-import moment from 'moment';
 
 import { types, uniqueTypes } from 'types';
 
 const initialState = {
-	events: [
-		{
-			title: 'cumpleaños',
-			start: moment().toDate(),
-			end: moment().add(2, 'hours').toDate(),
-			bgcolor: '#fa09f5',
-			user: {
-				_id: '123',
-				name: 'Francis',
-			},
-		},
-	],
+	events: [],
 	activeEvent: null,
 };
 
@@ -24,8 +12,10 @@ export const calendarReducer = produce((draft, action) => {
 		case types[uniqueTypes.eventAddNew]:
 			draft.events.push(action.payload);
 			return;
-			case types[uniqueTypes.eventSetActive]:
+		case types[uniqueTypes.eventSetActive]:
 			draft.activeEvent = action.payload;
+			return;
+		default:
 			return;
 	}
 }, initialState);

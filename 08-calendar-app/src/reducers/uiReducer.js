@@ -13,5 +13,7 @@ export const uiReducer = produce((draft, action) => {
 		case types[uniqueTypes.uiCloseModal]:
 			draft.modalOpen = false;
 			return;
+		default:
+			return;
 	}
 }, initialState);
