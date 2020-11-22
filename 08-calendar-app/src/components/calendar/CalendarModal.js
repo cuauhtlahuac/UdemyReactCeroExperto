@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ReactModal from 'react-modal';
 import Swal from 'sweetalert2';
 import { useTranslation } from 'react-i18next';
@@ -21,7 +21,13 @@ const customStyles = {
 
 ReactModal.setAppElement('#root');
 
-const CalendarModal = ({ modalOpen, closeModalAction, eventAddNewAction }) => {
+const CalendarModal = ({
+	modalOpen,
+	closeModalAction,
+	eventAddNewAction,
+	activeEvent,
+	cleanActiveEvent,
+}) => {
 	const { t } = useTranslation();
 
 	const startDate = moment().minutes(0).seconds(0).add(1, 'hours').toDate();
@@ -32,12 +38,25 @@ const CalendarModal = ({ modalOpen, closeModalAction, eventAddNewAction }) => {
 		moment(startDate).add(1, 'hour').toDate(),
 	);
 
-	const [ formValues, setFormValues ] = useState({
+	let initialFormValues = {
 		title: '',
 		notes: '',
 		start: dateStart,
 		end: dateEnd,
-	});
+	};
+
+	const [ formValues, setFormValues ] = useState(initialFormValues);
+
+	useEffect(
+		() => {
+			if (activeEvent) {
+				setFormValues(activeEvent);
+			} else {
+				setFormValues(initialFormValues);
+			}
+		},
+		[ activeEvent ],
+	);
 
 	const [ titleValid, setTitleValid ] = useState();
 
@@ -49,6 +68,7 @@ const CalendarModal = ({ modalOpen, closeModalAction, eventAddNewAction }) => {
 
 	const handleCloseModal = () => {
 		closeModalAction();
+		cleanActiveEvent();
 	};
 
 	const onStartDateChange = e => {
@@ -82,14 +102,15 @@ const CalendarModal = ({ modalOpen, closeModalAction, eventAddNewAction }) => {
 		} else {
 			setTitleValid(true);
 			eventAddNewAction({
-					...formValues,
-					id: new Date().getTime(), // Id temporal
-					user: {
-						_id: '123',
-						name: 'Arturo'
-					}
-				});
+				...formValues,
+				id: new Date().getTime(), // Id temporal
+				user: {
+					_id: '123',
+					name: 'Arturo',
+				},
+			});
 			handleCloseModal();
+			setFormValues(initialFormValues);
 		}
 	};
 

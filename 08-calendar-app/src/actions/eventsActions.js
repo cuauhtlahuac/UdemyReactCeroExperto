@@ -9,3 +9,7 @@ export const eventSetActiveAction = event => ({
 	type: types[uniqueTypes.eventSetActive],
 	payload: event,
 });
+
+export const cleanActiveEvent = () => ({
+	type: types[uniqueTypes.cleanActiveEvent],
+});

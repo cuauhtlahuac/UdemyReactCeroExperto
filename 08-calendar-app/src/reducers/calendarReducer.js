@@ -15,6 +15,9 @@ export const calendarReducer = produce((draft, action) => {
 		case types[uniqueTypes.eventSetActive]:
 			draft.activeEvent = action.payload;
 			return;
+		case types[uniqueTypes.cleanActiveEvent]:
+			draft.activeEvent = initialState.activeEvent;
+			return;
 		default:
 			return;
 	}
