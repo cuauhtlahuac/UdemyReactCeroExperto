@@ -24,8 +24,11 @@ const CalendarScreen = ({ openModalAction, events, eventSetActiveAction }) => {
 
 	const onSelect = useCallback(e => {
 		eventSetActiveAction(e);
+	}, [eventSetActiveAction]);
+
+	const onDoubleClickEvent = useCallback(() => {
 		openModalAction();
-	}, [eventSetActiveAction, openModalAction]);
+	}, [openModalAction])
 
 	const onViewChange = useCallback(e => {
 		setLastView(e);
@@ -53,6 +56,7 @@ const CalendarScreen = ({ openModalAction, events, eventSetActiveAction }) => {
 				startAccessor="start"
 				endAccessor="end"
 				onSelectEvent={onSelect}
+				onDoubleClickEvent={onDoubleClickEvent}
 				onView={onViewChange}
 				view={lastView}
 				eventPropGetter={eventStyleGetter}
