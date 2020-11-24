@@ -1,4 +1,5 @@
 import produce from 'immer';
+import { findIndex } from 'lodash';
 
 import { types, uniqueTypes } from 'types';
 
@@ -12,12 +13,20 @@ export const calendarReducer = produce((draft, action) => {
 		case types[uniqueTypes.eventAddNew]:
 			draft.events.push(action.payload);
 			return;
+
 		case types[uniqueTypes.eventSetActive]:
 			draft.activeEvent = action.payload;
 			return;
+
 		case types[uniqueTypes.cleanActiveEvent]:
 			draft.activeEvent = initialState.activeEvent;
 			return;
+
+		case types[uniqueTypes.saveActiveEvent]:
+			const indexFound = findIndex(draft.events, { id: action.payload.id });
+			draft.events[indexFound] = action.payload;
+			return;
+
 		default:
 			return;
 	}

@@ -27,16 +27,17 @@ const CalendarModal = ({
 	eventAddNewAction,
 	activeEvent,
 	cleanActiveEvent,
+	saveActiveEvent,
 }) => {
 	const { t } = useTranslation();
 
 	const startDate = moment().minutes(0).seconds(0).add(1, 'hours').toDate();
 
+	const endDate = moment(startDate).add(1, 'hour').toDate();
+
 	const [ dateStart, setDateStart ] = useState(startDate);
 
-	const [ dateEnd, setDateEnd ] = useState(
-		moment(startDate).add(1, 'hour').toDate(),
-	);
+	const [ dateEnd, setDateEnd ] = useState(endDate);
 
 	let initialFormValues = {
 		title: '',
@@ -47,20 +48,26 @@ const CalendarModal = ({
 
 	const [ formValues, setFormValues ] = useState(initialFormValues);
 
+	const { title, notes, end, start } = formValues;
+
 	useEffect(
 		() => {
 			if (activeEvent) {
+				setDateStart(activeEvent.start);
+				setDateEnd(activeEvent.end);
 				setFormValues(activeEvent);
 			} else {
 				setFormValues(initialFormValues);
 			}
+			return () => {
+				setDateStart(startDate);
+				setDateEnd(endDate);
+			};
 		},
 		[ activeEvent ],
 	);
 
 	const [ titleValid, setTitleValid ] = useState();
-
-	const { title, notes, end, start } = formValues;
 
 	const handleInputChange = ({ target }) => {
 		setFormValues({ ...formValues, [target.name]: target.value });
@@ -101,14 +108,18 @@ const CalendarModal = ({
 			setTitleValid(false);
 		} else {
 			setTitleValid(true);
-			eventAddNewAction({
-				...formValues,
-				id: new Date().getTime(), // Id temporal
-				user: {
-					_id: '123',
-					name: 'Arturo',
-				},
-			});
+			if (activeEvent) {
+				saveActiveEvent(formValues);
+			} else {
+				eventAddNewAction({
+					...formValues,
+					id: new Date().getTime(), // Id temporal
+					user: {
+						_id: '123',
+						name: 'Arturo',
+					},
+				});
+			}
 			handleCloseModal();
 			setFormValues(initialFormValues);
 		}

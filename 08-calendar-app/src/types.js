@@ -4,6 +4,7 @@ export const uniqueTypes = {
 	eventSetActive: Symbol('event/set-active'),
 	eventAddNew: Symbol('event/add-new'),
 	cleanActiveEvent: Symbol('event/clean-active-event'),
+	saveActiveEvent: Symbol('event/save-active-event'),
 };
 
 export const types = {
@@ -12,4 +13,5 @@ export const types = {
 	[uniqueTypes.eventSetActive]: 'event/set-active',
 	[uniqueTypes.eventAddNew]: 'event/add-new',
 	[uniqueTypes.cleanActiveEvent]: 'event/clean-active-event',
+	[uniqueTypes.saveActiveEvent]: 'event/save-active-event',
 };
