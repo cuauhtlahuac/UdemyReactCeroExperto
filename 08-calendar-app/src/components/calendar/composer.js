@@ -8,6 +8,7 @@ import {
 	eventAddNewAction,
 	cleanActiveEvent,
 	saveActiveEvent,
+	deleteEvent,
 } from 'actions/eventsActions';
 
 import {
@@ -31,6 +32,7 @@ const mapDispatchToProps = {
 	eventSetActiveAction,
 	openModalAction,
 	saveActiveEvent,
+	deleteEvent,
 };
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

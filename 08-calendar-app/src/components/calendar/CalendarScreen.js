@@ -17,23 +17,38 @@ moment.locale('es');
 
 const localizer = momentLocalizer(moment);
 
-const CalendarScreen = ({ openModalAction, events, eventSetActiveAction }) => {
+const CalendarScreen = ({
+	openModalAction,
+	events,
+	eventSetActiveAction,
+	activeEvent,
+	deleteEvent,
+}) => {
 	const [ lastView, setLastView ] = useState(
 		localStorage.getItem('lastView') || 'month',
 	);
 
-	const onSelect = useCallback(e => {
-		eventSetActiveAction(e);
-	}, [eventSetActiveAction]);
+	const onSelect = useCallback(
+		e => {
+			eventSetActiveAction(e);
+		},
+		[ eventSetActiveAction ],
+	);
 
-	const onDoubleClickEvent = useCallback(() => {
-		openModalAction();
-	}, [openModalAction])
+	const onDoubleClickEvent = useCallback(
+		() => {
+			openModalAction();
+		},
+		[ openModalAction ],
+	);
 
-	const onViewChange = useCallback(e => {
-		setLastView(e);
-		localStorage.setItem('lastView', e);
-	}, [setLastView]);
+	const onViewChange = useCallback(
+		e => {
+			setLastView(e);
+			localStorage.setItem('lastView', e);
+		},
+		[ setLastView ],
+	);
 
 	const eventStyleGetter = useCallback(
 		(event, start, end, isSelected) => ({
@@ -44,6 +59,10 @@ const CalendarScreen = ({ openModalAction, events, eventSetActiveAction }) => {
 		}),
 		[],
 	);
+
+	const handleDeleteEvent = () => {
+		deleteEvent(activeEvent.id);
+	};
 
 	return (
 		<div className="calendar-screen">
@@ -66,6 +85,7 @@ const CalendarScreen = ({ openModalAction, events, eventSetActiveAction }) => {
 			/>
 
 			<AddNewFab openModal={openModalAction} />
+			<button onClick={handleDeleteEvent}>Delete</button>
 
 			<CalendarModal />
 		</div>
