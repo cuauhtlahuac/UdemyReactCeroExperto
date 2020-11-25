@@ -28,7 +28,10 @@ export const calendarReducer = produce((draft, action) => {
 			return;
 
 		case types[uniqueTypes.deleteEvent]:
-			draft.events = draft.events.filter(event => event.id !== action.payload);
+			draft.events = draft.events.filter(
+				event => event.id !== draft.activeEvent.id,
+			);
+			draft.activeEvent = null;
 			return;
 
 		default:

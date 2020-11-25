@@ -19,7 +19,6 @@ export const saveActiveEvent = event => ({
 	payload: event,
 });
 
-export const deleteEvent = id => ({
+export const deleteEvent = () => ({
 	type: types[uniqueTypes.deleteEvent],
-	payload: id,
 });

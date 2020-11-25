@@ -61,7 +61,7 @@ const CalendarScreen = ({
 	);
 
 	const handleDeleteEvent = () => {
-		deleteEvent(activeEvent.id);
+		deleteEvent();
 	};
 
 	return (
