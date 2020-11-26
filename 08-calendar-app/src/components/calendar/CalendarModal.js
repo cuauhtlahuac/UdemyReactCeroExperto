@@ -59,10 +59,6 @@ const CalendarModal = ({
 			} else {
 				setFormValues(initialFormValues);
 			}
-			return () => {
-				setDateStart(startDate);
-				setDateEnd(endDate);
-			};
 		},
 		[ activeEvent ],
 	);
@@ -75,6 +71,9 @@ const CalendarModal = ({
 
 	const handleCloseModal = () => {
 		closeModalAction();
+		setDateStart(startDate);
+		setDateEnd(endDate);
+		setFormValues(initialFormValues);
 		cleanActiveEvent();
 	};
 
@@ -121,7 +120,6 @@ const CalendarModal = ({
 				});
 			}
 			handleCloseModal();
-			setFormValues(initialFormValues);
 		}
 	};
 
