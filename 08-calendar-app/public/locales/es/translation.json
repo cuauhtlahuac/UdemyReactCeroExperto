@@ -1,7 +1,8 @@
 {
 	"title": "",
 	"calendar-modal": {
-		"title": "Nuevo evento",
+		"titleNewEvent": "Nuevo evento",
+		"titleEditEvent": "Editando evento",
 		"startDateTitle": "Fecha y hora de inicio",
 		"endDateTitle": "Fecha y hora de término",
 		"titleNote": "Título y notas",

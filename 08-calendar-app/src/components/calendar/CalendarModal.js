@@ -142,7 +142,13 @@ const CalendarModal = ({
 			overlayClassName="modal-fondo"
 			style={customStyles}
 		>
-			<h1> {t('translation:calendar-modal.title')} </h1>
+			<h1>
+				{t(
+					`translation:calendar-modal.${!activeEvent
+						? 'titleNewEvent'
+						: 'titleEditEvent'}`,
+				)}
+			</h1>
 			<hr />
 			<form className="container" onSubmit={handleModalSubmit}>
 				<div className="form-group">
