@@ -6,6 +6,7 @@ import 'moment/locale/es';
 import NavBar from 'components/ui/NavBar';
 import { messages } from 'components/utils/calendar-messages-es';
 import AddNewFab from 'components/ui/AddNewFab';
+import DeleteEventFab from 'components/ui/DeleteEventFab';
 
 import CalendarEvent from './CalendarEvent';
 import CalendarModal from './CalendarModal';
@@ -85,7 +86,7 @@ const CalendarScreen = ({
 			/>
 
 			<AddNewFab openModal={openModalAction} />
-			<button onClick={handleDeleteEvent}>Delete</button>
+			{!!activeEvent && <DeleteEventFab onDelete={handleDeleteEvent} />}
 
 			<CalendarModal />
 		</div>

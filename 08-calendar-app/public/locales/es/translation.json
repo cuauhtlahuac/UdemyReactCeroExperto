@@ -1,17 +1,22 @@
 {
 	"title": "",
 	"calendar-modal": {
-    "title": "Nuevo evento",
-    "startDateTitle": "Fecha y hora de inicio",
-    "endDateTitle": "Fecha y hora de término",
-    "titleNote": "Título y notas",
-    "eventTitle": "Título del evento",
-    "shortDescription": "Una descripción corta",
-    "notes": "Notas",
-    "additional": "Información adicional",
-    "save": "Guardar",
-    "errors": {
-      "minorEndDate": "La fecha fin debe ser mayor a la fecha de inicio"
-    }
-  }
+		"title": "Nuevo evento",
+		"startDateTitle": "Fecha y hora de inicio",
+		"endDateTitle": "Fecha y hora de término",
+		"titleNote": "Título y notas",
+		"eventTitle": "Título del evento",
+		"shortDescription": "Una descripción corta",
+		"notes": "Notas",
+		"additional": "Información adicional",
+		"save": "Guardar",
+		"errors": {
+			"minorEndDate": "La fecha fin debe ser mayor a la fecha de inicio"
+		}
+	},
+	"calendar-screen": {
+		"buttons": {
+			"delete-event": "Borrar evento"
+		}
+	}
 }
