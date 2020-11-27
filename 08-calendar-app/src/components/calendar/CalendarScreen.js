@@ -24,6 +24,7 @@ const CalendarScreen = ({
 	eventSetActiveAction,
 	activeEvent,
 	deleteEvent,
+	cleanActiveEvent,
 }) => {
 	const [ lastView, setLastView ] = useState(
 		localStorage.getItem('lastView') || 'month',
@@ -51,6 +52,11 @@ const CalendarScreen = ({
 		[ setLastView ],
 	);
 
+	const handleSelectSlot = () => {
+		console.log("ddokod");
+		cleanActiveEvent();
+	}
+
 	const eventStyleGetter = useCallback(
 		(event, start, end, isSelected) => ({
 			backgroundColor: 'blue',
@@ -76,6 +82,7 @@ const CalendarScreen = ({
 				startAccessor="start"
 				endAccessor="end"
 				onSelectEvent={onSelect}
+				onSelectSlot={handleSelectSlot}
 				onDoubleClickEvent={onDoubleClickEvent}
 				onView={onViewChange}
 				view={lastView}
