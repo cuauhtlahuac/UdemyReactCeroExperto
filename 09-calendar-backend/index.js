@@ -1,4 +1,7 @@
 const express = require('express');
+require('dotenv').config(); // Llamamos variable de entorno
+
+console.log(process.env); // imprimimos todos los procesos en el entorno
 
 // crear servidor de express
 const app = express();
@@ -17,7 +20,7 @@ app.use( // use es un middleware más información http://expressjs.com/en/guide
  */
 
 // Escuchar peticiones
-app.listen( 4000, () => 
+app.listen( process.env.PORT, () => 
     {
       console.log(`Server running in port ${ 4000 }`);
     }
