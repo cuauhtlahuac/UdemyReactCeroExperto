@@ -43,3 +43,7 @@
 * [ISO 3166-1 alpha-2 codes](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) are two-letter country codes.
 * [redux saga](https://redux-saga.js.org/)
 * immer: [immer-docs](https://immerjs.github.io/immer/docs/introduction), [egghead-course](https://egghead.io/lessons/react-render-immutable-data-using-react)
+
+# Backend
+
+* [nodemon](https://www.npmjs.com/package/nodemon) - nodemon is a tool that helps develop node.js based applications by automatically restarting the node application when file changes in the directory are detected.
