@@ -3,14 +3,16 @@ const express = require('express');
 // crear servidor de express
 const app = express();
 
+
+// Route definition takes the following structure: app.METHOD(PATH, HANDLER)
+app.get(
+ '/', // PATH
+ (req, res) => { res.send('Hello world') }); // HANDLER
+
+
 // Escuchar peticiones
-app.listen(
-    4000, // Primer argumento es el puerto, evitar poner mismo que FE
-    () => { // Segundo arg se ejecuta cuando el servidor está levantado
+app.listen( 4000, () => 
+    {
       console.log(`Server running in port ${ 4000 }`);
     }
-  )
-
-  // ya tenemos corriendo un backend server 😱
-  // Se puede probar en postman o en el navegador con la siguiente url
-  // http://localhost:4000/
+  );
