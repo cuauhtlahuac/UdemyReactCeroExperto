@@ -5,9 +5,9 @@ const app = express();
 
 
 // Route definition takes the following structure: app.METHOD(PATH, HANDLER)
-app.get(
- '/', // PATH
- (req, res) => { res.send('Hello world') }); // HANDLER
+app.get('/', (req, res) => {
+   res.json({"say": 'hi'}) // sending a json 
+  });
 
 
 // Escuchar peticiones
