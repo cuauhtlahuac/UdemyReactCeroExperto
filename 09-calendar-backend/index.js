@@ -1,9 +1,6 @@
 const express = require('express');
-require('dotenv').config(); // Llamamos variable de entorno
+require('dotenv').config();
 
-console.log(process.env); // imprimimos todos los procesos en el entorno
-
-// crear servidor de express
 const app = express();
 
 // Directorio Público
@@ -13,11 +10,8 @@ app.use( // use es un middleware más información http://expressjs.com/en/guide
   ) 
 )
 
-// Route definition takes the following structure: app.METHOD(PATH, HANDLER)
-/* app.get('/', (req, res) => {
-   res.json({"say": 'hi'}) // sending a json 
-  });
- */
+// Rutas:
+app.use('/api/auth', require('./routes/auth'))
 
 // Escuchar peticiones
 app.listen( process.env.PORT, () => 
