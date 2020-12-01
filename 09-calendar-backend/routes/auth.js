@@ -1,12 +1,16 @@
 const { Router } = require('express'); // Usamos el router de express
 const router = Router();
 
-router.get('/', (req, res) => {
-	res.json({ say: 'hi' });
+router.post('/', (req, res) => {
+	res.json({ ok: true, msg: 'login' });
 });
 
-router.get('/other', function(req, res) {
-	res.send('Other Page');
+router.post('/register', (req, res) => {
+	res.json({ ok: true, msg: 'register' });
+});
+
+router.get('/renew', function(req, res) {
+	res.send({ ok: true, msg: 'renew' });
 });
 
 module.exports = router;
