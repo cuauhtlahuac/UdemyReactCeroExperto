@@ -5,7 +5,7 @@ const login = (req, res) => {
   const { name, email, password } = req.body;
   
   if(name.length < 5){
-    return res.json({
+    return res.status(400).json({
       ok: false,
       msg: 'El nombre debe ser de 5 letras'  
     });
