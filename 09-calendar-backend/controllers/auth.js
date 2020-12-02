@@ -2,7 +2,11 @@
 /* Anteriormente las teniamos en la misma ruta  pero se separo por praticidad*/
 
 const login = (req, res) => {
-	res.json({ ok: true, msg: 'login' });
+	res.json({
+		ok: true,
+		msg: 'login',
+		user: req.body,
+	});
 };
 
 const register = (req, res) => {

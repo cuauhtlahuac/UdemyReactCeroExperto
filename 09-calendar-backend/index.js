@@ -10,6 +10,9 @@ app.use( // use es un middleware más información http://expressjs.com/en/guide
   ) 
 )
 
+// Lectura y parseo del body de una petición
+app.use( express.json() ) // las peticiones json serán procesadas aquí
+
 // Rutas:
 app.use('/api/auth', require('./routes/auth'))
 
