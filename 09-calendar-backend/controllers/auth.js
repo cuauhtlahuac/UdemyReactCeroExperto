@@ -2,7 +2,14 @@
 /* Anteriormente las teniamos en la misma ruta  pero se separo por praticidad*/
 
 const login = (req, res) => {
-	const { name, email, password } = req.body;
+  const { name, email, password } = req.body;
+  
+  if(name.length < 5){
+    return res.json({
+      ok: false,
+      msg: 'El nombre debe ser de 5 letras'  
+    });
+  }
 
 	res.json({
 		ok: true,
