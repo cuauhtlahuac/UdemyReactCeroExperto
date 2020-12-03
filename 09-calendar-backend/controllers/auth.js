@@ -4,15 +4,26 @@ const login = (req, res) => {
   const { name, email, password } = req.body;
   
 	const errors = validationResult( req );
-	console.log(errors); // imprimimos los errores que posteriormente usaremos para responder
+
+	if( !errors.isEmpty() ){
+		res.status(400).json({
+			ok: false,
+			errors: errors.mapped() // regresa un objeto con todos los errores 
+		})
+	}
+
 	/*
-	respuesta:
+	EJEMPLO DE RESPUESTA
 
 	{
-		value: undefined,
-		msg: 'Error Message: The name is required',
-		param: 'name',
-		location: 'body'
+    "ok": false,
+    "errors": {
+        "name": {
+            "msg": "Error Message: The name is required",
+            "param": "name",
+            "location": "body"
+        }
+    }
 	}
 	
 	*/
