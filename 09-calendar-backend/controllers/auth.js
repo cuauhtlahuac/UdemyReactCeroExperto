@@ -1,15 +1,21 @@
-/* Las funciones que serán llamadas cuando se acceda a la ruta */
-/* Anteriormente las teniamos en la misma ruta  pero se separo por praticidad*/
+const { validationResult } = require('express-validator');
 
 const login = (req, res) => {
   const { name, email, password } = req.body;
   
-  if(name.length < 5){
-    return res.status(400).json({
-      ok: false,
-      msg: 'El nombre debe ser de 5 letras'  
-    });
-  }
+	const errors = validationResult( req );
+	console.log(errors); // imprimimos los errores que posteriormente usaremos para responder
+	/*
+	respuesta:
+
+	{
+		value: undefined,
+		msg: 'Error Message: The name is required',
+		param: 'name',
+		location: 'body'
+	}
+	
+	*/
 
 	res.json({
 		ok: true,
