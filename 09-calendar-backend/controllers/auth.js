@@ -8,27 +8,11 @@ const login = (req, res) => {
 	if( !errors.isEmpty() ){
 		res.status(400).json({
 			ok: false,
-			errors: errors.mapped() // regresa un objeto con todos los errores 
+			errors: errors.mapped()
 		})
 	}
 
-	/*
-	EJEMPLO DE RESPUESTA
-
-	{
-    "ok": false,
-    "errors": {
-        "name": {
-            "msg": "Error Message: The name is required",
-            "param": "name",
-            "location": "body"
-        }
-    }
-	}
-	
-	*/
-
-	res.json({
+	res.status(201).json({
 		ok: true,
 		msg: 'login',
 		name,
