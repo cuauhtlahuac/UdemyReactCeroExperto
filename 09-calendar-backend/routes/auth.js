@@ -18,7 +18,19 @@ router.post(
 	login,
 );
 
-router.post('/register', register);
+router.post(
+	'/register',
+	[
+		check('email', 'Error Message: The email is required').isEmail(),
+		check('password', 'The password must be 5+ chars long and contain a number')
+			.not()
+			.isIn([ '123456', 'password', 'god' ])
+			.withMessage('Do not use a common word as the password')
+			.isLength({ min: 6 })
+			.matches(/\d/),
+	],
+	register,
+);
 
 router.get('/renew', renew);
 
