@@ -50,3 +50,6 @@
 * [express js](https://expressjs.com/en/starter/installing.html) - Express is a minimal and flexible Node.js web application framework...
 * [http status codes](https://www.restapitutorial.com/httpstatuscodes.html) - response standards codes
 * [Express Validator](https://express-validator.github.io/docs/) - is a set of **express.js** middlewares that wraps **validator.js** validator and sanitizer functions.
+* [mongoose](https://mongoosejs.com/) - elegant mongodb object modeling for node.js
+* [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) - Move faster with a true multi-cloud database service for MongoDB built for agile teams who’d rather spend time building apps than managing databases. Available on AWS, Google Cloud, and Azure.
+* [Mongo Query Docs](https://docs.mongodb.com/manual/tutorial/query-documents/)
