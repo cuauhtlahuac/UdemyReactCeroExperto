@@ -1,18 +1,24 @@
 const { validationResult } = require('express-validator');
 const User = require('../models/User')
 
-const login = (req, res) => {
-
-	// aqui creamos la nueva instancia de User
-	const user = new User( req.body )
+const login = async(req, res) => {
+	try{
+		const user = new User( req.body )
+		
+		await user.save()
 	
-	// Para guardar la información sólo tenemos que aplicar el método 
-	user.save()
+		res.status(201).json({
+			ok: true,
+			msg: 'login',
+		});
 
-	res.status(201).json({
-		ok: true,
-		msg: 'login',
-	});
+	} catch(error) {
+		console.log(error);
+		res.status(500).json({
+			ok: false,
+			msg: 'Something went wrong. Please contact with to your administrator'
+		});
+	}
 };
 
 const register = (req, res) => {
