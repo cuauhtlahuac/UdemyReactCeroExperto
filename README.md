@@ -53,3 +53,4 @@
 * [mongoose](https://mongoosejs.com/) - elegant mongodb object modeling for node.js
 * [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) - Move faster with a true multi-cloud database service for MongoDB built for agile teams who’d rather spend time building apps than managing databases. Available on AWS, Google Cloud, and Azure.
 * [Mongo Query Docs](https://docs.mongodb.com/manual/tutorial/query-documents/)
+* [bcrypt](https://www.npmjs.com/package/bcryptjs) is a password-hashing function designed by Niels Provos and David Mazières, based on the Blowfish cipher and presented at USENIX in 1999. - [Hashing](https://dev.to/aditya278/understanding-and-implementing-password-hashing-in-nodejs-2m84) basically means to transform the data into a string of fixed length using a hash function.
