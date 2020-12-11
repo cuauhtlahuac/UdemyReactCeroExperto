@@ -2,6 +2,7 @@ const { validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 
 const User = require('../models/User');
+const { JWTGenerator } = require('../helpers/jwt');
 
 const register = async (req, res) => {
 	const { email, password } = req.body;
@@ -21,16 +22,20 @@ const register = async (req, res) => {
 
 		// Encriptar contraseña
 		const salt = bcrypt.genSaltSync(13);
-		const hash = bcrypt.hashSync( password, salt);
+		const hash = bcrypt.hashSync(password, salt);
 
 		user.password = hash;
 
 		await user.save();
 
+		// JWT
+		const token = await JWTGenerator(user.id, user.name);
+
 		res.status(201).json({
 			ok: true,
 			uid: user.id,
 			name: user.name,
+			token,
 		});
 	} catch (error) {
 		console.log(error);
@@ -41,7 +46,7 @@ const register = async (req, res) => {
 	}
 };
 
-const login = async(req, res) => {
+const login = async (req, res) => {
 	const { email, password } = req.body;
 
 	try {
@@ -54,24 +59,27 @@ const login = async(req, res) => {
 				msg: 'Your email or password is incorrect',
 			});
 		}
-		
-		const validPassword = bcrypt.compareSync( password, user.password);
-		
-		if(!validPassword){
-			console.log("Password is incorrect");
+
+		const validPassword = bcrypt.compareSync(password, user.password);
+
+		if (!validPassword) {
+			console.log('Password is incorrect');
 			return res.status(400).json({
 				ok: false,
 				msg: 'Your email or password is incorrect',
 			});
 		}
 
+		// JWT
+		const token = await JWTGenerator(user.id, user.name);
+
 		return res.status(200).json({
 			ok: true,
 			name: user.name,
 			uid: user.id,
+			token,
 		});
-
-	} catch(error) {
+	} catch (error) {
 		console.log(error);
 		res.status(500).json({
 			ok: false,
