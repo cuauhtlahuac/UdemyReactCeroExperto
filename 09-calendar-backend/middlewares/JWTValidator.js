@@ -1,13 +1,34 @@
+const jwt = require('jsonwebtoken');
+
 const JWTValidator = (req, res, next) => {
-  const jwt = require('jsonwebtoken');
+	const token = req.header('x-token'); // definimos un nombre personaliado en el header con x-algo
 
-  const token = req.header('x-token') // definimos un nombre personaliado en el header con x-algo
+	if (!token) {
+		return res.status(401).json({
+			ok: false,
+			msg: "Token doesn't exists",
+		});
+	}
 
-  console.log(token); // Verificamos que recibimos el token correctamente
+	try {
+    const payload = jwt.verify(
+      token,
+      process.env.JWT_SKEY_SEED,
+    );
 
-  next(); // Esto ejecutará la siguiente función, es decir el controlador del renew
-}
+    req.uid = payload.uid;
+    req.name = payload.name;
+
+	} catch (error) {
+		return res.status(401).json({
+			ok: false,
+			msg: 'Invalid token',
+		});
+	}
+
+	next(); // Esto ejecutará la siguiente función, es decir el controlador del renew
+};
 
 module.exports = {
-  JWTValidator
-}
+	JWTValidator,
+};

@@ -88,8 +88,14 @@ const login = async (req, res) => {
 	}
 };
 
-const renew = function(req, res) {
-	res.send({ ok: true, msg: 'renew' });
+const renew = async function(req, res) {
+	// JWT
+	const token = await JWTGenerator(req.id, req.name);
+
+	return res.status(200).json({
+		ok: true,
+		token,
+	});
 };
 
 module.exports = {
