@@ -1,7 +1,9 @@
 const getEvent = (req, res) => {
+	console.log(req.body);
 	return res.json({
 		ok: true,
 		msg: 'getEvent',
+		body: req.body
 	});
 };
 
