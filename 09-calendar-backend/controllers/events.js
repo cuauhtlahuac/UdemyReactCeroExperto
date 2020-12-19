@@ -1,12 +1,19 @@
 const Event = require('../models/Events');
 
-const getEvent = (req, res) => {
+const getEvent = async (req, res) => {
+	try {
+		const events = await Event.find();
 
-	return res.json({
-		ok: true,
-		msg: 'getEvent',
-		body: req.body,
-	});
+		return res.json({
+			ok: true,
+			events: events,
+		});
+	} catch (error) {
+		res.status(500).json({
+			ok: false,
+			msg: "can't reach events in DB",
+		});
+	}
 };
 
 const newEvent = async(req, res) => {
