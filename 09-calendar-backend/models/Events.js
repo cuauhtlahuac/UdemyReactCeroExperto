@@ -23,4 +23,10 @@ const EventSchema = Schema({
 	},
 });
 
+EventSchema.method('toJSON', function(){ // Cuidado de escribirlo bien
+	const { __v, _id, ...object} = this.toObject(); // Aquí hago referencia al objeto que se está creando, osea accesso a cada una de las propiedades
+	object.id = _id;
+	return object; // Solo hacemos referencia a lo que se va a guardar en la respuesta y no en la BD
+})
+
 module.exports = model('Event', EventSchema);
