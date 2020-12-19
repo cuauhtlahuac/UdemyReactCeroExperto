@@ -11,7 +11,6 @@ const { JWTValidator } = require('../middlewares/JWTValidator');
 router.post(
 	'/',
 	[
-		check('name', 'Error Message: The name is required').notEmpty(),
 		check('email', 'Error Message: The email is required').isEmail(),
 		check(
 			'password',
