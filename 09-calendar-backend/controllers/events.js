@@ -2,7 +2,7 @@ const Event = require('../models/Events');
 
 const getEvent = async (req, res) => {
 	try {
-		const events = await Event.find().populate('user'); // Aquí se puede agregar paginación
+		const events = await Event.find().populate('user', 'name'); // Aquí se puede agregar paginación
 
 		return res.json({
 			ok: true,
