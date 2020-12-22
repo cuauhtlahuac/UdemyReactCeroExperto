@@ -45,6 +45,20 @@ const updateEvent = async (req, res) => {
 	try {
 		const event = await Event.findById(eventId);
 
+		if (!event) {
+			return res.status(404).json({
+				ok: false,
+				msg: "Event don't found",
+			});
+		}
+
+		if (event.user.toString() !== uid) {
+			return res.status(401).json({
+				ok: false,
+				msg: "You can't edit this event",
+			});
+		}
+
 		const newEvent = {
 			...req.body,
 			user: uid,
