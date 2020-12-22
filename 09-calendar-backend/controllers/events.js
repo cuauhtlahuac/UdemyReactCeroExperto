@@ -16,22 +16,19 @@ const getEvent = async (req, res) => {
 	}
 };
 
-const newEvent = async(req, res) => {
+const newEvent = async (req, res) => {
 	const event = new Event(req.body); // Creando una nueva instancia del Evento para la base de datos
 
 	try {
-
 		event.user = req.uid; // validamos el user id con referencia al modelo
 
-		const	savedEvent = await event.save(); // guardamos la instancia del evento, esperando primero a que no existan problemas
+		const savedEvent = await event.save(); // guardamos la instancia del evento, esperando primero a que no existan problemas
 
 		res.status(200).json({
 			ok: false,
 			event: savedEvent,
-		})
-
+		});
 	} catch (error) {
-
 		console.log(error);
 
 		return res.status(500).json({
@@ -41,14 +38,32 @@ const newEvent = async(req, res) => {
 	}
 };
 
-const updateEvent = (req, res) => {
+const updateEvent = async (req, res) => {
+	const eventId = req.params.id;
+	const uid = req.uid;
+
 	try {
+		const event = await Event.findById(eventId);
+
+		const newEvent = {
+			...req.body,
+			user: uid,
+		};
+
+		const eventUpdated = await Event.findByIdAndUpdate(eventId, newEvent);
+
 		return res.json({
 			ok: true,
 			msg: 'updateEvent',
+			event,
 		});
 	} catch (error) {
 		console.log(error);
+		return res.status(500).json({
+			ok: false,
+			msg: 'Please contact the admin',
+			event,
+		});
 	}
 };
 
