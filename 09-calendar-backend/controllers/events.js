@@ -25,7 +25,7 @@ const newEvent = async (req, res) => {
 		const savedEvent = await event.save(); // guardamos la instancia del evento, esperando primero a que no existan problemas
 
 		res.status(200).json({
-			ok: false,
+			ok: true,
 			event: savedEvent,
 		});
 	} catch (error) {
@@ -83,11 +83,41 @@ const updateEvent = async (req, res) => {
 	}
 };
 
-const deleteEvent = (req, res) => {
-	return res.json({
-		ok: true,
-		msg: 'deleteEvent',
-	});
+const deleteEvent = async(req, res) => {
+	const eventId = req.params.id;
+	const uid = req.uid;
+
+	try {
+		const event = await Event.findById(eventId);
+
+		if (!event) {
+			return res.status(404).json({
+				ok: false,
+				msg: "Event don't found",
+			});
+		}
+
+		if (event.user.toString() !== uid) {
+			return res.status(401).json({
+				ok: false,
+				msg: "You can't delete this event",
+			});
+		}
+
+		const eventUpdated = await Event.findByIdAndRemove(eventId);
+
+		return res.status(200).json({
+			ok: true,
+			msg: 'Event was deleted'
+		});
+	} catch (error) {
+		console.log(error);
+		return res.status(500).json({
+			ok: false,
+			msg: 'Please contact the admin',
+			event,
+		});
+	}
 };
 
 module.exports = {
