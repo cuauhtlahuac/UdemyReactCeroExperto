@@ -66,6 +66,7 @@ const updateEvent = async (req, res) => {
 
 		const eventUpdated = await Event.findByIdAndUpdate(eventId, newEvent, {
 			new: true, // new: bool - true to return the modified document rather than the original. defaults to false
+			useFindAndModify: false,
 		});
 
 		return res.status(200).json({
