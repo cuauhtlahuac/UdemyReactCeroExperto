@@ -1,3 +1,8 @@
+### Important!!!
+
+Make sure that package.json script for execute the app are the "start" command.
+But if you need a special command check [Define a Procfile](https://devcenter.heroku.com/articles/getting-started-with-nodejs#define-a-procfile)
+
 # Deploy with heroku based in Heroku Docs
 
 - In this step you’ll install the Heroku Command Line Interface (CLI).
@@ -16,3 +21,11 @@
 - ```heroku login```
 - ```heroku git:remote -a project-name``` - Connecting to heroku repo
 - ```git push origin master``` - finally pushing the app master branch to heroku
+
+# Additional
+### To CHECK app LOGS 
+- [check the doc](https://devcenter.heroku.com/articles/getting-started-with-nodejs#view-logs)
+- must common will be ```heroku logs -n 1000 --tail``` 
+
+### Also Check...
+- [Getting Started on Heroku with Node.js](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
