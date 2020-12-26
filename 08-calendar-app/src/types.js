@@ -7,6 +7,14 @@ export const uniqueTypes = {
 	cleanActiveEvent: Symbol('event/clean-active-event'),
 	saveActiveEvent: Symbol('event/save-active-event'),
 	deleteEvent: Symbol('event/delete-event'),
+
+	authChecking: Symbol('auth/checking login'),
+	authChecked: Symbol('auth/login checked'),
+	authStartLogin: Symbol('auth/login start'),
+	authLoginDone: Symbol('auth/login done'),
+	authRegistering: Symbol('auth/registering'),
+	authTokenRenew: Symbol('auth/token renew'),
+	authLogout: Symbol('auth/logout'),
 };
 
 export const types = {
@@ -18,4 +26,12 @@ export const types = {
 	[uniqueTypes.cleanActiveEvent]: 'event/clean-active-event',
 	[uniqueTypes.saveActiveEvent]: 'event/save-active-event',
 	[uniqueTypes.deleteEvent]: 'event/delete-event',
+	
+	[uniqueTypes.authChecking]: 'auth/checking login',
+	[uniqueTypes.authChecked]: 'auth/login checked',
+	[uniqueTypes.authStartLogin]: 'auth/login start',
+	[uniqueTypes.authLoginDone]: 'auth/login done',
+	[uniqueTypes.authRegistering]: 'auth/registering',
+	[uniqueTypes.authTokenRenew]: 'auth/token renew',
+	[uniqueTypes.authLogout]: 'auth/logout',
 };
