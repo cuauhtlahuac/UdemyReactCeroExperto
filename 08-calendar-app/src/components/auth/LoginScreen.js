@@ -1,24 +1,49 @@
+import { useForm } from 'hooks/useForm';
+
 import './login.css';
 
 const LoginScreen = () => {
+	const initialLoginState = {
+		loginEmail: '',
+		loginPassword: '',
+	};
+
+	const [ formLoginValues, handleLoginInputChange, reset ] = useForm(
+		initialLoginState,
+	);
+
+	const { loginEmail, loginPassword } = formLoginValues;
+
+	const handleLogin = event => {
+		event.preventDefault();
+		console.log(formLoginValues);
+	};
+
 	return (
 		<div className="container login-container">
 			<div className="row">
 				<div className="col-md-6 login-form-1">
 					<h3>Ingreso</h3>
-					<form>
+
+					<form onSubmit={handleLogin}>
 						<div className="form-group">
 							<input
 								type="text"
 								className="form-control"
-								placeholder="Correo"
+								placeholder="email"
+								name="loginEmail"
+								value={loginEmail}
+								onChange={handleLoginInputChange}
 							/>
 						</div>
 						<div className="form-group">
 							<input
 								type="password"
 								className="form-control"
-								placeholder="Contraseña"
+								placeholder="password"
+								name="loginPassword"
+								value={loginPassword}
+								onChange={handleLoginInputChange}
 							/>
 						</div>
 						<div className="form-group">
