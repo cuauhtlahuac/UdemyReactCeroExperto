@@ -1,4 +1,5 @@
 import produce from 'immer';
+import types from 'types';
 
 const initialState = {
 	checking: true, // para mantener al usuario si ya está autenticado
@@ -7,7 +8,12 @@ const initialState = {
 };
 
 export const authReducer = produce((draft, action) => {
+	const { type, payload } = action;
+
 	switch (action.type) {
+		case types.authLoginDone:
+			return (draft = { checking: false, ...payload });
+
 		default:
 			return;
 	}

@@ -2,13 +2,22 @@ import { put, takeLatest, all } from 'redux-saga/effects';
 
 import types from 'types';
 import { noTokenFetch } from 'utils/fetch';
+import { authLoginDone } from 'actions/authActions';
 
 function* startLogin(action) {
 	const { email, password } = action.payload;
 
-	const data = yield noTokenFetch('auth', { email, password }, 'POST');
+	const body = yield noTokenFetch('auth', { email, password }, 'POST');
 
-	yield console.log('data', data);
+	const { name, uid, ok, token } = body;
+
+	if (ok) {
+		localStorage.setItem('token', token);
+		localStorage.setItem('token-init-date', new Date().getTime());
+		yield put(authLoginDone(uid, name));
+	} else {
+		console.log('error');
+	}
 }
 
 function* watchStartLogin() {
