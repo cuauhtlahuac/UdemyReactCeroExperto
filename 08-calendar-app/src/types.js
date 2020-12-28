@@ -35,3 +35,15 @@ export const types = {
 	[uniqueTypes.authTokenRenew]: 'auth/token renew',
 	[uniqueTypes.authLogout]: 'auth/logout',
 };
+
+const simplyTypes = {
+	authChecking: types[uniqueTypes.authChecking],
+	authChecked: types[uniqueTypes.authChecked],
+	authStartLogin: types[uniqueTypes.authStartLogin],
+	authLoginDone: types[uniqueTypes.authLoginDone],
+	authRegistering: types[uniqueTypes.authRegistering],
+	authTokenRenew: types[uniqueTypes.authTokenRenew],
+	authLogout: types[uniqueTypes.authLogout],
+}
+
+export default simplyTypes;
