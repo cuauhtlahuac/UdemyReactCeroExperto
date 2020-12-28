@@ -1,8 +1,13 @@
+import { useDispatch } from 'react-redux';
+
 import { useForm } from 'hooks/useForm';
+import { startLogin } from 'actions/authActions';
 
 import './login.css';
 
 const LoginScreen = () => {
+	const dispatch = useDispatch();
+
 	const initialLoginState = {
 		loginEmail: '',
 		loginPassword: '',
@@ -16,7 +21,8 @@ const LoginScreen = () => {
 
 	const handleLogin = event => {
 		event.preventDefault();
-		console.log(formLoginValues);
+
+		dispatch(startLogin(loginEmail, loginPassword));
 	};
 
 	return (
