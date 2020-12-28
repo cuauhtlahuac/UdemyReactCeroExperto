@@ -4,7 +4,7 @@ import moment from 'moment';
 import 'moment/locale/es';
 
 import NavBar from 'components/ui/NavBar';
-import { messages } from 'components/utils/calendar-messages-es';
+import { messages } from 'utils/calendar-messages-es';
 import AddNewFab from 'components/ui/AddNewFab';
 import DeleteEventFab from 'components/ui/DeleteEventFab';
 
