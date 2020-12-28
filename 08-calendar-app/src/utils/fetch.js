@@ -1,6 +1,6 @@
 const baseURL = process.env.REACT_APP_API_URL;
 
-export const calendarFetch = async (endPoint, data, method = 'GET') => {
+export const noTokenFetch = async (endPoint, data, method = 'GET') => {
 	const url = `${baseURL}/${endPoint}`;
 
 	let response;
@@ -15,7 +15,25 @@ export const calendarFetch = async (endPoint, data, method = 'GET') => {
 		});
 	} else {
 		response = await fetch(url);
-	};
+	}
+
+	return await response.json();
+};
+
+export const tokenFetch = async (endPoint, data, method = 'GET') => {
+	const url = `${baseURL}/${endPoint}`;
+
+	let response;
+
+	if (method !== 'GET') {
+		response = await fetch(url, {
+			method,
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(data),
+		});
+	}
 
 	return await response.json();
 };

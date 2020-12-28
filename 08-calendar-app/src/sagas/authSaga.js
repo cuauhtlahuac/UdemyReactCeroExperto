@@ -1,11 +1,14 @@
 import { put, takeLatest, all } from 'redux-saga/effects';
 
 import types from 'types';
-import { calendarFetch } from 'utils/fetch';
+import { noTokenFetch } from 'utils/fetch';
 
 function* startLogin(action) {
-	const data = yield calendarFetch('events');
-	yield console.log('data',  data );
+	const { email, password } = action.payload;
+
+	const data = yield noTokenFetch('auth', { email, password }, 'POST');
+
+	yield console.log('data', data);
 }
 
 function* watchStartLogin() {
