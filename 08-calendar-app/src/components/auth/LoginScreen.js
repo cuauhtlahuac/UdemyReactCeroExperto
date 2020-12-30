@@ -13,16 +13,40 @@ const LoginScreen = () => {
 		loginPassword: '',
 	};
 
-	const [ formLoginValues, handleLoginInputChange, reset ] = useForm(
+	const initialRegisterState = {
+		registerName: '',
+		registerEmail: '',
+		registerPassword: '',
+		registerRepeatPassword: '',
+	};
+
+	const [ formLoginValues, handleLoginInputChange ] = useForm(
 		initialLoginState,
 	);
 
+	const [ formRegisterValues, handleRegisterInputChange, reset ] = useForm(
+		initialRegisterState,
+	);
+
 	const { loginEmail, loginPassword } = formLoginValues;
+
+	const {
+		registerName,
+		registerEmail,
+		registerPassword,
+		registerRepeatPassword,
+	} = formRegisterValues;
 
 	const handleLogin = event => {
 		event.preventDefault();
 
 		dispatch(startLogin(loginEmail, loginPassword));
+	};
+
+	const handleRegister = event => {
+		event.preventDefault();
+
+		console.log(formRegisterValues);
 	};
 
 	return (
@@ -60,12 +84,15 @@ const LoginScreen = () => {
 
 				<div className="col-md-6 login-form-2">
 					<h3>Registro</h3>
-					<form>
+					<form onSubmit={handleRegister}>
 						<div className="form-group">
 							<input
 								type="text"
 								className="form-control"
 								placeholder="Nombre"
+								name="registerName"
+								value={registerName}
+								onChange={handleRegisterInputChange}
 							/>
 						</div>
 						<div className="form-group">
@@ -73,6 +100,9 @@ const LoginScreen = () => {
 								type="email"
 								className="form-control"
 								placeholder="Correo"
+								name="registerEmail"
+								value={registerEmail}
+								onChange={handleRegisterInputChange}
 							/>
 						</div>
 						<div className="form-group">
@@ -80,6 +110,9 @@ const LoginScreen = () => {
 								type="password"
 								className="form-control"
 								placeholder="Contraseña"
+								name="registerPassword"
+								value={registerPassword}
+								onChange={handleRegisterInputChange}
 							/>
 						</div>
 
@@ -88,6 +121,9 @@ const LoginScreen = () => {
 								type="password"
 								className="form-control"
 								placeholder="Repita la contraseña"
+								name="registerRepeatPassword"
+								value={registerRepeatPassword}
+								onChange={handleRegisterInputChange}
 							/>
 						</div>
 
