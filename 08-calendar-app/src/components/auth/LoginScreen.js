@@ -1,4 +1,6 @@
 import { useDispatch } from 'react-redux';
+import Swal from 'sweetalert2';
+import isEqual from 'lodash/isEqual';
 
 import { useForm } from 'hooks/useForm';
 import { startLogin, startRegister } from 'actions/authActions';
@@ -46,7 +48,11 @@ const LoginScreen = () => {
 	const handleRegister = event => {
 		event.preventDefault();
 
-		dispatch(startRegister(formRegisterValues))
+		if (isEqual(registerPassword, registerRepeatPassword)) {
+			dispatch(startRegister(formRegisterValues));
+		} else {
+			Swal.fire('Password Incorrecto', 'Los passwords son diferentes', 'error');
+		}
 	};
 
 	return (
