@@ -9,9 +9,10 @@ const fieldsValidator = (req, res, next) => {
 			ok: false,
 			errors: errors.mapped()
 		})
-	}
+	} else {
 
-  next();
+		next();
+	};
 };
 
 module.exports = {
