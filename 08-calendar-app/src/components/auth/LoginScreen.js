@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 
 import { useForm } from 'hooks/useForm';
-import { startLogin } from 'actions/authActions';
+import { startLogin, startRegister } from 'actions/authActions';
 
 import './login.css';
 
@@ -46,7 +46,7 @@ const LoginScreen = () => {
 	const handleRegister = event => {
 		event.preventDefault();
 
-		console.log(formRegisterValues);
+		dispatch(startRegister(formRegisterValues))
 	};
 
 	return (

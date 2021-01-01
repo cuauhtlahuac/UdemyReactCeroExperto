@@ -10,7 +10,7 @@ const initialState = {
 export const authReducer = produce((draft, action) => {
 	const { type, payload } = action;
 
-	switch (action.type) {
+	switch (type) {
 		case types.authLoginDone:
 			return (draft = { checking: false, ...payload });
 
