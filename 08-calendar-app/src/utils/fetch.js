@@ -33,6 +33,13 @@ export const tokenFetch = async (endPoint, data, method = 'GET') => {
 			},
 			body: JSON.stringify(data),
 		});
+	} else {
+		response = await fetch(url, {
+			method,
+			headers: {
+				"x-token": data,
+			},
+		});
 	}
 
 	return await response.json();

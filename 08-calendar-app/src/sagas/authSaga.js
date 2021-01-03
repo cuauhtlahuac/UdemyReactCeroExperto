@@ -2,9 +2,16 @@ import { put, takeLatest, all } from 'redux-saga/effects';
 import Swal from 'sweetalert2';
 
 import types from 'types';
-import { noTokenFetch } from 'utils/fetch';
+import { noTokenFetch, tokenFetch } from 'utils/fetch';
 import { authLoginDone } from 'actions/authActions';
 import { getErrorsMsgs } from 'utils/getErrors';
+
+function* validateToken() {
+	const token = localStorage.getItem('token');
+
+	const body = yield tokenFetch('auth/renew', token);
+
+}
 
 function* startLogin(action) {
 	const { email, password } = action.payload;
@@ -31,7 +38,7 @@ function* startRegister(action) {
 	const { name, uid, ok, token } = body;
 
 	if (ok) {
-		localStorage.setItem('tokenw', token);
+		localStorage.setItem('token', token);
 		localStorage.setItem('token-init-date', new Date().getTime());
 
 		yield put(authLoginDone(uid, name));
@@ -50,5 +57,5 @@ function* watchAuth() {
 // notice how we now only export the rootSaga
 // single entry point to start all Sagas at once
 export default function* authSaga() {
-	yield watchAuth();
+	yield all([ validateToken(), watchAuth() ]);
 }
