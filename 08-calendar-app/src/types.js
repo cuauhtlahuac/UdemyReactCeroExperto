@@ -8,7 +8,6 @@ export const uniqueTypes = {
 	saveActiveEvent: Symbol('event/save-active-event'),
 	deleteEvent: Symbol('event/delete-event'),
 
-	authChecking: Symbol('auth/checking login'),
 	authChecked: Symbol('auth/login checked'),
 	authStartLogin: Symbol('auth/login start'),
 	authLoginDone: Symbol('auth/login done'),
@@ -27,7 +26,6 @@ export const types = {
 	[uniqueTypes.saveActiveEvent]: 'event/save-active-event',
 	[uniqueTypes.deleteEvent]: 'event/delete-event',
 	
-	[uniqueTypes.authChecking]: 'auth/checking login',
 	[uniqueTypes.authChecked]: 'auth/login checked',
 	[uniqueTypes.authStartLogin]: 'auth/login start',
 	[uniqueTypes.authLoginDone]: 'auth/login done',
@@ -37,7 +35,6 @@ export const types = {
 };
 
 const simplyTypes = {
-	authChecking: types[uniqueTypes.authChecking],
 	authChecked: types[uniqueTypes.authChecked],
 	authStartLogin: types[uniqueTypes.authStartLogin],
 	authLoginDone: types[uniqueTypes.authLoginDone],
