@@ -21,6 +21,8 @@ export const noTokenFetch = async (endPoint, data, method = 'GET') => {
 };
 
 export const tokenFetch = async (endPoint, data, method = 'GET') => {
+	const token = localStorage.getItem('token');
+
 	const url = `${baseURL}/${endPoint}`;
 
 	let response;
@@ -30,6 +32,7 @@ export const tokenFetch = async (endPoint, data, method = 'GET') => {
 			method,
 			headers: {
 				'Content-Type': 'application/json',
+				"x-token": token,
 			},
 			body: JSON.stringify(data),
 		});
@@ -37,7 +40,7 @@ export const tokenFetch = async (endPoint, data, method = 'GET') => {
 		response = await fetch(url, {
 			method,
 			headers: {
-				"x-token": data,
+				"x-token": token,
 			},
 		});
 	}

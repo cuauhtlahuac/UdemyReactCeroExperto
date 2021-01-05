@@ -7,9 +7,7 @@ import { authLoginDone } from 'actions/authActions';
 import { getErrorsMsgs } from 'utils/getErrors';
 
 function* validateToken() {
-	const token = localStorage.getItem('token');
-
-	const body = yield tokenFetch('auth/renew', token);
+	const body = yield tokenFetch('auth/renew');
 
 }
 
