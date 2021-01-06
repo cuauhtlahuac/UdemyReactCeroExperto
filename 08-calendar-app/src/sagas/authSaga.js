@@ -3,12 +3,23 @@ import Swal from 'sweetalert2';
 
 import types from 'types';
 import { noTokenFetch, tokenFetch } from 'utils/fetch';
-import { authLoginDone } from 'actions/authActions';
+import { authLoginDone, authChecked } from 'actions/authActions';
 import { getErrorsMsgs } from 'utils/getErrors';
 
 function* validateToken() {
 	const body = yield tokenFetch('auth/renew');
 
+	const { token, ok } = body;
+
+	if (ok) {
+		console.log('validating token');
+		localStorage.setItem('token', token);
+		localStorage.setItem('token-init-date', new Date().getTime());
+
+		yield put(authChecked());
+	} else {
+		// Cerrar la app
+	}
 }
 
 function* startLogin(action) {

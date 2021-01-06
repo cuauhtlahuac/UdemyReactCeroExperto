@@ -22,3 +22,7 @@ export const startRegister = payload => {
 		payload: { name, email, password },
 	};
 };
+
+export const authChecked = () => ({
+	type: types.authChecked,
+});
