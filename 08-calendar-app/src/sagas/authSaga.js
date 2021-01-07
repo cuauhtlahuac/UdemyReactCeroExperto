@@ -12,7 +12,6 @@ function* validateToken() {
 	const { token, ok } = body;
 
 	if (ok) {
-		console.log('validating token');
 		localStorage.setItem('token', token);
 		localStorage.setItem('token-init-date', new Date().getTime());
 
