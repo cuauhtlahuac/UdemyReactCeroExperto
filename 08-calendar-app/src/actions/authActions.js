@@ -26,3 +26,7 @@ export const startRegister = payload => {
 export const authChecked = () => ({
 	type: types.authChecked,
 });
+
+export const authChecking = () => ({
+	type: types.authChecking,
+});

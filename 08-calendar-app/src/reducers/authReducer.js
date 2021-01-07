@@ -2,7 +2,8 @@ import produce from 'immer';
 import types from 'types';
 
 const initialState = {
-	checking: true, // para mantener al usuario si ya está autenticado
+	checked: true, // para mantener al usuario si ya está autenticado
+	checking: false,
 	uid: null,
 	name: null,
 };
@@ -16,6 +17,10 @@ export const authReducer = produce((draft, action) => {
 
 		case types.authChecked:
 			draft.checking = false;
+
+		case types.authChecking:
+			draft.checking = true;
+			draft.checked = false;
 
 		default:
 			return;
