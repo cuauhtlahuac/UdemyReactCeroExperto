@@ -89,12 +89,15 @@ const login = async (req, res) => {
 };
 
 const renew = async function(req, res) {
-	// JWT
-	const token = await JWTGenerator(req.id, req.name);
+	const { uid, name } = req;
+
+	const token = await JWTGenerator(uid, name);
 
 	return res.status(200).json({
 		ok: true,
 		token,
+		uid,
+		name,
 	});
 };
 
