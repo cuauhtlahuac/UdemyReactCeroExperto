@@ -8,16 +8,15 @@ import { getErrorsMsgs } from 'utils/getErrors';
 
 function* validateToken() {
 	const body = yield tokenFetch('auth/renew');
-
-	const { token, ok } = body;
-
+	const { token, ok, uid, name } = body;
 	if (ok) {
 		localStorage.setItem('token', token);
 		localStorage.setItem('token-init-date', new Date().getTime());
-
-		yield put(authChecked());
+		
+		yield put(authChecked(true));
+		yield put(authLoginDone(uid, name));
 	} else {
-		// Cerrar la app
+		yield put(authChecked(false));
 	}
 }
 
