@@ -22,6 +22,7 @@ const mapStateToProps = state => {
 		modalOpen: modalOpenSelector(state),
 		events: eventsSelector(state),
 		activeEvent: eventActiveSelector(state),
+		name: state.auth.name,
 	};
 };
 

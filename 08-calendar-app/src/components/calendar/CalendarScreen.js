@@ -25,6 +25,7 @@ const CalendarScreen = ({
 	activeEvent,
 	deleteEvent,
 	cleanActiveEvent,
+	name,
 }) => {
 	const [ lastView, setLastView ] = useState(
 		localStorage.getItem('lastView') || 'month',
@@ -53,7 +54,6 @@ const CalendarScreen = ({
 	);
 
 	const handleSelectSlot = () => {
-		console.log("ddokod");
 		cleanActiveEvent();
 	}
 
@@ -73,7 +73,7 @@ const CalendarScreen = ({
 
 	return (
 		<div className="calendar-screen">
-			<NavBar />
+			<NavBar name={name}/>
 
 			<Calendar
 				localizer={localizer}
