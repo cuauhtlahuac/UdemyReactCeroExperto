@@ -3,6 +3,7 @@ import { compose } from 'redux';
 import { memo } from 'react';
 
 import { closeModalAction, openModalAction } from 'actions/uiActions';
+import { authLogout } from 'actions/authActions';
 import {
 	eventSetActiveAction,
 	eventAddNewAction,
@@ -34,6 +35,7 @@ const mapDispatchToProps = {
 	openModalAction,
 	saveActiveEvent,
 	deleteEvent,
+	onLogout: authLogout,
 };
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

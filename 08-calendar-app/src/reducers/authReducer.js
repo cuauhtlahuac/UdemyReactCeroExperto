@@ -18,9 +18,14 @@ export const authReducer = produce((draft, action) => {
 		case types.authChecked:
 			draft.checking = false;
 			draft.checked = payload;
+			return;
 
 		case types.authChecking:
 			draft.checking = false;
+			return;
+
+		case types.authLogout:
+			return initialState;
 
 		default:
 			return;

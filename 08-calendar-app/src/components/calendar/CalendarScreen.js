@@ -25,6 +25,7 @@ const CalendarScreen = ({
 	activeEvent,
 	deleteEvent,
 	cleanActiveEvent,
+	onLogout,
 	name,
 }) => {
 	const [ lastView, setLastView ] = useState(
@@ -73,7 +74,7 @@ const CalendarScreen = ({
 
 	return (
 		<div className="calendar-screen">
-			<NavBar name={name}/>
+			<NavBar name={name} onLogout={onLogout}/>
 
 			<Calendar
 				localizer={localizer}

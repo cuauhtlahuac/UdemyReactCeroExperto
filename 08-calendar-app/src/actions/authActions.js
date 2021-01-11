@@ -31,3 +31,7 @@ export const authChecked = checked => ({
 export const authChecking = () => ({
 	type: types.authChecking,
 });
+
+export const authLogout = () => ({
+	type: types.authLogout,
+});
