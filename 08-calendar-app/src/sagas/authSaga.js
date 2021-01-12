@@ -12,7 +12,7 @@ function* validateToken() {
 	if (ok) {
 		localStorage.setItem('token', token);
 		localStorage.setItem('token-init-date', new Date().getTime());
-		
+
 		yield put(authChecked(true));
 		yield put(authLoginDone(uid, name));
 	} else {
@@ -56,9 +56,16 @@ function* startRegister(action) {
 	}
 }
 
+export function* watchLogout() {
+	yield takeLatest(types.authLogout, function*() {
+		localStorage.clear();
+	});
+}
+
 function* watchAuth() {
 	yield takeLatest(types.authStartLogin, startLogin);
 	yield takeLatest(types.authRegistering, startRegister);
+	yield watchLogout();
 }
 
 // notice how we now only export the rootSaga

@@ -13,7 +13,7 @@ export const authReducer = produce((draft, action) => {
 
 	switch (type) {
 		case types.authLoginDone:
-			return { ...draft, ...payload, checking: false };
+			return { ...draft, ...payload, checking: false, checked: true };
 
 		case types.authChecked:
 			draft.checking = false;
