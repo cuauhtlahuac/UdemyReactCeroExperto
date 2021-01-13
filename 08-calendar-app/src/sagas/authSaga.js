@@ -33,6 +33,7 @@ function* startLogin(action) {
 
 		yield put(authLoginDone(uid, name));
 	} else {
+		yield put(authChecked(false));
 		const msg = yield getErrorsMsgs(body);
 
 		yield Swal.fire('Error', msg, 'error');
@@ -50,6 +51,7 @@ function* startRegister(action) {
 
 		yield put(authLoginDone(uid, name));
 	} else {
+		yield put(authChecked(false));
 		const msg = yield getErrorsMsgs(body);
 
 		yield Swal.fire('Error', msg, 'error');

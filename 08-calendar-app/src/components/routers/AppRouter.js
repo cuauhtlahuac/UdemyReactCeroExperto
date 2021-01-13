@@ -19,7 +19,7 @@ const AppRouter = () => {
 	const { checked, checking } = useSelector(state => state.auth);
 
 	useEffect(() => {
-		dispatch(authChecking(checked));
+		dispatch(authChecking());
 	}, [checked]);
 
 	if (checking) {

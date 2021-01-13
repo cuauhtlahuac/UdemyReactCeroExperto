@@ -3,13 +3,13 @@ import types from 'types';
 
 const initialState = {
 	checked: false,
-	checking: true,
+	checking: false,
 	uid: null,
 	name: null,
 };
 
 export const authReducer = produce((draft, action) => {
-	const { type, payload, other } = action;
+	const { type, payload } = action;
 
 	switch (type) {
 		case types.authLoginDone:
@@ -21,11 +21,11 @@ export const authReducer = produce((draft, action) => {
 			return;
 
 		case types.authChecking:
-			draft.checking = false;
+			draft.checking = true;
 			return;
 
 		case types.authLogout:
-			return initialState;
+			return { checking: false };
 
 		default:
 			return;
