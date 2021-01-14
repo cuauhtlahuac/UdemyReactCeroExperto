@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import ReactModal from 'react-modal';
 import Swal from 'sweetalert2';
 import { useTranslation } from 'react-i18next';
@@ -39,16 +39,26 @@ const CalendarModal = ({
 
 	const [ dateEnd, setDateEnd ] = useState(endDate);
 
-	let initialFormValues = {
-		title: '',
-		notes: '',
-		start: dateStart,
-		end: dateEnd,
-	};
+	const initialFormValues = useMemo(
+		() => ({
+			title: '',
+			notes: '',
+			start: dateStart,
+			end: dateEnd,
+		}),
+		[dateStart, dateEnd],
+	);
 
 	const [ formValues, setFormValues ] = useState(initialFormValues);
 
 	const { title, notes, end, start } = formValues;
+
+	const resetFormValues = useCallback(
+		() => {
+			setFormValues(initialFormValues);
+		},
+		[ initialFormValues ],
+	);
 
 	useEffect(
 		() => {
@@ -57,10 +67,10 @@ const CalendarModal = ({
 				setDateEnd(activeEvent.end);
 				setFormValues(activeEvent);
 			} else {
-				setFormValues(initialFormValues);
+				resetFormValues();
 			}
 		},
-		[ activeEvent ],
+		[ activeEvent, resetFormValues ],
 	);
 
 	const [ titleValid, setTitleValid ] = useState();
