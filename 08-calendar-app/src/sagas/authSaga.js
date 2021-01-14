@@ -33,7 +33,6 @@ function* startLogin(action) {
 
 		yield put(authLoginDone(uid, name));
 	} else {
-		yield put(authChecked(false));
 		const msg = yield getErrorsMsgs(body);
 
 		yield Swal.fire('Error', msg, 'error');
@@ -60,7 +59,7 @@ function* startRegister(action) {
 
 export function* watchLogout() {
 	yield takeLatest(types.authLogout, function*() {
-		localStorage.clear();
+		yield localStorage.clear();
 	});
 }
 

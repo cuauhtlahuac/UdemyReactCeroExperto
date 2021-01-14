@@ -2,7 +2,7 @@ import produce from 'immer';
 import types from 'types';
 
 const initialState = {
-	checked: false,
+	checked: true,
 	checking: false,
 	uid: null,
 	name: null,
