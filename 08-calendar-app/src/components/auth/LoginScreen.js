@@ -26,7 +26,7 @@ const LoginScreen = () => {
 		initialLoginState,
 	);
 
-	const [ formRegisterValues, handleRegisterInputChange, reset ] = useForm(
+	const [ formRegisterValues, handleRegisterInputChange ] = useForm(
 		initialRegisterState,
 	);
 
