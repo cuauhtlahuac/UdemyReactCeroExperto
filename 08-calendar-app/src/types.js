@@ -3,6 +3,7 @@ export const uniqueTypes = {
 	uiCloseModal: Symbol('ui/close-modal'),
 
 	eventSetActive: Symbol('event/set-active'),
+	eventStartAddNew: Symbol('event/start-add-new'),
 	eventAddNew: Symbol('event/add-new'),
 	cleanActiveEvent: Symbol('event/clean-active-event'),
 	saveActiveEvent: Symbol('event/save-active-event'),
@@ -22,6 +23,8 @@ export const types = {
 	[uniqueTypes.uiCloseModal]: 'ui/close-modal',
 
 	[uniqueTypes.eventSetActive]: 'event/set-active',
+
+	[uniqueTypes.eventStartAddNew]: 'event/start-add-new',
 	[uniqueTypes.eventAddNew]: 'event/add-new',
 	[uniqueTypes.cleanActiveEvent]: 'event/clean-active-event',
 	[uniqueTypes.saveActiveEvent]: 'event/save-active-event',
@@ -37,6 +40,9 @@ export const types = {
 };
 
 const simplyTypes = {
+	eventStartAddNew: types[uniqueTypes.eventStartAddNew],
+	eventAddNew: types[uniqueTypes.eventAddNew],
+
 	authChecking: types[uniqueTypes.authChecking],
 	authChecked: types[uniqueTypes.authChecked],
 	authStartLogin: types[uniqueTypes.authStartLogin],
