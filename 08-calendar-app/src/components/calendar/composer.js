@@ -6,6 +6,7 @@ import { closeModalAction, openModalAction } from 'actions/uiActions';
 import { authLogout } from 'actions/authActions';
 import {
 	eventSetActiveAction,
+	eventStartAddNewAction,
 	eventAddNewAction,
 	cleanActiveEvent,
 	saveActiveEvent,
@@ -30,6 +31,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
 	cleanActiveEvent,
 	closeModalAction,
+	eventStartAddNewAction,
 	eventAddNewAction,
 	eventSetActiveAction,
 	openModalAction,

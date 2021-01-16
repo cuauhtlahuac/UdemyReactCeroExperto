@@ -40,9 +40,6 @@ export const types = {
 };
 
 const simplyTypes = {
-	eventStartAddNew: types[uniqueTypes.eventStartAddNew],
-	eventAddNew: types[uniqueTypes.eventAddNew],
-
 	authChecking: types[uniqueTypes.authChecking],
 	authChecked: types[uniqueTypes.authChecked],
 	authStartLogin: types[uniqueTypes.authStartLogin],

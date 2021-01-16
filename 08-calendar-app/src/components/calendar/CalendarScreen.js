@@ -20,6 +20,7 @@ const localizer = momentLocalizer(moment);
 
 const CalendarScreen = ({
 	openModalAction,
+	eventStartAddNewAction,
 	events,
 	eventSetActiveAction,
 	activeEvent,
@@ -93,7 +94,7 @@ const CalendarScreen = ({
 				}}
 			/>
 
-			<AddNewFab openModal={openModalAction} />
+			<AddNewFab openModal={eventStartAddNewAction} />
 			{!!activeEvent && <DeleteEventFab onDelete={handleDeleteEvent} />}
 
 			<CalendarModal />

@@ -1,5 +1,9 @@
 import { types, uniqueTypes } from 'types';
 
+export const eventStartAddNewAction = event => ({
+	type: types[uniqueTypes.eventStartAddNew],
+});
+
 export const eventAddNewAction = event => ({
 	type: types[uniqueTypes.eventAddNew],
 	payload: event,
