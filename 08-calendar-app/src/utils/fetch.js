@@ -32,7 +32,7 @@ export const tokenFetch = async (endPoint, data, method = 'GET') => {
 			method,
 			headers: {
 				'Content-Type': 'application/json',
-				"x-token": token,
+				'x-token': token,
 			},
 			body: JSON.stringify(data),
 		});
@@ -40,8 +40,9 @@ export const tokenFetch = async (endPoint, data, method = 'GET') => {
 		response = await fetch(url, {
 			method,
 			headers: {
-				"x-token": token,
+				'x-token': token,
 			},
+			body: JSON.stringify(data),
 		});
 	}
 
