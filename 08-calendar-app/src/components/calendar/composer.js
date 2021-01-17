@@ -4,6 +4,7 @@ import { memo } from 'react';
 
 import { closeModalAction, openModalAction } from 'actions/uiActions';
 import { authLogout } from 'actions/authActions';
+import { eventAddNewTriggerAction } from 'actions/eventsActions';
 import {
 	eventSetActiveAction,
 	eventStartAddNewAction,
@@ -38,6 +39,7 @@ const mapDispatchToProps = {
 	saveActiveEvent,
 	deleteEvent,
 	onLogout: authLogout,
+	eventAddNewTriggerAction,
 };
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

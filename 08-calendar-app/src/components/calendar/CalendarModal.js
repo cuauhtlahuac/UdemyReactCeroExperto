@@ -28,6 +28,7 @@ const CalendarModal = ({
 	activeEvent,
 	cleanActiveEvent,
 	saveActiveEvent,
+	eventAddNewTriggerAction,
 }) => {
 	const { t } = useTranslation();
 
@@ -46,7 +47,7 @@ const CalendarModal = ({
 			start: dateStart,
 			end: dateEnd,
 		}),
-		[dateStart, dateEnd],
+		[ dateStart, dateEnd ],
 	);
 
 	const [ formValues, setFormValues ] = useState(initialFormValues);
@@ -120,13 +121,9 @@ const CalendarModal = ({
 			if (activeEvent) {
 				saveActiveEvent(formValues);
 			} else {
-				eventAddNewAction({
+				console.log('djidjd');
+				eventAddNewTriggerAction({
 					...formValues,
-					id: new Date().getTime(), // Id temporal
-					user: {
-						_id: '123',
-						name: 'Arturo',
-					},
 				});
 			}
 			handleCloseModal();
