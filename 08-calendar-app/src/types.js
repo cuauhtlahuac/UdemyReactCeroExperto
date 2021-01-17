@@ -3,8 +3,12 @@ export const uniqueTypes = {
 	uiCloseModal: Symbol('ui/close-modal'),
 
 	eventSetActive: Symbol('event/set-active'),
+
 	eventStartAddNew: Symbol('event/start-add-new'),
-	eventAddNew: Symbol('event/add-new'),
+	eventAddNewTrigger: Symbol(),
+	eventAddNewSuccess: Symbol(),
+	eventAddNewError: Symbol(),
+
 	cleanActiveEvent: Symbol('event/clean-active-event'),
 	saveActiveEvent: Symbol('event/save-active-event'),
 	deleteEvent: Symbol('event/delete-event'),
@@ -25,11 +29,14 @@ export const types = {
 	[uniqueTypes.eventSetActive]: 'event/set-active',
 
 	[uniqueTypes.eventStartAddNew]: 'event/start-add-new',
-	[uniqueTypes.eventAddNew]: 'event/add-new',
+	[uniqueTypes.eventAddNewTrigger]: 'event/add-new-trigger',
+	[uniqueTypes.eventAddNewSuccess]: 'event/add-new-success',
+	[uniqueTypes.eventAddNewError]: 'event/add-new-error',
+
 	[uniqueTypes.cleanActiveEvent]: 'event/clean-active-event',
 	[uniqueTypes.saveActiveEvent]: 'event/save-active-event',
 	[uniqueTypes.deleteEvent]: 'event/delete-event',
-	
+
 	[uniqueTypes.authChecking]: 'auth/checking login',
 	[uniqueTypes.authChecked]: 'auth/login checked',
 	[uniqueTypes.authStartLogin]: 'auth/login start',
@@ -40,6 +47,11 @@ export const types = {
 };
 
 const simplyTypes = {
+	eventStartAddNew: types[uniqueTypes.eventStartAddNew],
+	eventAddNewTrigger: types[uniqueTypes.eventAddNewTrigger],
+	eventAddNewSuccess: types[uniqueTypes.eventAddNewSuccess],
+	eventAddNewError: types[uniqueTypes.eventAddNewError],
+
 	authChecking: types[uniqueTypes.authChecking],
 	authChecked: types[uniqueTypes.authChecked],
 	authStartLogin: types[uniqueTypes.authStartLogin],
@@ -47,6 +59,6 @@ const simplyTypes = {
 	authRegistering: types[uniqueTypes.authRegistering],
 	authTokenRenew: types[uniqueTypes.authTokenRenew],
 	authLogout: types[uniqueTypes.authLogout],
-}
+};
 
 export default simplyTypes;

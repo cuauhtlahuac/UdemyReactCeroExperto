@@ -1,7 +1,20 @@
-import { types, uniqueTypes } from 'types';
+import simpleTypes, { types, uniqueTypes } from 'types';
 
-export const eventStartAddNewAction = event => ({
-	type: types[uniqueTypes.eventStartAddNew],
+export const eventStartAddNewAction = () => ({
+	type: simpleTypes.eventStartAddNew,
+});
+
+export const eventAddNewTriggerAction = event => ({
+	type: simpleTypes.eventAddNewTrigger,
+	payload: event,
+});
+
+export const eventAddNewSuccessAction = () => ({
+	type: simpleTypes.eventAddNewSuccess,
+});
+
+export const eventAddNewErrorAction = () => ({
+	type: simpleTypes.eventAddNewError,
 });
 
 export const eventAddNewAction = event => ({

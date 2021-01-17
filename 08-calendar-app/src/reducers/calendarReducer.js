@@ -1,7 +1,7 @@
 import produce from 'immer';
 import { findIndex } from 'lodash';
 
-import { types, uniqueTypes } from 'types';
+import simpleTypes, { types, uniqueTypes } from 'types';
 
 const initialState = {
 	events: [],
@@ -10,8 +10,17 @@ const initialState = {
 
 export const calendarReducer = produce((draft, action) => {
 	switch (action.type) {
-		case types[uniqueTypes.eventAddNew]:
-			draft.events.push(action.payload);
+
+		case simpleTypes.eventAddNewTrigger:
+			console.log('trigger reducer');
+			return;
+
+		case simpleTypes.eventAddNewSuccess:
+			console.log('Success');
+			return;
+
+		case simpleTypes.eventAddNewError:
+			console.log('Error');
 			return;
 
 		case types[uniqueTypes.eventSetActive]:
