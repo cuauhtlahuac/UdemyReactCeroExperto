@@ -121,10 +121,7 @@ const CalendarModal = ({
 			if (activeEvent) {
 				saveActiveEvent(formValues);
 			} else {
-				console.log('djidjd');
-				eventAddNewTriggerAction({
-					...formValues,
-				});
+				eventAddNewTriggerAction(formValues);
 			}
 			handleCloseModal();
 		}

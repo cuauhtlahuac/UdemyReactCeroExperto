@@ -9,8 +9,9 @@ export const eventAddNewTriggerAction = event => ({
 	payload: event,
 });
 
-export const eventAddNewSuccessAction = () => ({
+export const eventAddNewSuccessAction = event => ({
 	type: simpleTypes.eventAddNewSuccess,
+	payload: event,
 });
 
 export const eventAddNewErrorAction = () => ({

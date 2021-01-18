@@ -1,4 +1,4 @@
-import { put, takeLatest } from 'redux-saga/effects';
+import { put, takeLatest, select } from 'redux-saga/effects';
 import Swal from 'sweetalert2';
 
 import types from 'types';
@@ -16,14 +16,28 @@ function* eventStartAddNew() {
 }
 
 function* eventAddNew(action) {
-	const token = localStorage.getItem('token');
-	const response = yield tokenFetch(eventEndPoint, action.payload, 'POST');
+	const event = action.payload;
 
-	if (response && response.ok) {
-		console.log({ response });
-	} else {
-		const msg = yield getErrorsMsgs(response);
-		yield Swal.fire('Error', msg, 'error');
+	try {
+		const response = yield tokenFetch(eventEndPoint, event, 'POST');
+
+		if (response && response.ok) {
+			const { uid, name } = yield select(state => state.auth);
+
+			let newEvent = response.event;
+
+			newEvent.user = {
+				uid,
+				name,
+			};
+			yield put(eventAddNewSuccessAction(newEvent));
+		} else {
+			const msg = yield getErrorsMsgs(response);
+
+			yield Swal.fire('Error', msg, 'error');
+		}
+	} catch (error) {
+		yield Swal.fire('Error', 'Something went wrong', 'error');
 	}
 }
 
