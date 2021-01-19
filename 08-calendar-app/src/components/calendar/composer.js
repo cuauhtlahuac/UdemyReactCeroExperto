@@ -8,7 +8,6 @@ import { eventAddNewTriggerAction } from 'actions/eventsActions';
 import {
 	eventSetActiveAction,
 	eventStartAddNewAction,
-	eventAddNewAction,
 	cleanActiveEvent,
 	saveActiveEvent,
 	deleteEvent,
@@ -33,7 +32,6 @@ const mapDispatchToProps = {
 	cleanActiveEvent,
 	closeModalAction,
 	eventStartAddNewAction,
-	eventAddNewAction,
 	eventSetActiveAction,
 	openModalAction,
 	saveActiveEvent,

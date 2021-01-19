@@ -24,7 +24,6 @@ ReactModal.setAppElement('#root');
 const CalendarModal = ({
 	modalOpen,
 	closeModalAction,
-	eventAddNewAction,
 	activeEvent,
 	cleanActiveEvent,
 	saveActiveEvent,
