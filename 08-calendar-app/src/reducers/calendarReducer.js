@@ -10,6 +10,9 @@ const initialState = {
 
 export const calendarReducer = produce((draft, action) => {
 	switch (action.type) {
+		case simpleTypes.loadAllEvents:
+			draft.events = action.payload;
+			return;
 
 		case simpleTypes.eventAddNewSuccess:
 			draft.events.push(action.payload);

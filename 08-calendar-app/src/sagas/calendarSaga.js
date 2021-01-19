@@ -1,15 +1,24 @@
-import { put, takeLatest, select } from 'redux-saga/effects';
+import { put, takeLatest, select, all } from 'redux-saga/effects';
 import Swal from 'sweetalert2';
 
 import types from 'types';
 import { openModalAction } from 'actions/uiActions';
-import { eventAddNewAction } from 'actions/eventsActions';
-import { eventAddNewSuccessAction } from 'actions/eventsActions';
+import { eventAddNewSuccessAction, loadAllEventsAction } from 'actions/eventsActions';
 
 import { tokenFetch } from 'utils/fetch';
 import { getErrorsMsgs } from 'utils/getErrors';
 
 const eventEndPoint = 'events';
+
+function* loadAllCalendarEvents() {
+	const response = yield tokenFetch(eventEndPoint);
+
+  yield put(loadAllEventsAction(response.events))
+}
+
+function* loadEventsAtStart() {
+	yield takeLatest(types.authLoginDone, loadAllCalendarEvents);
+}
 
 function* eventStartAddNew() {
 	yield put(openModalAction());
@@ -47,5 +56,5 @@ function* watchCalendar() {
 }
 
 export default function* calendarSaga() {
-	yield watchCalendar();
+	yield all([ watchCalendar(), loadEventsAtStart() ]);
 }

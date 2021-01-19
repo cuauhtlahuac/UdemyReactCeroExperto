@@ -9,6 +9,8 @@ export const uniqueTypes = {
 	eventAddNewSuccess: Symbol(),
 	eventAddNewError: Symbol(),
 
+	loadAllEvents: Symbol('event/load-all-events'),
+
 	cleanActiveEvent: Symbol('event/clean-active-event'),
 	saveActiveEvent: Symbol('event/save-active-event'),
 	deleteEvent: Symbol('event/delete-event'),
@@ -33,6 +35,8 @@ export const types = {
 	[uniqueTypes.eventAddNewSuccess]: 'event/add-new-success',
 	[uniqueTypes.eventAddNewError]: 'event/add-new-error',
 
+	[uniqueTypes.loadAllEvents]: 'event/load-all-events',
+
 	[uniqueTypes.cleanActiveEvent]: 'event/clean-active-event',
 	[uniqueTypes.saveActiveEvent]: 'event/save-active-event',
 	[uniqueTypes.deleteEvent]: 'event/delete-event',
@@ -51,6 +55,8 @@ const simplyTypes = {
 	eventAddNewTrigger: types[uniqueTypes.eventAddNewTrigger],
 	eventAddNewSuccess: types[uniqueTypes.eventAddNewSuccess],
 	eventAddNewError: types[uniqueTypes.eventAddNewError],
+
+	loadAllEvents: types[uniqueTypes.loadAllEvents],
 
 	authChecking: types[uniqueTypes.authChecking],
 	authChecked: types[uniqueTypes.authChecked],
