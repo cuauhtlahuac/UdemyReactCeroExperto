@@ -3,17 +3,21 @@ import Swal from 'sweetalert2';
 
 import types from 'types';
 import { openModalAction } from 'actions/uiActions';
-import { eventAddNewSuccessAction, loadAllEventsAction } from 'actions/eventsActions';
+import {
+	eventAddNewSuccessAction,
+	loadAllEventsAction,
+} from 'actions/eventsActions';
 
 import { tokenFetch } from 'utils/fetch';
 import { getErrorsMsgs } from 'utils/getErrors';
+import { prepareEvents } from 'utils/prepareEvents';
 
 const eventEndPoint = 'events';
 
 function* loadAllCalendarEvents() {
 	const response = yield tokenFetch(eventEndPoint);
-
-  yield put(loadAllEventsAction(response.events))
+	const prepared = yield prepareEvents(response.events);
+	yield put(loadAllEventsAction(prepared));
 }
 
 function* loadEventsAtStart() {
