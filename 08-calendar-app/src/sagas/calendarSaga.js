@@ -10,7 +10,7 @@ import {
 
 import { tokenFetch } from 'utils/fetch';
 import { getErrorsMsgs } from 'utils/getErrors';
-import { prepareEvents } from 'utils/prepareEvents';
+import { prepareEvents, prepareEvent } from 'utils/prepareEvents';
 
 const eventEndPoint = 'events';
 
@@ -37,13 +37,15 @@ function* eventAddNew(action) {
 		if (response && response.ok) {
 			const { uid, name } = yield select(state => state.auth);
 
-			let newEvent = response.event;
+			let newEvent = yield prepareEvent(response.event);
 
 			newEvent.user = {
 				uid,
 				name,
 			};
+
 			yield put(eventAddNewSuccessAction(newEvent));
+			
 		} else {
 			const msg = yield getErrorsMsgs(response);
 
