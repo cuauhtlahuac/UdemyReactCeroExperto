@@ -19,7 +19,7 @@ moment.locale('es');
 const localizer = momentLocalizer(moment);
 
 const CalendarScreen = ({
-	openModalAction,
+	startEditEventAction,
 	eventStartAddNewAction,
 	events,
 	eventSetActiveAction,
@@ -42,9 +42,9 @@ const CalendarScreen = ({
 
 	const onDoubleClickEvent = useCallback(
 		() => {
-			openModalAction();
+			startEditEventAction();
 		},
-		[ openModalAction ],
+		[ startEditEventAction ],
 	);
 
 	const onViewChange = useCallback(

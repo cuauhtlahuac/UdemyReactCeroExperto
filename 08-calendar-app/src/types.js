@@ -9,6 +9,11 @@ export const uniqueTypes = {
 	eventAddNewSuccess: Symbol(),
 	eventAddNewError: Symbol(),
 
+	eventStartEdit: Symbol('event/start-edit-event'),
+	eventEditTrigger: Symbol(),
+	eventEditSuccess: Symbol(),
+	eventEditError: Symbol(),
+
 	loadAllEvents: Symbol('event/load-all-events'),
 
 	cleanActiveEvent: Symbol('event/clean-active-event'),
@@ -35,6 +40,11 @@ export const types = {
 	[uniqueTypes.eventAddNewSuccess]: 'event/add-new-success',
 	[uniqueTypes.eventAddNewError]: 'event/add-new-error',
 
+	[uniqueTypes.eventStartEdit]: 'event/start-edit-event',
+	[uniqueTypes.eventEditTrigger]: 'event/edit-event-trigger',
+	[uniqueTypes.eventEditSuccess]: 'event/edit-event-success',
+	[uniqueTypes.eventEditError]: 'event/edit-event-error',
+
 	[uniqueTypes.loadAllEvents]: 'event/load-all-events',
 
 	[uniqueTypes.cleanActiveEvent]: 'event/clean-active-event',
@@ -55,6 +65,11 @@ const simplyTypes = {
 	eventAddNewTrigger: types[uniqueTypes.eventAddNewTrigger],
 	eventAddNewSuccess: types[uniqueTypes.eventAddNewSuccess],
 	eventAddNewError: types[uniqueTypes.eventAddNewError],
+
+	eventStartEdit: types[uniqueTypes.eventStartEdit],
+	eventEditTrigger: types[uniqueTypes.eventEditTrigger],
+	eventEditSuccess: types[uniqueTypes.eventEditSuccess],
+	eventEditError: types[uniqueTypes.eventEditError],
 
 	loadAllEvents: types[uniqueTypes.loadAllEvents],
 

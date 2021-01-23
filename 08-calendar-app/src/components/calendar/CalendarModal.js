@@ -26,7 +26,7 @@ const CalendarModal = ({
 	closeModalAction,
 	activeEvent,
 	cleanActiveEvent,
-	saveActiveEvent,
+	editEventTriggerAction,
 	eventAddNewTriggerAction,
 }) => {
 	const { t } = useTranslation();
@@ -118,7 +118,7 @@ const CalendarModal = ({
 		} else {
 			setTitleValid(true);
 			if (activeEvent) {
-				saveActiveEvent(formValues);
+				editEventTriggerAction(formValues);
 			} else {
 				eventAddNewTriggerAction(formValues);
 			}

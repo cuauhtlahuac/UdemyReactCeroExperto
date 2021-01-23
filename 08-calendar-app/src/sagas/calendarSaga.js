@@ -56,9 +56,21 @@ function* eventAddNew(action) {
 	}
 }
 
+function* startEditEvent() {
+	yield put(openModalAction());
+}
+
+function* eventEditTrigger(action){
+	const event = action.payload;
+	const response = yield tokenFetch(`${eventEndPoint}/${event.id}`, event, 'PUT');
+	// agregar succes etc..	
+}
+
 function* watchCalendar() {
 	yield takeLatest(types.eventStartAddNew, eventStartAddNew);
 	yield takeLatest(types.eventAddNewTrigger, eventAddNew);
+	yield takeLatest(types.eventStartEdit, startEditEvent);
+	yield takeLatest(types.eventEditTrigger, eventEditTrigger);
 }
 
 export default function* calendarSaga() {

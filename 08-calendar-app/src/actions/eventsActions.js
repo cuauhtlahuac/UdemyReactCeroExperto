@@ -18,6 +18,29 @@ export const eventAddNewErrorAction = () => ({
 	type: simplyTypes.eventAddNewError,
 });
 
+export const startEditEventAction = () => ({
+	type: simplyTypes.eventStartEdit,
+});
+
+export const editEventTriggerAction = event => ({
+	type: simplyTypes.eventEditTrigger,
+	payload: event,
+});
+
+export const editEventSuccessAction = event => ({
+	type: simplyTypes.eventEditSuccess,
+	payload: event,
+});
+
+export const saveActiveEvent = event => ({
+	type: types[uniqueTypes.saveActiveEvent],
+	payload: event,
+});
+
+export const editEventErrorAction = () => ({
+	type: simplyTypes.eventEditError,
+});
+
 export const loadAllEventsAction = events => ({
 	type: simplyTypes.loadAllEvents,
 	payload: events,
@@ -32,10 +55,6 @@ export const cleanActiveEvent = () => ({
 	type: types[uniqueTypes.cleanActiveEvent],
 });
 
-export const saveActiveEvent = event => ({
-	type: types[uniqueTypes.saveActiveEvent],
-	payload: event,
-});
 
 export const deleteEvent = () => ({
 	type: types[uniqueTypes.deleteEvent],

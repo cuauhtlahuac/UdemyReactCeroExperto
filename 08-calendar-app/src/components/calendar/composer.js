@@ -2,14 +2,14 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { memo } from 'react';
 
-import { closeModalAction, openModalAction } from 'actions/uiActions';
+import { closeModalAction } from 'actions/uiActions';
 import { authLogout } from 'actions/authActions';
-import { eventAddNewTriggerAction } from 'actions/eventsActions';
 import {
-	eventSetActiveAction,
 	eventStartAddNewAction,
+	startEditEventAction,
+	eventSetActiveAction,
 	cleanActiveEvent,
-	saveActiveEvent,
+	editEventTriggerAction,
 	deleteEvent,
 } from 'actions/eventsActions';
 
@@ -32,12 +32,11 @@ const mapDispatchToProps = {
 	cleanActiveEvent,
 	closeModalAction,
 	eventStartAddNewAction,
+	startEditEventAction,
 	eventSetActiveAction,
-	openModalAction,
-	saveActiveEvent,
+	editEventTriggerAction,
 	deleteEvent,
 	onLogout: authLogout,
-	eventAddNewTriggerAction,
 };
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
