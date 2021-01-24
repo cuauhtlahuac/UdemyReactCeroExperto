@@ -6,54 +6,76 @@ import { noTokenFetch, tokenFetch } from 'utils/fetch';
 import { authLoginDone, authChecked } from 'actions/authActions';
 import { getErrorsMsgs } from 'utils/getErrors';
 
-function* validateToken() {
-	const body = yield tokenFetch('auth/renew');
-	const { token, ok, uid, name } = body;
-	if (ok) {
-		localStorage.setItem('token', token);
-		localStorage.setItem('token-init-date', new Date().getTime());
+function* genericError() {
+	return Swal.fire(
+		'Something went wrong',
+		'Please try again in few minutes.<br/><br/> If the problem persist please contact to admin',
+		'error',
+	);
+}
 
-		yield put(authChecked(true));
-		yield put(authLoginDone(uid, name));
-	} else {
+function* validateToken() {
+	try {
+		const body = yield tokenFetch('auth/renew');
+		const { token, ok, uid, name } = body;
+
+		if (ok) {
+			localStorage.setItem('token', token);
+			localStorage.setItem('token-init-date', new Date().getTime());
+
+			yield put(authChecked(true));
+			yield put(authLoginDone(uid, name));
+		} else {
+			yield put(authChecked(false));
+		}
+	} catch (error) {
 		yield put(authChecked(false));
+
+		yield genericError();
 	}
 }
 
 function* startLogin(action) {
 	const { email, password } = action.payload;
 
-	const body = yield noTokenFetch('auth', { email, password }, 'POST');
+	try {
+		const body = yield noTokenFetch('auth', { email, password }, 'POST');
 
-	const { name, uid, ok, token } = body;
+		const { name, uid, ok, token } = body;
+		if (ok) {
+			localStorage.setItem('token', token);
+			localStorage.setItem('token-init-date', new Date().getTime());
 
-	if (ok) {
-		localStorage.setItem('token', token);
-		localStorage.setItem('token-init-date', new Date().getTime());
+			yield put(authLoginDone(uid, name));
+		} else {
+			const msg = yield getErrorsMsgs(body);
 
-		yield put(authLoginDone(uid, name));
-	} else {
-		const msg = yield getErrorsMsgs(body);
-
-		yield Swal.fire('Error', msg, 'error');
+			yield Swal.fire('Error', msg, 'error');
+		}
+	} catch (error) {
+		yield genericError();
 	}
 }
 
 function* startRegister(action) {
-	const body = yield noTokenFetch('auth/register', action.payload, 'POST');
+	try {
+		const body = yield noTokenFetch('auth/register', action.payload, 'POST');
 
-	const { name, uid, ok, token } = body;
+		const { name, uid, ok, token } = body;
 
-	if (ok) {
-		localStorage.setItem('token', token);
-		localStorage.setItem('token-init-date', new Date().getTime());
+		if (ok) {
+			localStorage.setItem('token', token);
+			localStorage.setItem('token-init-date', new Date().getTime());
 
-		yield put(authLoginDone(uid, name));
-	} else {
-		yield put(authChecked(false));
-		const msg = yield getErrorsMsgs(body);
+			yield put(authLoginDone(uid, name));
+		} else {
+			yield put(authChecked(false));
+			const msg = yield getErrorsMsgs(body);
 
-		yield Swal.fire('Error', msg, 'error');
+			yield Swal.fire('Error', msg, 'error');
+		}
+	} catch (error) {
+		yield genericError();
 	}
 }
 
