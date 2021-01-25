@@ -6,11 +6,13 @@ import { openModalAction } from 'actions/uiActions';
 import {
 	eventAddNewSuccessAction,
 	loadAllEventsAction,
+	saveActiveEvent,
 } from 'actions/eventsActions';
 
 import { tokenFetch } from 'utils/fetch';
 import { getErrorsMsgs } from 'utils/getErrors';
 import { prepareEvents, prepareEvent } from 'utils/prepareEvents';
+import { genericError } from 'utils/genericErrorAlert';
 
 const eventEndPoint = 'events';
 
@@ -52,7 +54,7 @@ function* eventAddNew(action) {
 			yield Swal.fire('Error', msg, 'error');
 		}
 	} catch (error) {
-		yield Swal.fire('Error', 'Something went wrong', 'error');
+		yield genericError();
 	}
 }
 
@@ -61,9 +63,25 @@ function* startEditEvent() {
 }
 
 function* eventEditTrigger(action){
-	const event = action.payload;
-	const response = yield tokenFetch(`${eventEndPoint}/${event.id}`, event, 'PUT');
-	// agregar succes etc..	
+	try {
+		const event = action.payload;
+		const response = yield tokenFetch(`${eventEndPoint}/${event.id}`, event, 'PUT');
+
+		if (response && response.ok) {
+
+			const newEvent = yield prepareEvent(response.event);
+
+			yield put(saveActiveEvent(newEvent));
+			
+		} else {
+			const msg = yield getErrorsMsgs(response);
+
+			yield Swal.fire('Error', msg, 'error');
+		}
+
+	} catch (error) {
+		yield genericError();
+	}
 }
 
 function* watchCalendar() {
