@@ -6,11 +6,12 @@ import { closeModalAction } from 'actions/uiActions';
 import { authLogout } from 'actions/authActions';
 import {
 	eventStartAddNewAction,
+	eventAddNewTriggerAction,
 	startEditEventAction,
 	eventSetActiveAction,
 	cleanActiveEvent,
 	editEventTriggerAction,
-	deleteEvent,
+	eventDeleteTrigger,
 } from 'actions/eventsActions';
 
 import {
@@ -32,10 +33,11 @@ const mapDispatchToProps = {
 	cleanActiveEvent,
 	closeModalAction,
 	eventStartAddNewAction,
+	eventAddNewTriggerAction,
 	startEditEventAction,
 	eventSetActiveAction,
 	editEventTriggerAction,
-	deleteEvent,
+	eventDeleteTrigger,
 	onLogout: authLogout,
 };
 

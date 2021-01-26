@@ -24,7 +24,7 @@ const CalendarScreen = ({
 	events,
 	eventSetActiveAction,
 	activeEvent,
-	deleteEvent,
+	eventDeleteTrigger,
 	cleanActiveEvent,
 	onLogout,
 	name,
@@ -70,7 +70,7 @@ const CalendarScreen = ({
 	);
 
 	const handleDeleteEvent = () => {
-		deleteEvent();
+		eventDeleteTrigger();
 	};
 
 	return (

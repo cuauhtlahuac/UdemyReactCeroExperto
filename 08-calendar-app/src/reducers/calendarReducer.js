@@ -35,7 +35,6 @@ export const calendarReducer = produce((draft, action) => {
 			draft.events = draft.events.filter(
 				event => event.id !== draft.activeEvent.id,
 			);
-			draft.activeEvent = null;
 			return;
 
 		default:

@@ -18,6 +18,10 @@ export const uniqueTypes = {
 
 	cleanActiveEvent: Symbol('event/clean-active-event'),
 	saveActiveEvent: Symbol('event/save-active-event'),
+	
+	eventDeleteTrigger: Symbol(),
+	eventDeleteSuccess: Symbol(),
+	eventDeleteError: Symbol(),
 	deleteEvent: Symbol('event/delete-event'),
 
 	authChecking: Symbol('auth/checking login'),
@@ -49,6 +53,10 @@ export const types = {
 
 	[uniqueTypes.cleanActiveEvent]: 'event/clean-active-event',
 	[uniqueTypes.saveActiveEvent]: 'event/save-active-event',
+
+	[uniqueTypes.eventDeleteTrigger]: 'event/trigger-delete-event',
+	[uniqueTypes.eventDeleteSuccess]: 'event/success-delete-event',
+	[uniqueTypes.eventDeleteError]: 'event/error-delete-event',
 	[uniqueTypes.deleteEvent]: 'event/delete-event',
 
 	[uniqueTypes.authChecking]: 'auth/checking login',
@@ -72,6 +80,11 @@ const simplyTypes = {
 	eventEditError: types[uniqueTypes.eventEditError],
 
 	loadAllEvents: types[uniqueTypes.loadAllEvents],
+
+	eventDeleteTrigger: types[uniqueTypes.eventDeleteTrigger],
+	eventDeleteSuccess: types[uniqueTypes.eventDeleteSuccess],
+	eventDeleteError: types[uniqueTypes.eventDeleteError],
+	deleteEvent: types[uniqueTypes.deleteEvent],
 
 	authChecking: types[uniqueTypes.authChecking],
 	authChecked: types[uniqueTypes.authChecked],

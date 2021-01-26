@@ -7,6 +7,7 @@ import {
 	eventAddNewSuccessAction,
 	loadAllEventsAction,
 	saveActiveEvent,
+	cleanActiveEvent,
 } from 'actions/eventsActions';
 
 import { tokenFetch } from 'utils/fetch';
@@ -84,11 +85,33 @@ function* eventEditTrigger(action){
 	}
 }
 
+function* eventDeleteTrigger(){
+	try {
+		const event = yield select(state => state.calendar.activeEvent);
+		console.log({event});
+		const response = yield tokenFetch(`${eventEndPoint}/${event.id}`, {}, 'DELETE');
+
+		if (response && response.ok) {
+
+			put(cleanActiveEvent);
+			
+		} else {
+			const msg = yield getErrorsMsgs(response);
+
+			yield Swal.fire('Error', msg, 'error');
+		}
+
+	} catch (error) {
+		yield genericError();
+	}
+}
+
 function* watchCalendar() {
 	yield takeLatest(types.eventStartAddNew, eventStartAddNew);
 	yield takeLatest(types.eventAddNewTrigger, eventAddNew);
 	yield takeLatest(types.eventStartEdit, startEditEvent);
 	yield takeLatest(types.eventEditTrigger, eventEditTrigger);
+	yield takeLatest(types.eventDeleteTrigger, eventDeleteTrigger);
 }
 
 export default function* calendarSaga() {
