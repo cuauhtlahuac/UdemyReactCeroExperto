@@ -4,20 +4,22 @@ describe('loadFile util test', () => {
   
 
 	it('should return an url', async () => {
-    const response = await fetch('https://kaverisias.com/wp-content/uploads/2018/01/catalog-default-img.gif', {
+/*     const response = await fetch('http://www.myblog.uk.com/photo-flowers/thumb/gerbera-yellow.jpg', {
       method: 'GET',
       mode: 'same-origin',
       cache: 'no-cache',
-      credentials: 'include',
+      credentials: 'same-origin',
     })
-    console.log({response})
-    const blob = await response.blob();
-    console.log({blob})
+ */
+
+
+//    const blob = await response.blob();
+
     
-    const file = new File([blob], 'picture.png')
-    console.log({file})
+//    const file = new File([blob], 'picture.png')
+
     //const url = await loadFile(file);
-    expect(true).toBe(true)
+
     //expect(url).toBe(true)
 	});
 });
