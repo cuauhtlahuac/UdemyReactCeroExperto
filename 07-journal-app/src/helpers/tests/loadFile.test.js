@@ -4,15 +4,21 @@ describe('loadFile util test', () => {
   
 
 	it('should return an url', async () => {
-/*     const response = await fetch('http://www.myblog.uk.com/photo-flowers/thumb/gerbera-yellow.jpg', {
+    /* const response = await fetch('https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png', {
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Headers': "*",
+        'append': '',
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
       method: 'GET',
-      mode: 'same-origin',
+      mode: 'cors',
       cache: 'no-cache',
       credentials: 'same-origin',
     })
  */
 
-
+  //  console.log({response});
 //    const blob = await response.blob();
 
     
