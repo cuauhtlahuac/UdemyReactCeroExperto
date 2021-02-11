@@ -46,6 +46,7 @@
 * [Deploy Front-end in Heroku](herokuDeploy.md)
 * [calendar app in heroku](https://mern-calendar-roku.herokuapp.com/login)
 * [cypress](https://docs.cypress.io/), Cypress is a next generation front end testing tool built for the modern web.
+* [Redux Mock Store](https://www.npmjs.com/package/redux-mock-store)
 
 # Backend
 
